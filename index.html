@@ -277,7 +277,10 @@ const SUPA_URL = 'https://lzqnqvonzzmwdbuewsdr.supabase.co';
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6cW5xdm9uenptd2RidWV3c2RyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkyMTYwNTMsImV4cCI6MjA5NDc5MjA1M30.FQplyGrrvKrp8YFthYRgwxCRdfyEZtZZPU_zdXbKVP4';
 
 // OPENAI — chat MB9
-const OPENAI_KEY = 'PLACEHOLDER_KEY';
+// OPENAI KEY — salva no navegador via comando /key
+function getOpenAIKey(){return localStorage.getItem('mb9_oai')||'';}
+function setOpenAIKey(k){localStorage.setItem('mb9_oai',k);}
+const OPENAI_KEY = '';
 
 // SYSPREV vMAX / AZI vMAX — banco operacional e financeiro
 const VMAX_URL = 'https://oqvdxbnnvxklugpydrne.supabase.co';
@@ -746,6 +749,14 @@ async function sendMsg(){
   const inp = document.getElementById('chat-in');
   const text = inp.value.trim();
   if(!text||chatLoading) return;
+  if(text.startsWith('/key ')){
+    const k=text.replace('/key ','').trim();
+    setOpenAIKey(k);
+    inp.value='';
+    addMsg('user','/key ***');
+    addMsg('bot','✅ Chave salva. Chat ativado. O que quer atacar agora?');
+    return;
+  }
   inp.value=''; inp.style.height='auto';
   addMsg('user', text);
   chatHistory.push({role:'user', content:text});
@@ -775,7 +786,7 @@ EVENTOS RECENTES: ${events.map(e=>e.event_type).join(' | ')||'nenhum'}`;
 
     const res = await fetch('https://api.openai.com/v1/chat/completions',{
       method:'POST',
-      headers:{'Content-Type':'application/json','Authorization':'Bearer '+OPENAI_KEY},
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+getOpenAIKey()},
       body: JSON.stringify({
         model:'gpt-4o',
         max_tokens:1500,
@@ -808,6 +819,10 @@ document.addEventListener('DOMContentLoaded',()=>{
 function initChat(){
   const msgs = document.getElementById('chat-msgs');
   if(msgs && msgs.children.length===0){
+        if(!getOpenAIKey()){
+      addMsg('bot','🔑 Chat MB9 pronto.\n\nDigite: /key SUA_CHAVE_OPENAI\n\nA chave fica salva aqui. Nunca mais precisa digitar.');
+      return;
+    }
     addMsg('bot','🟣 **ORION MB9 online.**\n\nOlá, Marcelo Baptista. Powered by GPT-4o.\n\n**Status crítico:**\n🔴 SYSPREV vMAX — 129 contratos aguardando HITL. Bloqueador: `amount=NULL`.\n🔴 Portal do Colaborador — Twilio shadow mode.\n🟡 AZI vMAX — conectado ao SysFlux.\n\nO que você quer atacar agora?');
   }
 }
