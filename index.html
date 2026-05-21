@@ -431,6 +431,80 @@ body::before{
   .dock{gap:3px}
   .dcmd{min-width:50px;padding:5px 6px}
 }
+
+/* ═══ VISUAL PANELS ═══ */
+.node-diagram{display:flex;flex-direction:column;align-items:center;gap:8px;padding:8px}
+.node-center{
+  background:rgba(10,15,30,0.95);border:2px solid rgba(255,100,0,0.6);
+  border-radius:10px;padding:10px 18px;text-align:center;
+  box-shadow:0 0 20px rgba(255,100,0,0.3),inset 0 0 20px rgba(255,100,0,0.05);
+  position:relative
+}
+.node-center::before{content:'✳';font-size:16px;color:#ff6400;display:block;margin-bottom:2px}
+.node-center-title{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#fff}
+.node-center-sub{font-size:9px;color:#ff6400;font-family:'Share Tech Mono',monospace;letter-spacing:.08em}
+.node-row{display:flex;gap:10px;align-items:center;justify-content:center}
+.node-box{
+  background:rgba(10,15,30,0.95);border:2px solid transparent;
+  border-radius:8px;padding:8px 14px;text-align:center;min-width:100px;
+  transition:box-shadow .2s
+}
+.node-box.orange{border-color:rgba(255,140,0,0.7);box-shadow:0 0 12px rgba(255,140,0,0.25)}
+.node-box.green{border-color:rgba(0,220,80,0.7);box-shadow:0 0 12px rgba(0,220,80,0.25)}
+.node-box.blue{border-color:rgba(0,150,255,0.7);box-shadow:0 0 12px rgba(0,150,255,0.25)}
+.node-box.purple{border-color:rgba(150,0,255,0.7);box-shadow:0 0 12px rgba(150,0,255,0.25)}
+.node-box-icon{font-size:18px;margin-bottom:3px}
+.node-box-title{font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;color:#fff}
+.node-connector{font-size:16px;color:rgba(255,255,255,0.2)}
+
+/* Núcleo previdenciário */
+.nucleo{position:relative;padding:16px;display:flex;justify-content:center}
+.nucleo-center{
+  width:80px;height:80px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,100,255,0.3),rgba(0,50,150,0.1));
+  border:2px solid rgba(0,150,255,0.5);
+  box-shadow:0 0 30px rgba(0,100,255,0.4),0 0 60px rgba(0,50,200,0.2);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;margin:0 auto;position:relative
+}
+.nucleo-title{font-family:'Rajdhani',sans-serif;font-size:8px;font-weight:700;color:var(--cyan);letter-spacing:.1em;text-align:center;margin-bottom:8px}
+.nucleo-nodes{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.nucleo-node{
+  background:rgba(5,10,30,0.95);border-radius:50%;
+  width:70px;height:70px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  border:2px solid rgba(100,0,255,0.5);
+  box-shadow:0 0 15px rgba(100,0,255,0.3)
+}
+.nucleo-node.top{border-color:rgba(0,150,255,0.6);box-shadow:0 0 15px rgba(0,150,255,0.3)}
+.nucleo-node-icon{font-size:18px}
+.nucleo-node-name{font-family:'Rajdhani',sans-serif;font-size:9px;font-weight:700;color:#fff;margin-top:2px}
+.nucleo-node-desc{font-size:6px;color:var(--text3);font-family:'Share Tech Mono',monospace;margin-top:1px;text-align:center;line-height:1.2;padding:0 2px}
+
+/* AZI visual */
+.azi-visual{display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px}
+.azi-center{
+  width:90px;height:90px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,150,0,0.3),rgba(100,70,0,0.1));
+  border:2px solid rgba(200,150,0,0.6);
+  box-shadow:0 0 30px rgba(200,150,0,0.4);
+  display:flex;flex-direction:column;align-items:center;justify-content:center
+}
+.azi-center-name{font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;color:#ffd700}
+.azi-center-sub{font-size:7px;color:rgba(255,215,0,0.7);font-family:'Share Tech Mono',monospace;letter-spacing:.06em;text-align:center}
+.azi-skills{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;width:100%}
+.azi-skill{
+  background:rgba(10,8,0,0.9);border:1px solid rgba(200,150,0,0.3);
+  border-radius:6px;padding:6px;text-align:center
+}
+.azi-skill-icon{font-size:14px;margin-bottom:2px}
+.azi-skill-name{font-size:8px;color:rgba(255,215,0,0.8);font-family:'Share Tech Mono',monospace;letter-spacing:.04em;line-height:1.2}
+.azi-runtime{
+  background:rgba(200,150,0,0.1);border:1px solid rgba(200,150,0,0.3);
+  border-radius:4px;padding:4px 12px;
+  font-size:8px;color:rgba(255,215,0,0.7);font-family:'Share Tech Mono',monospace;letter-spacing:.1em
+}
+
 </style>
 </head>
 <body>
@@ -650,8 +724,57 @@ body::before{
       <!-- AZI vMAX -->
       <div id="panel-azi" class="panel">
         <div class="pcontent" style="grid-template-columns:1fr 1fr;gap:10px">
+          <!-- AZI Visual + Dados -->
+          <div class="card" style="grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start">
+            <!-- AZI vMAX Visual -->
+            <div>
+              <div class="ctitle"><div class="ctitle-left"><span class="dot" style="background:#ffd700"></span>AZI vMAX — NÚCLEO FINANCEIRO</div></div>
+              <div class="azi-visual">
+                <div class="azi-center">
+                  <div style="font-size:20px">⬡</div>
+                  <div class="azi-center-name">AZI vMAX</div>
+                  <div class="azi-center-sub">CENTRAL DE<br/>INTELIGÊNCIA</div>
+                </div>
+                <div class="azi-skills">
+                  <div class="azi-skill"><div class="azi-skill-icon">💰</div><div class="azi-skill-name">Receivables Scan</div></div>
+                  <div class="azi-skill"><div class="azi-skill-icon">👥</div><div class="azi-skill-name">Customer Quality</div></div>
+                  <div class="azi-skill"><div class="azi-skill-icon">⚖️</div><div class="azi-skill-name">Concession Watchdog</div></div>
+                  <div class="azi-skill"><div class="azi-skill-icon">📡</div><div class="azi-skill-name">Collection Radar</div></div>
+                  <div class="azi-skill"><div class="azi-skill-icon">📈</div><div class="azi-skill-name">Margin Projector</div></div>
+                  <div class="azi-skill"><div class="azi-skill-icon">🔍</div><div class="azi-skill-name">Revenue Leakage</div></div>
+                </div>
+                <div class="azi-runtime">● RUNTIME FINANCEIRO ATIVO</div>
+              </div>
+            </div>
+            <!-- Núcleo Previdenciário -->
+            <div>
+              <div class="ctitle"><div class="ctitle-left"><span class="dot c"></span>NÚCLEO PREVIDENCIÁRIO — SYSPREV vMAX</div></div>
+              <div class="nucleo-title">SCAN · EXECUTOR · ANALIRYCS</div>
+              <div class="nucleo-nodes">
+                <div class="nucleo-node purple">
+                  <div class="nucleo-node-icon">⚙️</div>
+                  <div class="nucleo-node-name">EXECUTOR</div>
+                  <div class="nucleo-node-desc">Execução orientada & próximos passos</div>
+                </div>
+                <div class="nucleo-node top">
+                  <div class="nucleo-node-icon">📡</div>
+                  <div class="nucleo-node-name">SCAN</div>
+                  <div class="nucleo-node-desc">Leitura & análise documental</div>
+                </div>
+                <div class="nucleo-node purple">
+                  <div class="nucleo-node-icon">📊</div>
+                  <div class="nucleo-node-name">ANALIRYCS</div>
+                  <div class="nucleo-node-desc">Diagnóstico & inteligência</div>
+                </div>
+              </div>
+              <div style="text-align:center;margin-top:8px">
+                <span style="font-size:8px;background:rgba(0,200,255,0.1);border:1px solid rgba(0,200,255,0.3);color:var(--cyan);border-radius:4px;padding:3px 10px;font-family:'Share Tech Mono',monospace;letter-spacing:.1em">● NÚCLEO OPERACIONAL ATIVO</span>
+              </div>
+            </div>
+          </div>
+          <!-- Dados ao vivo -->
           <div class="card full">
-            <div class="ctitle"><div class="ctitle-left"><span class="dot" style="background:var(--amber)"></span>AZI vMAX — CENTRO FINANCEIRO INTELIGENTE</div><button class="hbtn" onclick="loadAZI()">↻</button></div>
+            <div class="ctitle"><div class="ctitle-left"><span class="dot" style="background:var(--amber)"></span>DADOS AO VIVO — SYSPREV vMAX</div><button class="hbtn" onclick="loadAZI()">↻</button></div>
             <div id="azi-dashboard"><div class="empty pulse">conectando ao SysFlux vMAX...</div></div>
           </div>
           <div class="card">
@@ -738,162 +861,71 @@ body::before{
 
 </div><!-- /app -->
 
+
 <script>
 // ═══════════════════════════════════════
-// CREDENCIAIS — NÃO COMPARTILHE ESTE ARQUIVO
+// CREDENCIAIS
 // ═══════════════════════════════════════
 const CREDS = {user:'mb9', pass:'123456'};
-// ORION MB9 — banco de memória operacional
 const SUPA_URL = 'https://lzqnqvonzzmwdbuewsdr.supabase.co';
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6cW5xdm9uenptd2RidWV3c2RyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkyMTYwNTMsImV4cCI6MjA5NDc5MjA1M30.FQplyGrrvKrp8YFthYRgwxCRdfyEZtZZPU_zdXbKVP4';
-
-// OPENAI — chat MB9
-// OPENAI KEY — salva no navegador via comando /key
-function getOpenAIKey(){return localStorage.getItem('mb9_oai')||'';}
-function setOpenAIKey(k){localStorage.setItem('mb9_oai',k);}
-const OPENAI_KEY = '';
-
-// SYSPREV vMAX / AZI vMAX — banco operacional e financeiro
 const VMAX_URL = 'https://oqvdxbnnvxklugpydrne.supabase.co';
 const VMAX_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9xdmR4Ym5udnhrbHVncHlkcm5lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNDE3OTgsImV4cCI6MjA5MTYxNzc5OH0.ZsliUtfPbWNbOZYIjIvHSLVpHxsL93Yj6qf282Wie-k';
+function getOpenAIKey(){return localStorage.getItem('mb9_oai')||'';}
+function setOpenAIKey(k){localStorage.setItem('mb9_oai',k);}
 
-
-// ═══════════════════════════════════════
-// CONHECIMENTO DOS NOTEBOOKS — 2026-05-21
-// ═══════════════════════════════════════
-const NB_KNOWLEDGE = `
-[NB1] CENTRAL AMIGA DO IDOSO — DOMINIO DE MERCADO & MARKETING
-Tese: Quem controla tráfego compra atenção. Quem controla funil compra crescimento. Quem controla dado domina mercado.
-Persona: DONA NILZA — Mulheres 55-65+, buscam acolhimento, fogem de juridiques. Criativo converte por segurança.
-Nicho dominante: LOAS Idoso = 70% da base. Geo: RJ Capital + Baixada Fluminense.
-Metrica norte: Custo por Cliente Fechado (não CPL).
-Funil 12 etapas Kommo: UTM/GCLID obrigatorios via hidden fields.
-Tags estado: SLA_5MIN|SLA_ESTOURADO|SEM_RETORNO|FILA_CRITICA.
-Regra follow-up: 10min→1h→24h→72h→SEM_RETORNO→7dias→NAO_RESPONDE.
-Triagem Q/M/F: QUENTE(65++beneficio negado+urgencia)|MORNO|FRIO.
-Regra ouro: Lead sem tarefa = balde furado. Todo lead tem responsavel, etapa, historico e proxima acao com prazo.
-Handoff financeiro: Concessao INSS + Data Pagamento = webhook Kommo→Omie.
-IA Noturna: Opera 18h-08h. Coleta idade/cidade/beneficio. Tags automaticas. Tarefa ATENDER_08H. NUNCA promete aprovacao.
-Tracking: GCLID+FBCLID+UTMs capturados. Eventos CAPI: QualifiedLead, Scheduled, ContractSigned server-side.
-Entity SEO: GBP como banco de dados de entidade. Triangulo Autoridade: Site+GBP+IA. NAP consistente em todos canais.
-PEPE: Tecnica P.E.R.F.E.I.T.A 2.0. IA especialista residente. Loop: Gera→Avalia→Atualiza→Refina→Aplica.
-Lacunas criticas: 53% sem data nascimento; 16% sem Produto; 336 leads P0 sem responsavel; 312 cancelados=remarketing.
-Proximos passos: Consolidar base no Kommo; forcar campos obrigatorios; CAPI Meta/Google; IA Noturna SDR v0.1.
-
-[NB2] ARQUITETURA COGNITIVA MULTIAGENTE
-Tese: IA isolada gera produtividade. Arquitetura Cognitiva gera vantagem competitiva sistemica.
-Master Orchestrator + agentes verticais especializados: Aquisicao|Conversao|Autoridade|Operacao|Memoria|Execucao.
-Memoria 3 camadas: Curta (sessao)|Operacional (workflows/SOPs/decisoes)|Estrategica (ICP/branding/tese).
-Stack: OpenAI+Claude+Gemini | LangGraph+CrewAI | Supabase+Pinecone | n8n+Make | Kommo | GA4+Meta CAPI+Looker.
-Roadmap: 30dias(Fundacao) → 60dias(Especializacao) → 90dias(Escala).
-Metricas: CAC, ROAS, Pipeline Velocity, Custo por Cliente Fechado.
-
-[NB3] OBA + VOAs (Vidas Operacionais Autonomas)
-OBA Loop: Capturar→Organizar→Conectar→Sintetizar→Automatizar→Distribuir→Escalar.
-VOAs = colaboradores sinteticos com missao, autonomia, memoria persistente e acesso a ferramentas.
-ESAA: IA emite intencoes JSON validadas por schemas. Estado = derivado de log append-only. Audit trail imutavel.
-Trindade: MCP(comunicacao mundo)+A2A(agente-agente)+ESAA(governanca event sourcing).
-HITL 4 Dimensoes: Quando parar?|Quem chamar?|O que fazer?|Onde alertar? RBAC por nivel de risco.
-Observabilidade: AgentTrace 3D (Cognitiva+Operacional+Contextual). Langfuse self-hosted. OTel SemConv v1.37+.
-Memoria avancada: Mem0 (Extraction+Update) | Structured RAG (vetorial+grafos) | Reflector Agent (meta-aprendizado).
-
-[NB4] AUTOGOVERNANCA EXECUTIVA (AxiaCore)
-Perfil Marcelo: Founder Neuroarquitetural Sistemico — potencia criativa alta, risco de fragmentacao por hiperfoco.
-Modelo 1-1-infinito: 1 Projeto-Mae (70% energia) + 1 Satélite + infinitos no Estacionamento Sagrado.
-Filtro Nova Ideia: 5-7 perguntas antes de abrir nova frente. Serve o Projeto-Mae? Entregavel em 7 dias?
-AxiaCore: lóbo frontal externo. VOA-SIN: regulador limbico/TCC leve.
-SOP Anti-Hiperfoco: 90min→salvar status→agua→horizonte 60s→retornar com checkpoint.
-Riscos: confundir visualizar sistema com capacidade de executar agora. Solucionar vulnerabilidades emocionais via criacao de sistemas.
-
-[NB5] GTM AI OS
-Tese: Confiabilidade da IA em Enterprise é propriedade arquitetural, nao do modelo LLM.
-ESAA+CAMCO+AgentTrace+OTel. CAMCO projeta acoes proibidas na alternativa segura mais proxima.
-SysFlux como Execution Gateway: Inteligencia↔Kommo(memoria comercial)↔Omie(memoria financeira).
-Waterfall Enrichment: APIs cascateadas para higienizar leads antes do SDR Agent atuar.
-Metaprompting PARCER: Persona+Audience+Rules+Context+Execution+Response.
-
-[NB6] SISTEMAS COMERCIAIS INTELIGENTES (Agencias & Negocios Locais)
-Tese: Site virou commodity. Ouro = Google(Aquisicao)+WhatsApp(Conversao)+CRM(Retencao).
-Framework H&P CELL: GMN→LP→WhatsApp IA→CRM.
-Prospecta por Dor Visivel: auditar GMN→"Vi 3 erros"→demo pronta→fechar setup+mensalidade.
-Nichos: Advocacia+Clinicas(alto ticket)|Oficinas(urgencia)|Saude+Estetica(recorrencia).
-Stack: Lovable+n8n+OpenAI/Claude+Kommo+Supabase+Stripe/Asaas.
-Modelo: Setup (R$2k-10k) + Manutencao mensal (R$500-1.5k).
-`;
-
-const PROJETOS=[
-  {id:'P1',nome:'SYSPREV vMAX',prioridade:'urgente',
-   desc:'ERP previdenciário. 33 Edge Functions, ~65 tabelas, 362.790 recebíveis (~R$239,8M). Governance Layer 91/100.',
-   proximo:'Verificar amount nas 129 financial_queue. HITL piloto condicional.',
-   bloqueador:'amount=NULL para 129 itens. Trigger handle_process_concedido ausente.',
-   url:'https://case-compass-18.lovable.app'},
-  {id:'P2',nome:'Portal do Colaborador',prioridade:'normal',
-   desc:'CAI Controle | Fluxo Integrado. 19 Edge Functions. OCR Gemini Vision. LLM classifier híbrido. Shadow mode ativo.',
-   proximo:'Configurar secrets Twilio. Desativar shadow mode.',
-   bloqueador:'TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_WHATSAPP_FROM não configurados.',
-   url:'https://portaldocolaborador.centralamigadoidoso.com.br'},
-  {id:'P3',nome:'Integração & Automação IA',prioridade:'urgente',
-   desc:'Fluxos Homem-IA entre sistemas. Agentes especializados por vertical.',
-   proximo:'Definir e construir primeiro fluxo operacional.',bloqueador:'',url:''},
-  {id:'P4',nome:'Domínio de Mercado',prioridade:'urgente',
-   desc:'Central Amiga do Idoso. Escalar autoridade no nicho previdenciário. 10.589 leads. 336 P0 sem responsável.',
-   proximo:'Fechar governança de funil. Dicionário oficial de tags.',bloqueador:'',url:''},
-  {id:'P5',nome:'Marketing Alta Performance',prioridade:'urgente',
-   desc:'Google Ads + Meta Ads. KPIs: CPL, CPQL, CAC, ROAS.',
-   proximo:'Revisão e calibração de campanhas.',bloqueador:'',url:''},
-  {id:'P6',nome:'Tráfego Pago GDS',prioridade:'normal',
-   desc:'Google Looker Studio + Meta — inteligência de tráfego.',
-   proximo:'Estruturar BI operacional.',bloqueador:'',url:''},
-  {id:'P7',nome:'Agentes Especializados IA',prioridade:'normal',
-   desc:'Agentes por vertical: vendas, atendimento, jurídico, financeiro. Arquitetura VOA.',
-   proximo:'Escolher e construir primeiro agente vertical.',bloqueador:'',url:''},
-  {id:'P8',nome:'Enriquecimento de Bases',prioridade:'backlog',
-   desc:'Bases de clientes qualificadas para prospecção e CRM escalável.',
-   proximo:'Qualificação contínua da base.',bloqueador:'',url:''},
-];
-
-// LOGIN
+// ═══ LOGIN ═══
 window.onload=()=>{
-  sessionStorage.setItem('mb9_auth','ok');
-  showApp();
+  if(sessionStorage.getItem('mb9_auth')==='ok'){showApp();}
+  else{const u=document.getElementById('login-user');if(u)u.focus();}
   renderProjetos();
 };
-
 function doLogin(){
   const u=document.getElementById('login-user').value.trim().toLowerCase();
   const p=document.getElementById('login-pass').value.trim();
   const err=document.getElementById('login-err');
-  const validUser = CREDS.user.toLowerCase();
-  const validPass = CREDS.pass;
-  if(u===validUser && p===validPass){
+  if(u===CREDS.user.toLowerCase()&&p===CREDS.pass){
     sessionStorage.setItem('mb9_auth','ok');
-    err.textContent='';
-    showApp();
+    err.textContent='';showApp();
   } else {
-    err.textContent='Incorreto. Usuário: Mb9 | Senha: 123456';
+    err.textContent='Acesso negado.';
     document.getElementById('login-pass').value='';
-    document.getElementById('login-pass').focus();
   }
 }
-
 function doLogout(){
   sessionStorage.removeItem('mb9_auth');
   document.getElementById('app').style.display='none';
   document.getElementById('login').style.display='flex';
-  document.getElementById('login-user').value='';
-  document.getElementById('login-pass').value='';
-  document.getElementById('login-err').textContent='';
-  document.getElementById('login-user').focus();
 }
-
 function showApp(){
   document.getElementById('login').style.display='none';
   document.getElementById('app').style.display='flex';
-  loadSupabase();
-  loadAZI();
+  loadSupabase();loadAZI();updateClock();
 }
 
-// SUPABASE
+// ═══ CLOCK ═══
+function updateClock(){
+  const now=new Date();
+  const t=now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  const d=now.toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'2-digit',year:'numeric'}).toUpperCase();
+  const el=document.getElementById('htime');
+  const ed=document.getElementById('hdate');
+  if(el)el.textContent=t;
+  if(ed)ed.textContent=d;
+  const sync=document.getElementById('hsync');
+  if(sync)sync.textContent=now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+}
+setInterval(updateClock,1000);
+
+// ═══ HELPERS ═══
+function fmtD(ts){
+  if(!ts)return'—';
+  const d=new Date(ts);
+  return d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+}
+function pc(p){const s=(p||'').toLowerCase();if(['p0','high','urgente'].includes(s))return'p0';if(['p2','p3','low','backlog'].includes(s))return'p2';return'p1';}
+
+// ═══ SUPABASE ═══
 async function sbGet(table,q){
   const r=await fetch(`${SUPA_URL}/rest/v1/${table}?${q}`,{
     headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Accept':'application/json'}
@@ -901,103 +933,6 @@ async function sbGet(table,q){
   if(!r.ok)throw new Error(r.status);
   return r.json();
 }
-
-async function loadSupabase(){loadTasks();loadEvents();loadDecisions();loadKnowledge();loadAgent();}
-
-function fmtD(ts){
-  if(!ts)return'—';
-  const d=new Date(ts);
-  return d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-}
-function pc(p){const s=(p||'').toLowerCase();if(['p0','high','urgente'].includes(s))return'ph';if(['p2','p3','low','backlog'].includes(s))return'pl';return'pm';}
-function pcCard(p){const s=(p||'').toLowerCase();if(['p0','high','urgente'].includes(s))return'p0';if(['p2','p3','low','backlog'].includes(s))return'p2';return'p1';}
-
-async function loadTasks(){
-  try{
-    const d=await sbGet('mb9.tasks','select=title,description,priority,status,source,created_at,assigned_to&order=created_at.desc&limit=20');
-    const a=d.filter(t=>!['done','completed','cancelled'].includes((t.status||'').toLowerCase()));
-    document.getElementById('m-tasks').textContent=a.length;
-    document.getElementById('h-tasks').textContent='⚡ '+a.length+' tarefas';
-    document.getElementById('sidebar-tasks').innerHTML=a.length?a.map(t=>`
-      <div class="task-card ${pcCard(t.priority)}">
-        <span class="pb ${pc(t.priority)}">${t.priority||'normal'}</span>
-        <div class="task-title">${t.title||'—'}</div>
-        <div class="task-meta">${t.assigned_to||''} · ${fmtD(t.created_at)}</div>
-      </div>`).join(''):'<div class="sidebar-empty">nenhuma pendência</div>';
-    document.getElementById('full-tasks-list').innerHTML=a.length?a.map(t=>`
-      <div class="pcard">
-        <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-          <span class="pb ${pc(t.priority)}">${t.priority||'normal'}</span>
-          <span style="font-size:9px;color:var(--text3)">${fmtD(t.created_at)}</span>
-        </div>
-        <div class="pcard-title">${t.title||'—'}</div>
-        ${t.description?`<div class="pcard-meta">${t.description.substring(0,100)}</div>`:''}
-        <div class="pcard-meta">${t.source?'via '+t.source:''} ${t.assigned_to?'· '+t.assigned_to:''}</div>
-      </div>`).join(''):'<div class="empty-state">nenhuma tarefa ativa</div>';
-  }catch(e){document.getElementById('sidebar-tasks').innerHTML='<div class="sidebar-empty">erro</div>';}
-}
-
-async function loadEvents(){
-  try{
-    const d=await sbGet('mb9.events','select=event_type,source,occurred_at,error_message&order=occurred_at.desc&limit=10');
-    document.getElementById('m-events').textContent=d.length;
-    document.getElementById('events-list').innerHTML=d.length?d.map(e=>`
-      <div class="row-item">
-        <span class="row-type">${e.event_type||'—'}</span>
-        <span style="flex:1;color:var(--text2);font-size:10px">${e.source||''}</span>
-        ${e.error_message?`<span style="font-size:9px;color:var(--red)">${e.error_message}</span>`:''}
-        <span class="row-time">${fmtD(e.occurred_at)}</span>
-      </div>`).join(''):'<div class="empty-state">nenhum evento</div>';
-  }catch(e){}
-}
-
-async function loadDecisions(){
-  try{
-    const d=await sbGet('mb9.decisions','select=decision,rationale,confidence,decided_at&order=decided_at.desc&limit=8');
-    document.getElementById('m-decisions').textContent=d.length;
-    document.getElementById('decisions-list').innerHTML=d.length?d.map(dec=>`
-      <div class="pcard">
-        <div class="pcard-title">${dec.decision||'—'}</div>
-        ${dec.rationale?`<div class="pcard-meta">${dec.rationale.substring(0,100)}${dec.rationale.length>100?'...':''}</div>`:''}
-        <div class="pcard-meta" style="margin-top:3px">${fmtD(dec.decided_at)}</div>
-      </div>`).join(''):'<div class="empty-state">nenhuma decisão</div>';
-  }catch(e){}
-}
-
-async function loadKnowledge(){
-  try{
-    const d=await sbGet('mb9.knowledge_items','select=title,content,category,tags,updated_at&order=updated_at.desc.nullsfirst&limit=8');
-    document.getElementById('knowledge-list').innerHTML=d.length?d.map(k=>`
-      <div class="pcard">
-        <div class="pcard-title">${k.title||k.category||'—'}</div>
-        ${k.content?`<div class="pcard-meta">${k.content.substring(0,100)}${k.content.length>100?'...':''}</div>`:''}
-        <div style="margin-top:4px">${(k.tags||[]).slice(0,4).map(t=>`<span class="tag">${t}</span>`).join(' ')}</div>
-      </div>`).join(''):'<div class="empty-state">base vazia</div>';
-  }catch(e){}
-}
-
-async function loadAgent(){
-  try{
-    const d=await sbGet('mb9.agent_state','select=agent_name,version,status,last_seen_at,active_skills&order=last_seen_at.desc&limit=1');
-    if(!d.length)return;
-    const a=d[0];
-    let sk=[];try{sk=Array.isArray(a.active_skills)?a.active_skills:JSON.parse(a.active_skills||'[]');}catch(e){}
-    document.getElementById('m-agent').textContent=a.status==='active'?'✓':'—';
-    document.getElementById('m-agent-s').textContent=a.status||'—';
-    document.getElementById('h-agent').textContent=(a.version||'—')+' ativo';
-    document.getElementById('agent-info').innerHTML=`
-      <div class="pcard">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-          <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">NOME</div><div style="font-size:11px">${a.agent_name||'—'}</div></div>
-          <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">VERSÃO</div><div style="font-size:11px">${a.version||'—'}</div></div>
-          <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">STATUS</div><div style="font-size:11px;color:var(--green)">${a.status||'—'}</div></div>
-          <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">ÚLTIMO ACESSO</div><div style="font-size:10px">${fmtD(a.last_seen_at)}</div></div>
-        </div>
-        ${sk.length?`<div style="display:flex;flex-wrap:wrap;gap:4px">${sk.map(s=>`<span class="tag" style="padding:2px 6px">${s}</span>`).join('')}</div>`:''}
-      </div>`;
-  }catch(e){}
-}
-
 async function vmaxGet(table,q){
   const r=await fetch(`${VMAX_URL}/rest/v1/${table}?${q}`,{
     headers:{'apikey':VMAX_KEY,'Authorization':'Bearer '+VMAX_KEY,'Accept':'application/json'}
@@ -1005,15 +940,74 @@ async function vmaxGet(table,q){
   if(!r.ok)throw new Error(r.status);
   return r.json();
 }
+async function loadSupabase(){loadTasks();loadEvents();loadDecisions();loadKnowledge();loadAgent();}
 
-async function loadAZI(){
-  loadAZIDashboard();
-  loadAZINOC();
-  loadAZIFinancialQueue();
-  loadAZIGargalos();
-  loadAZIHealth();
+async function loadTasks(){
+  try{
+    const d=await sbGet('mb9.tasks','select=title,priority,status,created_at,assigned_to&order=created_at.desc&limit=30');
+    const a=d.filter(t=>!['done','completed','cancelled'].includes((t.status||'').toLowerCase()));
+    const el=document.getElementById('kpi-tarefas');if(el)el.textContent=a.length;
+    const tl=document.getElementById('tasks-list');
+    if(tl)tl.innerHTML=a.length?a.map(t=>`
+      <div class="row-item fade-in">
+        <span class="rtype ${pc(t.priority)}">${t.priority||'—'}</span>
+        <span class="rtext">${t.title||'—'}</span>
+        <span class="rtime">${fmtD(t.created_at)}</span>
+      </div>`).join(''):'<div class="empty">nenhuma tarefa ativa</div>';
+  }catch(e){}
+}
+async function loadEvents(){
+  try{
+    const d=await sbGet('mb9.events','select=event_type,source,occurred_at,error_message&order=occurred_at.desc&limit=10');
+    const el=document.getElementById('kpi-eventos');if(el)el.textContent=d.length;
+    const html=d.length?d.map(e=>`
+      <div class="row-item fade-in">
+        <span class="rtype info">${(e.event_type||'—').substring(0,12)}</span>
+        <span class="rtext">${e.source||''}</span>
+        <span class="rtime">${fmtD(e.occurred_at)}</span>
+      </div>`).join(''):'<div class="empty">nenhum evento</div>';
+    const ev=document.getElementById('events-list');if(ev)ev.innerHTML=html;
+    const evf=document.getElementById('events-full');if(evf)evf.innerHTML=html;
+  }catch(e){}
+}
+async function loadDecisions(){
+  try{
+    const d=await sbGet('mb9.decisions','select=decision,decided_at&order=decided_at.desc&limit=6');
+    const el=document.getElementById('kpi-decisoes');if(el)el.textContent=d.length;
+    const dl=document.getElementById('decisions-list');
+    if(dl)dl.innerHTML=d.length?d.map(dec=>`
+      <div class="row-item fade-in">
+        <span class="rtype info">DEC</span>
+        <span class="rtext">${dec.decision||'—'}</span>
+        <span class="rtime">${fmtD(dec.decided_at)}</span>
+      </div>`).join(''):'<div class="empty">nenhuma decisão</div>';
+  }catch(e){}
+}
+async function loadKnowledge(){
+  try{
+    const d=await sbGet('mb9.knowledge_items','select=title,category,updated_at&order=updated_at.desc.nullsfirst&limit=6');
+    const kl=document.getElementById('knowledge-list');
+    if(kl)kl.innerHTML=d.length?d.map(k=>`
+      <div class="row-item fade-in">
+        <span class="rtype info">${(k.category||'KB').substring(0,8)}</span>
+        <span class="rtext">${k.title||k.category||'—'}</span>
+        <span class="rtime">${fmtD(k.updated_at)}</span>
+      </div>`).join(''):'<div class="empty">base vazia</div>';
+  }catch(e){}
+}
+async function loadAgent(){
+  try{
+    const d=await sbGet('mb9.agent_state','select=agent_name,version,status,last_seen_at&order=last_seen_at.desc&limit=1');
+    if(!d.length)return;
+    const a=d[0];
+    const el=document.getElementById('kpi-agent');if(el){el.textContent=a.status==='active'?'●':'○';el.style.color=a.status==='active'?'var(--green)':'var(--red)';}
+    const es=document.getElementById('kpi-agent-s');if(es)es.textContent=a.version||'—';
+    const ha=document.getElementById('hagent-status');if(ha)ha.textContent=(a.version||'—')+' online';
+  }catch(e){}
 }
 
+// ═══ AZI vMAX ═══
+async function loadAZI(){loadAZIDashboard();loadAZINOC();loadAZIFinancialQueue();loadAZIGargalos();loadAZIHealth();}
 async function loadAZIDashboard(){
   try{
     const d=await fetch(`${VMAX_URL}/rest/v1/erp_previdenciario_dashboard?limit=1`,{
@@ -1023,64 +1017,50 @@ async function loadAZIDashboard(){
     const data=await d.json();
     if(data.length){
       const row=data[0];
-      document.getElementById('az-clientes').textContent=row.total_clientes||'—';
-      document.getElementById('az-concedidos').textContent=row.total_concedidos||'—';
-      document.getElementById('azi-status').innerHTML=`
-        <div class="pcard">
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px">
-            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">TOTAL CLIENTES</div><div style="font-size:13px;font-weight:500">${row.total_clientes||'—'}</div></div>
-            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">ATIVOS</div><div style="font-size:13px;font-weight:500;color:var(--green)">${row.total_ativos||'—'}</div></div>
-            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">CONCEDIDOS</div><div style="font-size:13px;font-weight:500;color:var(--purple)">${row.total_concedidos||'—'}</div></div>
-            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">INDEFERIDOS</div><div style="font-size:13px;font-weight:500;color:var(--red)">${row.total_indeferidos||'—'}</div></div>
-            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">CANCELADOS</div><div style="font-size:13px;font-weight:500">${row.total_cancelados||'—'}</div></div>
-            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">CONVERSÃO</div><div style="font-size:13px;font-weight:500;color:var(--amber)">${row.taxa_conversao_pct||'—'}%</div></div>
-          </div>
-          <div style="font-size:9px;color:var(--text3)">Órfãos: ${row.processos_orfaos||0} | Gargalos críticos: ${row.gargalos_criticos||0} | Atualizado: ${fmtD(row.timestamp_ultima_atualizacao)}</div>
-        </div>`;
+      const el=document.getElementById('kpi-cli');if(el)el.textContent=row.total_clientes||'—';
+      const ec=document.getElementById('kpi-conc');if(ec)ec.textContent=row.total_concedidos||'—';
+      const eh=document.getElementById('kpi-hitl');if(eh)eh.textContent=row.total_concedidos||'129';
+      const ad=document.getElementById('azi-dashboard');
+      if(ad)ad.innerHTML=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+        ${[['TOTAL CLIENTES',row.total_clientes,'var(--white)'],['ATIVOS',row.total_ativos,'var(--green)'],
+           ['CONCEDIDOS',row.total_concedidos,'var(--cyan)'],['INDEFERIDOS',row.total_indeferidos,'var(--red)'],
+           ['CANCELADOS',row.total_cancelados,'var(--text2)'],['CONVERSÃO',(row.taxa_conversao_pct||'—')+'%','var(--amber)']
+          ].map(([l,v,c])=>`<div style="background:rgba(0,200,255,0.04);border:1px solid var(--border);border-radius:6px;padding:8px">
+          <div style="font-size:7px;color:var(--text3);letter-spacing:.1em;font-family:'Share Tech Mono',monospace">${l}</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;color:${c}">${v||'—'}</div>
+        </div>`).join('')}
+      </div>`;
     }
-  }catch(e){
-    document.getElementById('azi-status').innerHTML='<div class="empty-state">RLS ativo — dados protegidos ou indisponíveis via anon key</div>';
-  }
+  }catch(e){const ad=document.getElementById('azi-dashboard');if(ad)ad.innerHTML='<div class="empty">RLS ativo — dados protegidos</div>';}
 }
-
 async function loadAZINOC(){
   try{
-    const d=await fetch(`${VMAX_URL}/rest/v1/noc_alert?select=severity,message,created_at,status&order=created_at.desc&limit=8`,{
+    const d=await fetch(`${VMAX_URL}/rest/v1/noc_alert?select=severity,message,created_at&order=created_at.desc&limit=8`,{
       headers:{'apikey':VMAX_KEY,'Authorization':'Bearer '+VMAX_KEY,'Accept':'application/json'}
     });
     if(!d.ok)throw new Error(d.status);
     const data=await d.json();
     const el=document.getElementById('azi-noc');
-    if(!data.length){el.innerHTML='<div class="empty-state">nenhum alerta visível</div>';return;}
-    el.innerHTML=data.map(a=>`
-      <div class="row-item">
-        <span class="row-type" style="background:${a.severity==='P0'?'#3a1010':a.severity==='P1'?'#3a2a00':'#0a2a10'};color:${a.severity==='P0'?'#ff7070':a.severity==='P1'?'#ffcc44':'#44cc88'}">${a.severity||'—'}</span>
-        <span style="flex:1;font-size:10px;color:var(--text2)">${(a.message||'—').substring(0,80)}</span>
-        <span class="row-time">${fmtD(a.created_at)}</span>
-      </div>`).join('');
-  }catch(e){document.getElementById('azi-noc').innerHTML='<div class="empty-state">indisponível via anon key</div>';}
+    if(el)el.innerHTML=data.length?data.map(a=>`
+      <div class="row-item"><span class="rtype ${a.severity==='P0'?'p0':a.severity==='P1'?'p1':'p2'}">${a.severity||'—'}</span>
+      <span class="rtext">${(a.message||'—').substring(0,60)}</span>
+      <span class="rtime">${fmtD(a.created_at)}</span></div>`).join(''):'<div class="empty">indisponível via anon key</div>';
+  }catch(e){const el=document.getElementById('azi-noc');if(el)el.innerHTML='<div class="empty">indisponível</div>';}
 }
-
 async function loadAZIFinancialQueue(){
   try{
-    const d=await fetch(`${VMAX_URL}/rest/v1/financial_queue?select=status,amount,created_at,correlation_id&order=created_at.desc&limit=10`,{
+    const d=await fetch(`${VMAX_URL}/rest/v1/financial_queue?select=status,amount,created_at&order=created_at.desc&limit=10`,{
       headers:{'apikey':VMAX_KEY,'Authorization':'Bearer '+VMAX_KEY,'Accept':'application/json'}
     });
     if(!d.ok)throw new Error(d.status);
     const data=await d.json();
     const el=document.getElementById('azi-fq');
-    const aguardando=data.filter(i=>(i.status||'').includes('AGUARDANDO'));
-    document.getElementById('az-hitl').textContent=aguardando.length||data.length||'—';
-    if(!data.length){el.innerHTML='<div class="empty-state">nenhum item visível</div>';return;}
-    el.innerHTML=data.map(i=>`
-      <div class="row-item">
-        <span class="row-type" style="background:#3a2a00;color:#ffcc44">${(i.status||'—').replace('_',' ').substring(0,20)}</span>
-        <span style="flex:1;font-size:10px;color:var(--text2)">${i.amount?'R$ '+Number(i.amount).toLocaleString('pt-BR',{minimumFractionDigits:2}):'amount NULL ⚠️'}</span>
-        <span class="row-time">${fmtD(i.created_at)}</span>
-      </div>`).join('');
-  }catch(e){document.getElementById('azi-fq').innerHTML='<div class="empty-state">indisponível via anon key</div>';}
+    if(el)el.innerHTML=data.length?data.map(i=>`
+      <div class="row-item"><span class="rtype p1">${(i.status||'—').substring(0,18)}</span>
+      <span class="rtext">${i.amount?'R$ '+Number(i.amount).toLocaleString('pt-BR',{minimumFractionDigits:2}):'⚠ amount NULL'}</span>
+      <span class="rtime">${fmtD(i.created_at)}</span></div>`).join(''):'<div class="empty">nenhum item</div>';
+  }catch(e){const el=document.getElementById('azi-fq');if(el)el.innerHTML='<div class="empty">indisponível</div>';}
 }
-
 async function loadAZIGargalos(){
   try{
     const d=await fetch(`${VMAX_URL}/rest/v1/erp_previdenciario_gargalos?select=tipo_gargalo,severidade_sugerida,nome_cliente&order=severidade_sugerida.asc&limit=10`,{
@@ -1089,16 +1069,12 @@ async function loadAZIGargalos(){
     if(!d.ok)throw new Error(d.status);
     const data=await d.json();
     const el=document.getElementById('azi-gargalos');
-    if(!data.length){el.innerHTML='<div class="empty-state">nenhum gargalo visível</div>';return;}
-    el.innerHTML=data.map(g=>`
-      <div class="row-item">
-        <span class="row-type" style="background:#3a1010;color:#ff7070">${g.severidade_sugerida||'P0'}</span>
-        <span style="flex:1;font-size:10px;color:var(--text2)">${g.tipo_gargalo||'—'}</span>
-        <span style="font-size:9px;color:var(--text3)">${(g.nome_cliente||'').substring(0,20)}</span>
-      </div>`).join('');
-  }catch(e){document.getElementById('azi-gargalos').innerHTML='<div class="empty-state">indisponível via anon key</div>';}
+    if(el)el.innerHTML=data.length?data.map(g=>`
+      <div class="row-item"><span class="rtype p0">${g.severidade_sugerida||'P0'}</span>
+      <span class="rtext">${g.tipo_gargalo||'—'}</span>
+      <span class="rtime">${(g.nome_cliente||'').substring(0,16)}</span></div>`).join(''):'<div class="empty">nenhum gargalo</div>';
+  }catch(e){const el=document.getElementById('azi-gargalos');if(el)el.innerHTML='<div class="empty">indisponível</div>';}
 }
-
 async function loadAZIHealth(){
   try{
     const d=await fetch(`${VMAX_URL}/rest/v1/v_system_health?limit=1`,{
@@ -1107,391 +1083,194 @@ async function loadAZIHealth(){
     if(!d.ok)throw new Error(d.status);
     const data=await d.json();
     const el=document.getElementById('azi-health');
-    if(!data.length){el.innerHTML='<div class="empty-state">health check indisponível</div>';return;}
+    if(!data.length){if(el)el.innerHTML='<div class="empty">indisponível</div>';return;}
     const h=data[0];
     const fields=['agent_active','session_recorded','events_flowing','tasks_persisted','logs_active','sla_rules_loaded'];
-    el.innerHTML=`<div class="pcard"><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
-      ${fields.map(f=>`<div style="display:flex;align-items:center;gap:6px">
-        <span style="font-size:14px">${h[f]?'✅':'❌'}</span>
-        <span style="font-size:9px;color:var(--text3)">${f.replace(/_/g,' ')}</span>
-      </div>`).join('')}
-    </div>
-    <div style="font-size:9px;color:var(--text3);margin-top:8px">Verificado: ${fmtD(h.checked_at)}</div></div>`;
-  }catch(e){document.getElementById('azi-health').innerHTML='<div class="empty-state">v_system_health indisponível via anon key</div>';}
+    if(el)el.innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">${fields.map(f=>`
+      <div style="display:flex;align-items:center;gap:5px;padding:4px 0">
+        <span style="font-size:12px">${h[f]?'✅':'❌'}</span>
+        <span style="font-size:8px;color:var(--text3);font-family:'Share Tech Mono',monospace">${f.replace(/_/g,' ')}</span>
+      </div>`).join('')}</div>`;
+  }catch(e){const el=document.getElementById('azi-health');if(el)el.innerHTML='<div class="empty">indisponível</div>';}
 }
 
-function renderProjetos(){
-  const badge=p=>p==='urgente'?'badge-r':p==='normal'?'badge-y':'badge-g';
-  const label=p=>p==='urgente'?'URGENTE':p==='normal'?'NORMAL':'BACKLOG';
-  document.getElementById('proj-grid').innerHTML=PROJETOS.map(p=>`
-    <div class="proj-card ${p.prioridade}">
-      <div class="proj-id">${p.id} ${p.url?`<a href="${p.url}" target="_blank" style="color:#4a9eff;text-decoration:none;font-size:8px">↗ abrir</a>`:''}</div>
-      <div class="proj-name">${p.nome}</div>
-      <div class="proj-desc">${p.desc}</div>
-      ${p.proximo?`<div class="proj-next">→ ${p.proximo.split('.')[0]}</div>`:''}
-      ${p.bloqueador?`<div class="proj-block">⚠ ${p.bloqueador.split('.')[0]}</div>`:''}
-      <span class="badge ${badge(p.prioridade)}">${label(p.prioridade)}</span>
-    </div>`).join('');
-}
-
-// ═══ CHAT MB9 — OpenAI GPT-4o ═══
-let chatHistory = [];
-let chatLoading = false;
-
-const MB9_SYSTEM = `Você é ORION MB9 — sistema cognitivo operacional de Marcelo Baptista, servindo à Central Amiga do Idoso e ao ecossistema SysFlux/vMAX.
-
-Missão: transformar contexto em decisão → tarefa → log → documentação → briefing → automação futura.
-Papéis: Segundo cérebro operacional, Chief of Staff digital, Arquiteto de conhecimento, Copiloto executivo.
-Sempre em português do Brasil. Direto, técnico, orientado a execução.
-
-PORTFÓLIO DE PROJETOS ATIVOS:
-P1 🔴 SYSPREV vMAX — ERP previdenciário. Governance Layer 91/100. 129 contratos HANDOFF_CONCEDIDO. Bloqueador: amount=NULL + trigger handle_process_concedido ausente + omie-baixas-sync não deployada.
-P2 🟡 Portal do Colaborador — 5 fases concluídas. OCR Gemini Vision. Bloqueador: secrets Twilio não configurados.
-P3 🔴 Integração & Automação IA — fluxos Homem-IA, agentes especializados.
-P4 🔴 Domínio de Mercado CAI — LOAS Idoso 70% da base. Funil 12 etapas Kommo. Tags SLA. 336 leads P0 sem responsável.
-P5 🔴 Marketing Alta Performance — Google Ads + Meta Ads. KPI: Custo por Cliente Fechado (não CPL).
-P6 🟡 Tráfego Pago GDS — Looker Studio + Meta.
-P7 🟡 Agentes Especializados IA — arquitetura VOA por vertical.
-P8 🟢 Enriquecimento de Bases — qualificação contínua.
-
-STATE LAYER SUPABASE:
-- orion-mb9 (lzqnqvonzzmwdbuewsdr): memória operacional MB9 — v_system_health 6/6 TRUE
-- SYSPREV vMAX (oqvdxbnnvxklugpydrne): 1.114 clients, 1.140 processes, 129 concedidos, 362.790 recebíveis (~R$239,8M)
-
-AZI vMAX SKILLS: Receivables Scan, Customer Quality, Concession Watchdog, Collection Radar, Margin Projector, Revenue Leakage Hunter.
-
-CONHECIMENTO OPERACIONAL KOMMO:
-Tags: SLA_5MIN|SLA_ESTOURADO|SEM_RETORNO|FILA_CRITICA. Régua: 10min→1h→24h→72h→NAO_RESPONDE.
-Persona DONA NILZA: Mulheres 55-65+, LOAS Idoso RJ. Métrica: Custo por Cliente Fechado.
-Handoff: Concessão INSS + Data Pagamento → webhook Kommo→Omie.
-
-ORION SKILLS (Conselho Interno):
-- Estrategista: visão e posicionamento
-- Arquiteto: módulos, schemas, blueprints
-- Operador: execução tática, planos, prompts
-- Auditor: detecta riscos, red flags, gaps
-- Documentador: converte em ativos duráveis
-- Automator: propõe automações e workflows
-- QA: checagem de formato e consistência
-
-AUDITORIA RED FLAGS:
-- CPFs duplicados ou nulos
-- amount=NULL em financial_queue
-- Leads sem responsável designado
-- Processos sem DIB
-- Cobranças sem rastreabilidade
-- Handoffs Kommo→Omie não executados
-
-MODO DE RESPOSTA:
-Pergunta pontual → resposta direta
-Decisão operacional → contexto → opções → recomendação → próximo passo
-Análise/auditoria → diagnóstico → gaps → riscos → prioridades
-Briefing → estado atual → o que mudou → o que exige ação agora
-Conflitos: escale para Marcelo, nunca infira.`;
-
-function addMsg(role, text){
-  const msgs = document.getElementById('chat-msgs');
-  if(!msgs) return;
-  const div = document.createElement('div');
-  div.className = 'msg '+role+' fade-in';
-  const bubble = document.createElement('div');
-  bubble.className = 'bubble';
-  if(role==='bot') bubble.innerHTML = '<div class="bubble-label">MB9</div>'+fmtTxt(text);
-  else bubble.innerHTML = fmtTxt(text);
-  div.appendChild(bubble);
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-}
-
-function fmtTxt(t){
-  return t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g,'<em>$1</em>')
-    .replace(/`(.*?)`/g,'<code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">$1</code>')
-    .replace(/\n/g,'<br/>');
-}
-
-function sendQ(q){
-  document.getElementById('chat-in').value=q;
-  if(!q.endsWith(' ')) sendMsg();
-  else document.getElementById('chat-in').focus();
-}
-
-async function sendMsg(){
-  const inp = document.getElementById('chat-in');
-  const text = inp.value.trim();
-  if(!text||chatLoading) return;
-  if(text.startsWith('/key ')){
-    const k=text.replace('/key ','').trim();
-    setOpenAIKey(k);
-    inp.value='';
-    addMsg('user','/key ***');
-    addMsg('bot','✅ Chave salva. Chat ativado. O que quer atacar agora?');
-    return;
-  }
-  inp.value=''; inp.style.height='auto';
-  addMsg('user', text);
-  chatHistory.push({role:'user', content:text});
-  chatLoading=true;
-  document.getElementById('send-btn').disabled=true;
-
-  const msgs = document.getElementById('chat-msgs');
-  const think = document.createElement('div');
-  think.className='msg bot fade-in'; think.id='thinking';
-  think.innerHTML='<div class="bubble"><div class="bubble-label">MB9</div><div class="thinking"><span></span><span></span><span></span></div></div>';
-  msgs.appendChild(think); msgs.scrollTop=msgs.scrollHeight;
-
-  try{
-    // Contexto ao vivo do Supabase
-    let ctx = '';
-    try{
-      const [tasks, events] = await Promise.all([
-        fetch(`${SUPA_URL}/rest/v1/mb9.tasks?select=title,priority,status&order=created_at.desc&limit=8`,{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}}).then(r=>r.json()),
-        fetch(`${SUPA_URL}/rest/v1/mb9.events?select=event_type,occurred_at&order=occurred_at.desc&limit=5`,{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}}).then(r=>r.json())
-      ]);
-      const active = tasks.filter(t=>!['done','completed','cancelled'].includes((t.status||'').toLowerCase()));
-      ctx = `
-CONTEXTO AO VIVO (${new Date().toLocaleString('pt-BR')}):
-TAREFAS ATIVAS (${active.length}): ${active.map(t=>`${t.priority||'—'} | ${t.title}`).join(' | ')||'nenhuma'}
-EVENTOS RECENTES: ${events.map(e=>e.event_type).join(' | ')||'nenhum'}`;
-    }catch(e){}
-
-    const res = await fetch('https://api.openai.com/v1/chat/completions',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Authorization':'Bearer '+getOpenAIKey()},
-      body: JSON.stringify({
-        model:'gpt-4o',
-        max_tokens:1500,
-        messages:[
-          {role:'system', content: MB9_SYSTEM + ctx},
-          ...chatHistory.slice(-14)
-        ]
-      })
-    });
-    const data = await res.json();
-    const reply = data.choices?.[0]?.message?.content || 'Erro na resposta.';
-    think.remove();
-    addMsg('bot', reply);
-    chatHistory.push({role:'assistant', content:reply});
-  }catch(e){
-    think.remove();
-    addMsg('bot','⚠️ Erro de conexão com a API OpenAI. Verifique a chave.');
-  }
-  chatLoading=false;
-  document.getElementById('send-btn').disabled=false;
-}
-
-// Auto-resize textarea
-document.addEventListener('DOMContentLoaded',()=>{
-  const ta = document.getElementById('chat-in');
-  if(ta) ta.addEventListener('input',function(){this.style.height='auto';this.style.height=Math.min(this.scrollHeight,120)+'px';});
-});
-
-// Saudação inicial do chat
-function initChat(){
-  const msgs = document.getElementById('chat-msgs');
-  if(msgs && msgs.children.length===0){
-        if(!getOpenAIKey()){
-      addMsg('bot','🔑 Chat MB9 pronto.\n\nDigite: /key SUA_CHAVE_OPENAI\n\nA chave fica salva aqui. Nunca mais precisa digitar.');
-      return;
-    }
-    addMsg('bot','🟣 **ORION MB9 online.**\n\nOlá, Marcelo Baptista. Powered by GPT-4o.\n\n**Status crítico:**\n🔴 SYSPREV vMAX — 129 contratos aguardando HITL. Bloqueador: `amount=NULL`.\n🔴 Portal do Colaborador — Twilio shadow mode.\n🟡 AZI vMAX — conectado ao SysFlux.\n\nO que você quer atacar agora?');
-  }
-}
-
+// ═══ TABS ═══
 function showTab(name,btn){
-  document.querySelectorAll('.tab-panel').forEach(p=>{p.classList.remove('on');p.style.display='none';});
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-  const panel=document.getElementById('tab-'+name);
-  panel.classList.add('on');panel.style.display='flex';btn.classList.add('on');
-  if(name==='chat') setTimeout(initChat,100);
-}
-</script>
-// ═══ CLOCK ═══
-function updateClock(){
-  const now = new Date();
-  const t = now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  const d = now.toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'2-digit',year:'numeric'}).toUpperCase();
-  const el = document.getElementById('htime');
-  const ed = document.getElementById('hdate');
-  if(el) el.textContent = t;
-  if(ed) ed.textContent = d;
-  // sync
-  const sync = document.getElementById('hsync');
-  if(sync) sync.textContent = now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-}
-setInterval(updateClock, 1000);
-updateClock();
-
-// ═══ PANEL SWITCHING ═══
-function showTab(name, btn){
-  document.querySelectorAll('.panel').forEach(p=>{p.classList.remove('on')});
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-  const panel = document.getElementById('panel-'+name);
-  if(panel){panel.classList.add('on')}
-  if(btn) btn.classList.add('on');
-  if(name==='chat') setTimeout(initChat, 100);
-  if(name==='azi') loadAZI();
-}
-
-function switchTab(name, sitem){
+  const panel=document.getElementById('panel-'+name);
+  if(panel)panel.classList.add('on');
+  if(btn)btn.classList.add('on');
+  // sync sidebar
   document.querySelectorAll('.sitem').forEach(s=>s.classList.remove('on'));
-  if(sitem) sitem.classList.add('on');
-  // sync tab buttons
-  const tabs = document.querySelectorAll('.tab');
-  const map = {dashboard:0,azi:1,projetos:2,tarefas:3,eventos:4,chat:5};
+  const map={dashboard:0,azi:1,projetos:2,tarefas:3,eventos:4,chat:5};
+  if(name==='chat')setTimeout(initChat,100);
+  if(name==='azi')loadAZI();
+}
+function switchTab(name,sitem){
+  document.querySelectorAll('.sitem').forEach(s=>s.classList.remove('on'));
+  if(sitem)sitem.classList.add('on');
+  const tabs=document.querySelectorAll('.tab');
+  const map={dashboard:0,azi:1,projetos:2,tarefas:3,eventos:4,chat:5};
   tabs.forEach(t=>t.classList.remove('on'));
-  if(map[name]!==undefined && tabs[map[name]]) tabs[map[name]].classList.add('on');
-  showTab(name, null);
+  if(map[name]!==undefined&&tabs[map[name]])tabs[map[name]].classList.add('on');
+  showTab(name,null);
 }
 
-// ═══ KPI UPDATE ═══
-function updateKPIs(){
-  const t = document.getElementById('kpi-tarefas');
-  const d = document.getElementById('kpi-decisoes');
-  const e = document.getElementById('kpi-eventos');
-  // will be updated by loadTasks/loadEvents/loadDecisions
-}
-
-// ═══ RENDER TASKS COMPLETO ═══
-async function loadTasks(){
-  try{
-    const d=await sbGet('mb9.tasks','select=title,description,priority,status,source,created_at,assigned_to&order=created_at.desc&limit=30');
-    const a=d.filter(t=>!['done','completed','cancelled'].includes((t.status||'').toLowerCase()));
-    const el = document.getElementById('kpi-tarefas');
-    if(el) el.textContent = a.length;
-    const tl = document.getElementById('tasks-list');
-    if(tl) tl.innerHTML = a.length ? a.map(t=>`
-      <div class="row-item fade-in">
-        <span class="rtype ${pc(t.priority)}">${t.priority||'—'}</span>
-        <span class="rtext">${t.title||'—'}</span>
-        <span class="rtime">${fmtD(t.created_at)}</span>
-      </div>`).join('') : '<div class="empty">nenhuma tarefa ativa</div>';
-  }catch(e){console.log('tasks err',e)}
-}
-
-async function loadEvents(){
-  try{
-    const d=await sbGet('mb9.events','select=event_type,source,occurred_at,error_message&order=occurred_at.desc&limit=10');
-    const el = document.getElementById('kpi-eventos');
-    if(el) el.textContent = d.length;
-    const html = d.length ? d.map(e=>`
-      <div class="row-item fade-in">
-        <span class="rtype info">${(e.event_type||'—').substring(0,12)}</span>
-        <span class="rtext">${e.source||''}</span>
-        ${e.error_message?`<span class="rtype p0">${e.error_message.substring(0,20)}</span>`:''}
-        <span class="rtime">${fmtD(e.occurred_at)}</span>
-      </div>`).join('') : '<div class="empty">nenhum evento</div>';
-    const ev = document.getElementById('events-list');
-    if(ev) ev.innerHTML = html;
-    const evf = document.getElementById('events-full');
-    if(evf) evf.innerHTML = html;
-  }catch(e){}
-}
-
-async function loadDecisions(){
-  try{
-    const d=await sbGet('mb9.decisions','select=decision,rationale,confidence,decided_at&order=decided_at.desc&limit=6');
-    const el = document.getElementById('kpi-decisoes');
-    if(el) el.textContent = d.length;
-    const dl = document.getElementById('decisions-list');
-    if(dl) dl.innerHTML = d.length ? d.map(dec=>`
-      <div class="row-item fade-in">
-        <span class="rtype info">DEC</span>
-        <span class="rtext">${dec.decision||'—'}</span>
-        <span class="rtime">${fmtD(dec.decided_at)}</span>
-      </div>`).join('') : '<div class="empty">nenhuma decisão</div>';
-  }catch(e){}
-}
-
-async function loadKnowledge(){
-  try{
-    const d=await sbGet('mb9.knowledge_items','select=title,content,category,tags,updated_at&order=updated_at.desc.nullsfirst&limit=6');
-    const kl = document.getElementById('knowledge-list');
-    if(kl) kl.innerHTML = d.length ? d.map(k=>`
-      <div class="row-item fade-in">
-        <span class="rtype info">${(k.category||'KB').substring(0,8)}</span>
-        <span class="rtext">${k.title||k.category||'—'}</span>
-        <span class="rtime">${fmtD(k.updated_at)}</span>
-      </div>`).join('') : '<div class="empty">base vazia</div>';
-  }catch(e){}
-}
-
-async function loadAgent(){
-  try{
-    const d=await sbGet('mb9.agent_state','select=agent_name,version,status,last_seen_at&order=last_seen_at.desc&limit=1');
-    if(!d.length)return;
-    const a=d[0];
-    const el=document.getElementById('kpi-agent');
-    const es=document.getElementById('kpi-agent-s');
-    const ha=document.getElementById('hagent-status');
-    if(el) el.textContent=a.status==='active'?'●':'○';
-    if(es) es.textContent=a.version||'—';
-    if(ha) ha.textContent=(a.version||'—')+' online';
-  }catch(e){}
-}
-
-// ═══ SUPABASE LOAD COMPLETO ═══
-async function loadSupabase(){
-  loadTasks();loadEvents();loadDecisions();loadKnowledge();loadAgent();
-}
-
-// ═══ CMD BAR ═══
-function insertCmd(cmd){
-  const ci = document.getElementById('cmdbar-input');
-  if(ci){ ci.value=cmd; ci.focus(); }
-}
-
-// ═══ RENDER PROJETOS ═══
+// ═══ PROJETOS ═══
+const PROJETOS=[
+  {id:'P1',nome:'SYSPREV vMAX',prioridade:'urgente',
+   desc:'ERP previdenciário. 33 Edge Functions, ~65 tabelas, 362.790 recebíveis (~R$239,8M). Governance Layer 91/100.',
+   proximo:'Verificar amount nas 129 financial_queue.',
+   bloqueador:'amount=NULL + trigger ausente + omie-baixas-sync não deployada.',
+   url:'https://case-compass-18.lovable.app'},
+  {id:'P2',nome:'Portal do Colaborador',prioridade:'normal',
+   desc:'CAI Controle. 19 Edge Functions. OCR Gemini Vision. Shadow mode ativo.',
+   proximo:'Configurar secrets Twilio.',
+   bloqueador:'TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN não configurados.',
+   url:'https://portaldocolaborador.centralamigadoidoso.com.br'},
+  {id:'P3',nome:'Integração & Automação IA',prioridade:'urgente',
+   desc:'Fluxos Homem-IA. Agentes especializados por vertical.',
+   proximo:'Definir e construir primeiro fluxo operacional.',bloqueador:'',url:''},
+  {id:'P4',nome:'Domínio de Mercado CAI',prioridade:'urgente',
+   desc:'10.589 leads. 336 P0 sem responsável. LOAS Idoso = 70% da base.',
+   proximo:'Governança de funil. Dicionário de tags.',bloqueador:'',url:''},
+  {id:'P5',nome:'Marketing Alta Performance',prioridade:'urgente',
+   desc:'Google Ads + Meta Ads. KPI: Custo por Cliente Fechado.',
+   proximo:'Revisão e calibração.',bloqueador:'',url:''},
+  {id:'P6',nome:'Tráfego Pago GDS',prioridade:'normal',
+   desc:'Looker Studio + Meta. BI operacional.',
+   proximo:'Estruturar BI.',bloqueador:'',url:''},
+  {id:'P7',nome:'Agentes Especializados IA',prioridade:'normal',
+   desc:'Arquitetura VOA por vertical.',
+   proximo:'Escolher e construir primeiro agente.',bloqueador:'',url:''},
+  {id:'P8',nome:'Enriquecimento de Bases',prioridade:'backlog',
+   desc:'Bases qualificadas para prospecção e CRM.',
+   proximo:'Qualificação contínua.',bloqueador:'',url:''},
+];
 function renderProjetos(){
-  const PROJETOS=[
-    {id:'P1',nome:'SYSPREV vMAX',prioridade:'urgente',
-     desc:'ERP previdenciário. 33 Edge Functions, ~65 tabelas, 362.790 recebíveis (~R$239,8M). Governance Layer 91/100.',
-     proximo:'Verificar amount nas 129 financial_queue. HITL piloto condicional.',
-     bloqueador:'amount=NULL para 129 itens. Trigger handle_process_concedido ausente.',
-     url:'https://case-compass-18.lovable.app'},
-    {id:'P2',nome:'Portal do Colaborador',prioridade:'normal',
-     desc:'CAI Controle | Fluxo Integrado. 19 Edge Functions. OCR Gemini Vision. Shadow mode ativo.',
-     proximo:'Configurar secrets Twilio. Desativar shadow mode.',
-     bloqueador:'TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_WHATSAPP_FROM não configurados.',
-     url:'https://portaldocolaborador.centralamigadoidoso.com.br'},
-    {id:'P3',nome:'Integração & Automação IA',prioridade:'urgente',
-     desc:'Fluxos Homem-IA entre sistemas. Agentes especializados por vertical.',
-     proximo:'Definir e construir primeiro fluxo operacional.',bloqueador:'',url:''},
-    {id:'P4',nome:'Domínio de Mercado CAI',prioridade:'urgente',
-     desc:'Central Amiga do Idoso. 10.589 leads. 336 P0 sem responsável. LOAS Idoso = 70% da base.',
-     proximo:'Fechar governança de funil. Dicionário oficial de tags.',bloqueador:'',url:''},
-    {id:'P5',nome:'Marketing Alta Performance',prioridade:'urgente',
-     desc:'Google Ads + Meta Ads. KPIs: CPL, CPQL, CAC, ROAS.',
-     proximo:'Revisão e calibração de campanhas.',bloqueador:'',url:''},
-    {id:'P6',nome:'Tráfego Pago GDS',prioridade:'normal',
-     desc:'Google Looker Studio + Meta — inteligência de tráfego.',
-     proximo:'Estruturar BI operacional.',bloqueador:'',url:''},
-    {id:'P7',nome:'Agentes Especializados IA',prioridade:'normal',
-     desc:'Agentes por vertical: vendas, atendimento, jurídico, financeiro. Arquitetura VOA.',
-     proximo:'Escolher e construir primeiro agente vertical.',bloqueador:'',url:''},
-    {id:'P8',nome:'Enriquecimento de Bases',prioridade:'backlog',
-     desc:'Bases de clientes qualificadas para prospecção e CRM escalável.',
-     proximo:'Qualificação contínua da base.',bloqueador:'',url:''},
-  ];
-  const grid = document.getElementById('proj-grid');
+  const grid=document.getElementById('proj-grid');
   if(!grid)return;
-  const colors={urgente:'var(--red)',normal:'var(--amber)',backlog:'var(--green)'};
-  const labels={urgente:'URGENTE',normal:'NORMAL',backlog:'BACKLOG'};
   const badge={urgente:'r',normal:'a',backlog:'g'};
+  const labels={urgente:'URGENTE',normal:'NORMAL',backlog:'BACKLOG'};
   grid.innerHTML=PROJETOS.map(p=>`
     <div class="proj-card ${p.prioridade} fade-in">
-      <div class="proj-id">
-        <span>${p.id}</span>
-        ${p.url?`<a href="${p.url}" target="_blank" style="color:var(--cyan);font-size:8px;text-decoration:none">↗ abrir</a>`:''}
-      </div>
+      <div class="proj-id"><span>${p.id}</span>${p.url?`<a href="${p.url}" target="_blank" style="color:var(--cyan);font-size:8px;text-decoration:none">↗ abrir</a>`:''}</div>
       <div class="proj-name">${p.nome}</div>
       <div class="proj-desc">${p.desc}</div>
-      ${p.proximo?`<div class="proj-next">→ ${p.proximo.split('.')[0]}</div>`:''}
-      ${p.bloqueador?`<div class="proj-block">⚠ ${p.bloqueador.split('.')[0]}</div>`:''}
+      ${p.proximo?`<div class="proj-next">→ ${p.proximo}</div>`:''}
+      ${p.bloqueador?`<div class="proj-block">⚠ ${p.bloqueador}</div>`:''}
       <span class="pbadge ${badge[p.prioridade]}">${labels[p.prioridade]}</span>
     </div>`).join('');
 }
 
+// ═══ CMD BAR ═══
+function insertCmd(cmd){
+  const ci=document.getElementById('cmdbar-input');
+  if(ci){ci.value=cmd;ci.focus();}
+}
+
+// ═══ CHAT GPT-4o ═══
+let chatHistory=[];
+let chatLoading=false;
+
+const MB9_SYSTEM=`Você é ORION MB9 — sistema cognitivo operacional de Marcelo Baptista, Central Amiga do Idoso / SysFlux vMAX.
+Missão: transformar contexto em decisão → tarefa → log → documentação → briefing → automação futura.
+Sempre em português do Brasil. Direto, técnico, orientado a execução.
+
+PROJETOS: P1🔴SYSPREV vMAX(129 HITL,amount=NULL,governance 91/100,R$239,8M) P2🟡Portal Colaborador(Twilio shadow) P3🔴Integração IA P4🔴Domínio Mercado(336 leads P0) P5🔴Marketing(Meta+Google) P6🟡GDS P7🟡Agentes VOA P8🟢Enriquecimento
+FINANCEIRO CAI: Custos Mai-26:R$427.986 | Concedidos Mai-26:319 | LOAS Idoso=85% | Modelo honorários por êxito
+AZI vMAX: Receivables Scan,Customer Quality,Concession Watchdog,Collection Radar,Margin Projector,Revenue Leakage Hunter
+KOMMO: Tags SLA_5MIN|SLA_ESTOURADO|SEM_RETORNO|FILA_CRITICA. Régua 10min→1h→24h→72h→NAO_RESPONDE. Persona DONA NILZA 55-65+
+SYSPREV: SCAN+EXECUTOR+ANALIRYCS. Governance Layer ESAA+CAMCO+HITL. 33 Edge Functions Deno.
+RED FLAGS: CPFs duplicados,amount=NULL,leads sem responsável,processos sem DIB,handoffs Kommo→Omie não executados`;
+
+function addMsg(role,text){
+  const msgs=document.getElementById('chat-msgs');
+  if(!msgs)return;
+  const div=document.createElement('div');
+  div.className='msg '+role+' fade-in';
+  const bubble=document.createElement('div');
+  bubble.className='bubble';
+  if(role==='bot')bubble.innerHTML='<div class="blabel">MB9</div>'+fmtTxt(text);
+  else bubble.innerHTML=fmtTxt(text);
+  div.appendChild(bubble);
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+function fmtTxt(t){
+  return t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g,'<em>$1</em>')
+    .replace(/`(.*?)`/g,'<code style="background:rgba(0,200,255,0.1);padding:1px 4px;border-radius:3px;font-size:10px;font-family:\'Share Tech Mono\',monospace">$1</code>')
+    .replace(/\n/g,'<br/>');
+}
+function sendQ(q){
+  const inp=document.getElementById('chat-in');
+  if(inp){inp.value=q;}
+  const cb=document.getElementById('cmdbar-input');
+  if(cb)cb.value='';
+  showTab('chat',document.querySelectorAll('.tab')[5]);
+  if(!q.endsWith(' '))setTimeout(sendMsg,100);
+  else if(inp)inp.focus();
+}
+async function sendMsg(){
+  const inp=document.getElementById('chat-in');
+  const text=inp.value.trim();
+  if(!text||chatLoading)return;
+  if(text.startsWith('/key ')){
+    setOpenAIKey(text.replace('/key ','').trim());
+    inp.value='';
+    addMsg('user','/key ***');
+    addMsg('bot','✅ **Chave salva.** Chat ativado. O que quer atacar agora?');
+    return;
+  }
+  inp.value='';inp.style.height='auto';
+  addMsg('user',text);
+  chatHistory.push({role:'user',content:text});
+  chatLoading=true;
+  const sendBtn=document.getElementById('send-btn');
+  if(sendBtn)sendBtn.disabled=true;
+  const msgs=document.getElementById('chat-msgs');
+  const think=document.createElement('div');
+  think.className='msg bot fade-in';think.id='thinking';
+  think.innerHTML='<div class="bubble"><div class="blabel">MB9</div><div class="thinking"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(think);msgs.scrollTop=msgs.scrollHeight;
+  try{
+    let ctx='';
+    try{
+      const [tasks,events]=await Promise.all([
+        fetch(`${SUPA_URL}/rest/v1/mb9.tasks?select=title,priority,status&order=created_at.desc&limit=8`,{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}}).then(r=>r.json()),
+        fetch(`${SUPA_URL}/rest/v1/mb9.events?select=event_type,occurred_at&order=occurred_at.desc&limit=5`,{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}}).then(r=>r.json())
+      ]);
+      const active=tasks.filter(t=>!['done','completed','cancelled'].includes((t.status||'').toLowerCase()));
+      ctx=`\nCONTEXTO AO VIVO (${new Date().toLocaleString('pt-BR')}):\nTAREFAS ATIVAS(${active.length}): ${active.map(t=>`${t.priority}|${t.title}`).join(' / ')||'nenhuma'}\nEVENTOS: ${events.map(e=>e.event_type).join('/')||'nenhum'}`;
+    }catch(e){}
+    const res=await fetch('https://api.openai.com/v1/chat/completions',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+getOpenAIKey()},
+      body:JSON.stringify({model:'gpt-4o',max_tokens:1500,messages:[{role:'system',content:MB9_SYSTEM+ctx},...chatHistory.slice(-14)]})
+    });
+    const data=await res.json();
+    const reply=data.choices?.[0]?.message?.content||'Erro na resposta.';
+    think.remove();addMsg('bot',reply);chatHistory.push({role:'assistant',content:reply});
+  }catch(e){think.remove();addMsg('bot','⚠️ Erro de conexão. Verifique a chave com /key SUA_CHAVE');}
+  chatLoading=false;
+  if(sendBtn)sendBtn.disabled=false;
+}
+function initChat(){
+  const msgs=document.getElementById('chat-msgs');
+  if(msgs&&msgs.children.length===0){
+    if(!getOpenAIKey()){
+      addMsg('bot','🔑 **Chat pronto.**\n\nDigite `/key SUA_CHAVE_OPENAI` para ativar.\n\nA chave fica salva no navegador.');
+    } else {
+      addMsg('bot','🟣 **ORION MB9 online.** Powered by GPT-4o.\n\n🔴 SYSPREV — 129 HITL aguardando. Bloqueador: `amount=NULL`\n🔴 Portal Colaborador — Twilio shadow mode\n🟡 AZI vMAX — conectado\n\nO que quer atacar agora?');
+    }
+  }
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  const ta=document.getElementById('chat-in');
+  if(ta)ta.addEventListener('input',function(){this.style.height='auto';this.style.height=Math.min(this.scrollHeight,100)+'px';});
+});
 </script>
 </body>
 </html>
