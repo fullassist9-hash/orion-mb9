@@ -422,6 +422,18 @@ body::before{
 .pulse{animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
 
+/* CLAUDE MODE BUTTONS */
+.claude-mode-btn{
+  background:rgba(148,0,255,0.08);border:1px solid rgba(148,0,255,0.2);
+  border-radius:8px;padding:8px 4px;text-align:center;cursor:pointer;
+  font-size:9px;color:var(--text2);font-family:'Share Tech Mono',monospace;
+  letter-spacing:.04em;line-height:1.8;transition:all .15s
+}
+.claude-mode-btn:hover{
+  background:rgba(148,0,255,0.2);border-color:rgba(148,0,255,0.5);
+  color:var(--purple2);box-shadow:0 0 12px rgba(148,0,255,0.3)
+}
+
 /* RESPONSIVE */
 @media(max-width:600px){
   .sidebar{display:none}
@@ -589,7 +601,10 @@ body::before{
       </div>
       <div class="hdivider"></div>
       <button class="hbtn" onclick="location.reload()">↻ SYNC</button>
-      <button class="hbtn danger" onclick="doLogout()">◫ SAIR</button>
+      <a href="https://claude.ai/project/b8f2e1a4-0000-0000-0000-000000000001" target="_blank" style="text-decoration:none">
+      <button class="hbtn" style="background:rgba(148,0,255,0.1);border-color:rgba(148,0,255,0.3);color:var(--purple2)">◈ CLAUDE</button>
+    </a>
+    <button class="hbtn danger" onclick="doLogout()">◫ SAIR</button>
     </div>
   </div>
 
@@ -627,6 +642,13 @@ body::before{
         <div class="sitem" onclick="switchTab('chat',this)"><div class="sitem-icon">💬</div><div class="sitem-label">Chat MB9</div></div>
         <div class="sitem"><div class="sitem-icon">📊</div><div class="sitem-label">Skills & MCP</div></div>
         <div class="sitem"><div class="sitem-icon">🔐</div><div class="sitem-label">Auditoria</div></div>
+        <div class="snav-section">CLAUDE PROJECT</div>
+        <div class="sitem" onclick="window.open('https://claude.ai/projects','_blank')"><div class="sitem-icon" style="color:var(--purple2)">◈</div><div class="sitem-label" style="color:var(--purple2)">Abrir Projeto</div></div>
+        <div class="sitem" onclick="openClaudeMode('estrategista')"><div class="sitem-icon">🎯</div><div class="sitem-label">Estrategista</div></div>
+        <div class="sitem" onclick="openClaudeMode('arquiteto')"><div class="sitem-icon">🏗️</div><div class="sitem-label">Arquiteto</div></div>
+        <div class="sitem" onclick="openClaudeMode('operador')"><div class="sitem-icon">⚙️</div><div class="sitem-label">Operador</div></div>
+        <div class="sitem" onclick="openClaudeMode('auditor')"><div class="sitem-icon">🔍</div><div class="sitem-label">Auditor</div></div>
+        <div class="sitem" onclick="openClaudeMode('automator')"><div class="sitem-icon">🤖</div><div class="sitem-label">Automator</div></div>
       </nav>
       <div class="suser">
         <div class="savatar">M</div>
@@ -716,6 +738,25 @@ body::before{
           <div class="card">
             <div class="ctitle"><div class="ctitle-left"><span class="dot" style="background:var(--purple2)"></span>MEMÓRIA / CONHECIMENTO OPERACIONAL</div></div>
             <div id="knowledge-list"><div class="empty pulse">carregando...</div></div>
+          </div>
+
+          <!-- CLAUDE PROJECT LAUNCHER -->
+          <div class="card purple" style="grid-column:1/-1">
+            <div class="ctitle"><div class="ctitle-left"><span class="dot" style="background:var(--purple2)"></span>◈ CLAUDE PROJECT — ORION MB9</div>
+            <a href="https://claude.ai/projects" target="_blank"><button class="hbtn" style="background:rgba(148,0,255,0.15);border-color:rgba(148,0,255,0.4);color:var(--purple2)">↗ Abrir Projeto</button></a>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:4px">
+              <div class="claude-mode-btn" onclick="openClaudeMode('estrategista')">🎯<br/>Estrategista</div>
+              <div class="claude-mode-btn" onclick="openClaudeMode('arquiteto')">🏗️<br/>Arquiteto</div>
+              <div class="claude-mode-btn" onclick="openClaudeMode('operador')">⚙️<br/>Operador</div>
+              <div class="claude-mode-btn" onclick="openClaudeMode('auditor')">🔍<br/>Auditor</div>
+              <div class="claude-mode-btn" onclick="openClaudeMode('documentador')">📝<br/>Documentador</div>
+              <div class="claude-mode-btn" onclick="openClaudeMode('automator')">🤖<br/>Automator</div>
+              <div class="claude-mode-btn" onclick="openClaudeMode('qa')">✅<br/>QA</div>
+            </div>
+            <div style="font-size:8px;color:var(--text3);font-family:'Share Tech Mono',monospace;margin-top:8px;text-align:center">
+              Clique em qualquer modo para abrir o Claude Project com o contexto já carregado
+            </div>
           </div>
 
         </div>
@@ -1165,6 +1206,27 @@ function renderProjetos(){
 }
 
 // ═══ CMD BAR ═══
+function openClaudeMode(modo){
+  const msgs = {
+    'estrategista': 'modo: estrategista\n\nauditoria completa de todos os projetos ativos',
+    'arquiteto': 'modo: arquiteto\n\nrevisão da arquitetura do SYSPREV vMAX e próximos passos técnicos',
+    'operador': 'modo: operador\n\nquais são os P0 que preciso resolver hoje?',
+    'auditor': 'modo: auditor\n\nauditoria completa de todos os projetos',
+    'documentador': 'modo: documentador\n\ndocumenta o estado atual do SYSPREV vMAX',
+    'automator': 'modo: automator\n\nquais automações faltam para ativar o financial-approval-executor?',
+    'qa': 'modo: qa\n\nrevisão crítica do plano de ativação financeira do SYSPREV vMAX'
+  };
+  const txt = encodeURIComponent(msgs[modo] || 'modo: '+modo);
+  window.open('https://claude.ai/projects', '_blank');
+  // Copia o prompt para o clipboard
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(msgs[modo]||'modo: '+modo)
+      .then(()=>{
+        addMsg && addMsg('bot', '📋 **Prompt copiado!**\n\nAbra o projeto Claude e cole com Ctrl+V.\n\nModo: **'+modo.toUpperCase()+'**');
+      }).catch(()=>{});
+  }
+}
+
 function insertCmd(cmd){
   const ci=document.getElementById('cmdbar-input');
   if(ci){ci.value=cmd;ci.focus();}
