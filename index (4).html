@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ORION MB9</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07070e;--bg2:#0b0b17;--bg3:#0f0f1e;--bg4:#141428;
+  --border:#1a1a2e;--border2:#252545;
+  --text:#e0e0ee;--text2:#9898c0;--text3:#484870;
+  --purple:#9d6fff;--purple2:#5e5aff;
+  --green:#18c97a;--red:#e84040;--amber:#f5a623;
+}
+html,body{height:100%;overflow:hidden}
+body{font-family:'IBM Plex Mono',monospace;background:var(--bg);color:var(--text);display:flex;flex-direction:column}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+
+/* LOGIN */
+#login{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px}
+.login-box{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:36px;max-width:400px;width:100%}
+.login-logo{display:flex;align-items:center;gap:12px;margin-bottom:32px;justify-content:center}
+.login-icon{width:48px;height:48px;background:linear-gradient(135deg,#5e5aff,#9d6fff);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff}
+.login-title{font-size:20px;font-weight:600;color:var(--purple);letter-spacing:.1em}
+.login-sub{font-size:9px;color:var(--text3);letter-spacing:.18em;margin-top:2px}
+.login-field{margin-bottom:14px}
+.login-label{font-size:10px;color:var(--text3);letter-spacing:.1em;margin-bottom:6px;display:block}
+.login-input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-family:inherit;font-size:13px}
+.login-input:focus{outline:none;border-color:var(--purple2)}
+.login-input::placeholder{color:var(--text3)}
+.login-btn{width:100%;background:linear-gradient(135deg,#5e5aff,#9d6fff);border:none;border-radius:8px;padding:13px;color:#fff;font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;margin-top:8px;letter-spacing:.06em}
+.login-btn:hover{opacity:.9}
+.login-err{font-size:11px;color:var(--red);margin-top:10px;text-align:center;min-height:18px}
+.login-info{font-size:10px;color:var(--text3);text-align:center;margin-top:16px;line-height:1.6}
+
+/* HEADER */
+.header{background:var(--bg2);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.logo{display:flex;align-items:center;gap:9px}
+.logo-icon{width:30px;height:30px;background:linear-gradient(135deg,#5e5aff,#9d6fff);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff}
+.logo-name{font-size:12px;font-weight:600;color:var(--purple);letter-spacing:.1em}
+.logo-sub{font-size:8px;color:var(--text3);letter-spacing:.16em}
+.hstats{display:flex;gap:12px;font-size:9px;color:var(--text3);align-items:center}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--border2);flex-shrink:0;display:inline-block}
+.dot.g{background:var(--green)}.dot.r{background:var(--red)}.dot.a{background:var(--amber)}
+.logout-btn{background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:3px 8px;color:var(--text3);font-family:inherit;font-size:9px;cursor:pointer}
+.logout-btn:hover{color:var(--red)}
+
+/* TABS */
+.tabs{background:var(--bg2);border-bottom:1px solid var(--border);display:flex;padding:0 16px;flex-shrink:0;overflow-x:auto}
+.tab{background:none;border:none;border-bottom:2px solid transparent;padding:7px 12px;font-size:10px;color:var(--text3);cursor:pointer;font-family:inherit;letter-spacing:.06em;margin-bottom:-1px;white-space:nowrap}
+.tab.on{border-bottom-color:var(--purple);color:var(--purple)}
+
+/* MAIN */
+.main{flex:1;display:flex;overflow:hidden}
+.sidebar{width:210px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;flex-shrink:0}
+.sidebar-title{font-size:9px;color:var(--text3);letter-spacing:.14em;padding:10px 12px 6px;border-bottom:1px solid var(--border)}
+.sidebar-list{flex:1;overflow-y:auto;padding:6px}
+.task-card{background:var(--bg3);border-radius:6px;padding:7px 9px;margin-bottom:5px;border-left:2px solid var(--border2)}
+.task-card.p0{border-left-color:var(--red)}.task-card.p1{border-left-color:var(--amber)}.task-card.p2{border-left-color:var(--green)}
+.task-title{font-size:10px;color:var(--text);line-height:1.4;margin-bottom:2px}
+.task-meta{font-size:9px;color:var(--text3)}
+.pb{font-size:8px;padding:1px 5px;border-radius:3px;letter-spacing:.04em;display:inline-block;margin-bottom:3px}
+.ph{background:#3a1010;color:#ff7070}.pm{background:#3a2a00;color:#ffcc44}.pl{background:#0a2a10;color:#44cc88}
+.sidebar-empty{padding:16px 12px;font-size:10px;color:var(--text3);text-align:center}
+
+.content{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.tab-panel{display:none;flex:1;overflow:hidden;flex-direction:column}
+.tab-panel.on{display:flex}
+
+/* CHAT DESABILITADO */
+.chat-disabled{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center;gap:16px}
+.chat-disabled-icon{font-size:40px;opacity:.3}
+.chat-disabled-title{font-size:14px;color:var(--text2);font-weight:500}
+.chat-disabled-text{font-size:11px;color:var(--text3);line-height:1.7;max-width:360px}
+.chat-disabled-badge{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px 14px;font-size:10px;color:var(--amber);letter-spacing:.06em}
+
+/* PAINEL */
+.panel-content{flex:1;overflow-y:auto;padding:14px 16px}
+.panel-section{margin-bottom:16px}
+.section-title{font-size:9px;color:var(--text3);letter-spacing:.14em;margin-bottom:8px;font-weight:500;display:flex;justify-content:space-between;align-items:center}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-bottom:16px}
+.metric{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 12px}
+.metric-label{font-size:9px;color:var(--text3);letter-spacing:.08em;margin-bottom:4px}
+.metric-val{font-size:20px;font-weight:500;color:var(--text)}
+.metric-sub{font-size:9px;color:var(--text3);margin-top:2px}
+.pcard{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin-bottom:7px}
+.pcard-title{font-size:11px;color:var(--text);font-weight:500;margin-bottom:3px}
+.pcard-meta{font-size:9px;color:var(--text3);line-height:1.5}
+.row-item{padding:7px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:8px}
+.row-item:last-child{border-bottom:none}
+.row-type{font-size:9px;background:var(--bg3);color:var(--text3);padding:2px 5px;border-radius:3px;white-space:nowrap;flex-shrink:0}
+.row-time{font-size:9px;color:var(--text3);white-space:nowrap;margin-left:auto;flex-shrink:0}
+.tag{background:var(--bg3);color:var(--text3);font-size:8px;padding:1px 5px;border-radius:3px;display:inline-block}
+.rbtn{background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:2px 8px;color:var(--text3);font-family:inherit;font-size:9px;cursor:pointer}
+.rbtn:hover{color:var(--text2)}
+.empty-state{text-align:center;padding:24px;color:var(--text3);font-size:11px}
+
+/* PROJETOS */
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.proj-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;border-left:3px solid var(--border2)}
+.proj-card.urgente{border-left-color:var(--red)}.proj-card.normal{border-left-color:var(--amber)}.proj-card.backlog{border-left-color:var(--green)}
+.proj-id{font-size:8px;color:var(--text3);letter-spacing:.1em;margin-bottom:3px}
+.proj-name{font-size:11px;color:var(--text);font-weight:500;margin-bottom:4px;line-height:1.3}
+.proj-desc{font-size:9px;color:var(--text3);line-height:1.5}
+.proj-next{font-size:9px;color:var(--amber);margin-top:5px;line-height:1.4}
+.proj-block{font-size:9px;color:var(--red);margin-top:3px}
+.badge{font-size:8px;padding:1px 5px;border-radius:3px;display:inline-block;margin-top:4px}
+.badge-r{background:#3a1010;color:#ff7070}.badge-y{background:#3a2a00;color:#ffcc44}.badge-g{background:#0a2a10;color:#44cc88}
+
+@media(max-width:600px){.sidebar{display:none}.proj-grid{grid-template-columns:1fr}.metrics-grid{grid-template-columns:repeat(2,1fr)}}
+.fade-in{animation:fi .2s ease}@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.chat-msgs{flex:1;overflow-y:auto;padding:14px 16px}
+.msg{display:flex;margin-bottom:12px}
+.msg.user{justify-content:flex-end}.msg.bot{justify-content:flex-start}
+.bubble{max-width:82%;padding:10px 14px;border-radius:12px;font-size:12px;line-height:1.65;font-family:'IBM Plex Sans',sans-serif}
+.msg.user .bubble{background:var(--bg4);border:1px solid var(--border2);border-radius:12px 12px 2px 12px;color:var(--text2)}
+.msg.bot .bubble{background:#0d0d1c;border:1px solid var(--border);border-radius:12px 12px 12px 2px;color:var(--text)}
+.bubble-label{font-size:8px;color:var(--text3);letter-spacing:.14em;margin-bottom:4px;font-family:'IBM Plex Mono',monospace}
+.thinking{display:flex;gap:5px;padding:4px 0}
+.thinking span{width:6px;height:6px;border-radius:50%;background:var(--purple);animation:th 1.2s infinite}
+.thinking span:nth-child(2){animation-delay:.2s}.thinking span:nth-child(3){animation-delay:.4s}
+@keyframes th{0%,60%,100%{opacity:.2;transform:scale(.8)}30%{opacity:1;transform:scale(1)}}
+.chat-quick{padding:6px 16px;border-top:1px solid var(--border);display:flex;gap:5px;flex-wrap:wrap;flex-shrink:0}
+.qbtn{background:var(--bg3);border:1px solid var(--border);color:var(--text3);border-radius:4px;padding:3px 8px;font-size:9px;cursor:pointer;font-family:inherit;white-space:nowrap}
+.qbtn:hover{color:var(--text2)}
+.chat-input-area{padding:10px 16px 14px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:flex-end;flex-shrink:0}
+.chat-input{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-family:inherit;font-size:12px;resize:none;line-height:1.5;min-height:40px;max-height:120px}
+.chat-input:focus{outline:none;border-color:var(--border2)}
+.chat-input::placeholder{color:var(--text3)}
+.send-btn{background:linear-gradient(135deg,#5e5aff,#9d6fff);border:none;border-radius:8px;width:40px;height:40px;cursor:pointer;font-size:15px;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.send-btn:disabled{opacity:.3;cursor:not-allowed}
+</style>
+</head>
+<body>
+
+<!-- LOGIN REMOVIDO — ACESSO DIRETO -->
+<div id="login" style="display:none"></div>
+
+<!-- APP -->
+<div id="app" style="display:none;flex-direction:column;height:100%">
+  <div class="header">
+    <div class="logo">
+      <div class="logo-icon">⬡</div>
+      <div><div class="logo-name">ORION MB9</div><div class="logo-sub">MARCELO BAPTISTA · CENTRAL AMIGA DO IDOSO</div></div>
+    </div>
+    <div class="hstats">
+      <div style="display:flex;align-items:center;gap:4px"><span class="dot g"></span><span id="h-agent">v1.1.0 ativo</span></div>
+      <span id="h-tasks" style="color:var(--amber)">⚡ — tarefas</span>
+      <span style="color:var(--purple)">◈ 8 projetos</span>
+      <button class="logout-btn" onclick="doLogout()">sair</button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab on" onclick="showTab('painel',this)">📊 Painel</button>
+    <button class="tab" onclick="showTab('azi',this)">⚡ AZI vMAX</button>
+    <button class="tab" onclick="showTab('projetos',this)">◈ Projetos</button>
+    <button class="tab" onclick="showTab('tasks',this)">✓ Tarefas</button>
+    <button class="tab" onclick="showTab('chat',this)">💬 Chat MB9</button>
+  </div>
+
+  <div class="main">
+    <div class="sidebar">
+      <div class="sidebar-title">PENDÊNCIAS ATIVAS</div>
+      <div class="sidebar-list" id="sidebar-tasks"><div class="sidebar-empty">carregando...</div></div>
+    </div>
+
+    <!-- PAINEL -->
+    <div id="tab-painel" class="tab-panel on">
+      <div class="panel-content">
+        <div class="metrics-grid">
+          <div class="metric"><div class="metric-label">TAREFAS</div><div class="metric-val" id="m-tasks">—</div><div class="metric-sub">ativas</div></div>
+          <div class="metric"><div class="metric-label">EVENTOS</div><div class="metric-val" id="m-events">—</div><div class="metric-sub">recentes</div></div>
+          <div class="metric"><div class="metric-label">DECISÕES</div><div class="metric-val" id="m-decisions">—</div><div class="metric-sub">registradas</div></div>
+          <div class="metric"><div class="metric-label">AGENTE</div><div class="metric-val" id="m-agent" style="color:var(--green)">—</div><div class="metric-sub" id="m-agent-s">status</div></div>
+        </div>
+        <div class="panel-section">
+          <div class="section-title">EVENTOS RECENTES <button class="rbtn" onclick="loadSupabase()">↻</button></div>
+          <div id="events-list"><div class="empty-state">carregando...</div></div>
+        </div>
+        <div class="panel-section">
+          <div class="section-title">DECISÕES RECENTES</div>
+          <div id="decisions-list"><div class="empty-state">carregando...</div></div>
+        </div>
+        <div class="panel-section">
+          <div class="section-title">CONHECIMENTO OPERACIONAL</div>
+          <div id="knowledge-list"><div class="empty-state">carregando...</div></div>
+        </div>
+        <div class="panel-section">
+          <div class="section-title">ESTADO DO AGENTE</div>
+          <div id="agent-info"><div class="empty-state">carregando...</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AZI vMAX -->
+    <div id="tab-azi" class="tab-panel">
+      <div class="panel-content">
+        <div class="metrics-grid">
+          <div class="metric"><div class="metric-label">RECEBÍVEIS</div><div class="metric-val" id="az-recebiveis">—</div><div class="metric-sub">total Omie</div></div>
+          <div class="metric"><div class="metric-label">CLIENTES</div><div class="metric-val" id="az-clientes">—</div><div class="metric-sub">canônicos</div></div>
+          <div class="metric"><div class="metric-label">CONCEDIDOS</div><div class="metric-val" id="az-concedidos">—</div><div class="metric-sub">processos</div></div>
+          <div class="metric"><div class="metric-label">FILA HITL</div><div class="metric-val" id="az-hitl">—</div><div class="metric-sub">aguardando</div></div>
+        </div>
+
+        <div class="panel-section">
+          <div class="section-title">⚡ AZI vMAX — CENTRO FINANCEIRO <button class="rbtn" onclick="loadAZI()">↻</button></div>
+          <div id="azi-status"><div class="empty-state">conectando ao SysFlux vMAX...</div></div>
+        </div>
+
+        <div class="panel-section">
+          <div class="section-title">🔴 ALERTAS NOC ATIVOS</div>
+          <div id="azi-noc"><div class="empty-state">carregando...</div></div>
+        </div>
+
+        <div class="panel-section">
+          <div class="section-title">💰 FINANCIAL QUEUE — AGUARDANDO APROVAÇÃO HITL</div>
+          <div id="azi-fq"><div class="empty-state">carregando...</div></div>
+        </div>
+
+        <div class="panel-section">
+          <div class="section-title">📋 GARGALOS OPERACIONAIS P0</div>
+          <div id="azi-gargalos"><div class="empty-state">carregando...</div></div>
+        </div>
+
+        <div class="panel-section">
+          <div class="section-title">🏥 HEALTH CHECK — SISTEMA VIVO</div>
+          <div id="azi-health"><div class="empty-state">carregando...</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJETOS -->
+    <div id="tab-projetos" class="tab-panel">
+      <div class="panel-content"><div class="proj-grid" id="proj-grid"></div></div>
+    </div>
+
+    <!-- TAREFAS -->
+    <div id="tab-tasks" class="tab-panel">
+      <div class="panel-content">
+        <div class="section-title">TAREFAS ATIVAS <button class="rbtn" onclick="loadSupabase()">↻</button></div>
+        <div id="full-tasks-list"><div class="empty-state">carregando...</div></div>
+      </div>
+    </div>
+
+    <!-- CHAT MB9 — OpenAI GPT-4o -->
+    <div id="tab-chat" class="tab-panel">
+      <div class="chat-msgs" id="chat-msgs"></div>
+      <div class="chat-quick">
+        <button class="qbtn" onclick="sendQ('briefing operacional de hoje')">briefing do dia</button>
+        <button class="qbtn" onclick="sendQ('status de todos os projetos')">status projetos</button>
+        <button class="qbtn" onclick="sendQ('próximos passos do SYSPREV vMAX')">vMAX → próximos passos</button>
+        <button class="qbtn" onclick="sendQ('análise financeira AZI vMAX')">AZI → análise financeira</button>
+        <button class="qbtn" onclick="sendQ('quais são minhas tarefas abertas?')">tarefas abertas</button>
+        <button class="qbtn" onclick="sendQ('anota urgente: ')">anota urgente</button>
+        <button class="qbtn" onclick="sendQ('detecta red flags operacionais no SYSPREV')">red flags operacionais</button>
+      </div>
+      <div class="chat-input-area">
+        <textarea class="chat-input" id="chat-in" rows="1"
+          placeholder="Fale com o MB9... (Enter envia · Shift+Enter quebra linha)"
+          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMsg()}"></textarea>
+        <button class="send-btn" id="send-btn" onclick="sendMsg()">▶</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════
+// CREDENCIAIS — NÃO COMPARTILHE ESTE ARQUIVO
+// ═══════════════════════════════════════
+const CREDS = {user:'mb9', pass:'123456'};
+// ORION MB9 — banco de memória operacional
+const SUPA_URL = 'https://lzqnqvonzzmwdbuewsdr.supabase.co';
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6cW5xdm9uenptd2RidWV3c2RyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkyMTYwNTMsImV4cCI6MjA5NDc5MjA1M30.FQplyGrrvKrp8YFthYRgwxCRdfyEZtZZPU_zdXbKVP4';
+
+// OPENAI — chat MB9
+const OPENAI_KEY = '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';
+
+// SYSPREV vMAX / AZI vMAX — banco operacional e financeiro
+const VMAX_URL = 'https://oqvdxbnnvxklugpydrne.supabase.co';
+const VMAX_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9xdmR4Ym5udnhrbHVncHlkcm5lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNDE3OTgsImV4cCI6MjA5MTYxNzc5OH0.ZsliUtfPbWNbOZYIjIvHSLVpHxsL93Yj6qf282Wie-k';
+
+
+// ═══════════════════════════════════════
+// CONHECIMENTO DOS NOTEBOOKS — 2026-05-21
+// ═══════════════════════════════════════
+const NB_KNOWLEDGE = `
+[NB1] CENTRAL AMIGA DO IDOSO — DOMINIO DE MERCADO & MARKETING
+Tese: Quem controla tráfego compra atenção. Quem controla funil compra crescimento. Quem controla dado domina mercado.
+Persona: DONA NILZA — Mulheres 55-65+, buscam acolhimento, fogem de juridiques. Criativo converte por segurança.
+Nicho dominante: LOAS Idoso = 70% da base. Geo: RJ Capital + Baixada Fluminense.
+Metrica norte: Custo por Cliente Fechado (não CPL).
+Funil 12 etapas Kommo: UTM/GCLID obrigatorios via hidden fields.
+Tags estado: SLA_5MIN|SLA_ESTOURADO|SEM_RETORNO|FILA_CRITICA.
+Regra follow-up: 10min→1h→24h→72h→SEM_RETORNO→7dias→NAO_RESPONDE.
+Triagem Q/M/F: QUENTE(65++beneficio negado+urgencia)|MORNO|FRIO.
+Regra ouro: Lead sem tarefa = balde furado. Todo lead tem responsavel, etapa, historico e proxima acao com prazo.
+Handoff financeiro: Concessao INSS + Data Pagamento = webhook Kommo→Omie.
+IA Noturna: Opera 18h-08h. Coleta idade/cidade/beneficio. Tags automaticas. Tarefa ATENDER_08H. NUNCA promete aprovacao.
+Tracking: GCLID+FBCLID+UTMs capturados. Eventos CAPI: QualifiedLead, Scheduled, ContractSigned server-side.
+Entity SEO: GBP como banco de dados de entidade. Triangulo Autoridade: Site+GBP+IA. NAP consistente em todos canais.
+PEPE: Tecnica P.E.R.F.E.I.T.A 2.0. IA especialista residente. Loop: Gera→Avalia→Atualiza→Refina→Aplica.
+Lacunas criticas: 53% sem data nascimento; 16% sem Produto; 336 leads P0 sem responsavel; 312 cancelados=remarketing.
+Proximos passos: Consolidar base no Kommo; forcar campos obrigatorios; CAPI Meta/Google; IA Noturna SDR v0.1.
+
+[NB2] ARQUITETURA COGNITIVA MULTIAGENTE
+Tese: IA isolada gera produtividade. Arquitetura Cognitiva gera vantagem competitiva sistemica.
+Master Orchestrator + agentes verticais especializados: Aquisicao|Conversao|Autoridade|Operacao|Memoria|Execucao.
+Memoria 3 camadas: Curta (sessao)|Operacional (workflows/SOPs/decisoes)|Estrategica (ICP/branding/tese).
+Stack: OpenAI+Claude+Gemini | LangGraph+CrewAI | Supabase+Pinecone | n8n+Make | Kommo | GA4+Meta CAPI+Looker.
+Roadmap: 30dias(Fundacao) → 60dias(Especializacao) → 90dias(Escala).
+Metricas: CAC, ROAS, Pipeline Velocity, Custo por Cliente Fechado.
+
+[NB3] OBA + VOAs (Vidas Operacionais Autonomas)
+OBA Loop: Capturar→Organizar→Conectar→Sintetizar→Automatizar→Distribuir→Escalar.
+VOAs = colaboradores sinteticos com missao, autonomia, memoria persistente e acesso a ferramentas.
+ESAA: IA emite intencoes JSON validadas por schemas. Estado = derivado de log append-only. Audit trail imutavel.
+Trindade: MCP(comunicacao mundo)+A2A(agente-agente)+ESAA(governanca event sourcing).
+HITL 4 Dimensoes: Quando parar?|Quem chamar?|O que fazer?|Onde alertar? RBAC por nivel de risco.
+Observabilidade: AgentTrace 3D (Cognitiva+Operacional+Contextual). Langfuse self-hosted. OTel SemConv v1.37+.
+Memoria avancada: Mem0 (Extraction+Update) | Structured RAG (vetorial+grafos) | Reflector Agent (meta-aprendizado).
+
+[NB4] AUTOGOVERNANCA EXECUTIVA (AxiaCore)
+Perfil Marcelo: Founder Neuroarquitetural Sistemico — potencia criativa alta, risco de fragmentacao por hiperfoco.
+Modelo 1-1-infinito: 1 Projeto-Mae (70% energia) + 1 Satélite + infinitos no Estacionamento Sagrado.
+Filtro Nova Ideia: 5-7 perguntas antes de abrir nova frente. Serve o Projeto-Mae? Entregavel em 7 dias?
+AxiaCore: lóbo frontal externo. VOA-SIN: regulador limbico/TCC leve.
+SOP Anti-Hiperfoco: 90min→salvar status→agua→horizonte 60s→retornar com checkpoint.
+Riscos: confundir visualizar sistema com capacidade de executar agora. Solucionar vulnerabilidades emocionais via criacao de sistemas.
+
+[NB5] GTM AI OS
+Tese: Confiabilidade da IA em Enterprise é propriedade arquitetural, nao do modelo LLM.
+ESAA+CAMCO+AgentTrace+OTel. CAMCO projeta acoes proibidas na alternativa segura mais proxima.
+SysFlux como Execution Gateway: Inteligencia↔Kommo(memoria comercial)↔Omie(memoria financeira).
+Waterfall Enrichment: APIs cascateadas para higienizar leads antes do SDR Agent atuar.
+Metaprompting PARCER: Persona+Audience+Rules+Context+Execution+Response.
+
+[NB6] SISTEMAS COMERCIAIS INTELIGENTES (Agencias & Negocios Locais)
+Tese: Site virou commodity. Ouro = Google(Aquisicao)+WhatsApp(Conversao)+CRM(Retencao).
+Framework H&P CELL: GMN→LP→WhatsApp IA→CRM.
+Prospecta por Dor Visivel: auditar GMN→"Vi 3 erros"→demo pronta→fechar setup+mensalidade.
+Nichos: Advocacia+Clinicas(alto ticket)|Oficinas(urgencia)|Saude+Estetica(recorrencia).
+Stack: Lovable+n8n+OpenAI/Claude+Kommo+Supabase+Stripe/Asaas.
+Modelo: Setup (R$2k-10k) + Manutencao mensal (R$500-1.5k).
+`;
+
+const PROJETOS=[
+  {id:'P1',nome:'SYSPREV vMAX',prioridade:'urgente',
+   desc:'ERP previdenciário. 33 Edge Functions, ~65 tabelas, 362.790 recebíveis (~R$239,8M). Governance Layer 91/100.',
+   proximo:'Verificar amount nas 129 financial_queue. HITL piloto condicional.',
+   bloqueador:'amount=NULL para 129 itens. Trigger handle_process_concedido ausente.',
+   url:'https://case-compass-18.lovable.app'},
+  {id:'P2',nome:'Portal do Colaborador',prioridade:'normal',
+   desc:'CAI Controle | Fluxo Integrado. 19 Edge Functions. OCR Gemini Vision. LLM classifier híbrido. Shadow mode ativo.',
+   proximo:'Configurar secrets Twilio. Desativar shadow mode.',
+   bloqueador:'TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_WHATSAPP_FROM não configurados.',
+   url:'https://portaldocolaborador.centralamigadoidoso.com.br'},
+  {id:'P3',nome:'Integração & Automação IA',prioridade:'urgente',
+   desc:'Fluxos Homem-IA entre sistemas. Agentes especializados por vertical.',
+   proximo:'Definir e construir primeiro fluxo operacional.',bloqueador:'',url:''},
+  {id:'P4',nome:'Domínio de Mercado',prioridade:'urgente',
+   desc:'Central Amiga do Idoso. Escalar autoridade no nicho previdenciário. 10.589 leads. 336 P0 sem responsável.',
+   proximo:'Fechar governança de funil. Dicionário oficial de tags.',bloqueador:'',url:''},
+  {id:'P5',nome:'Marketing Alta Performance',prioridade:'urgente',
+   desc:'Google Ads + Meta Ads. KPIs: CPL, CPQL, CAC, ROAS.',
+   proximo:'Revisão e calibração de campanhas.',bloqueador:'',url:''},
+  {id:'P6',nome:'Tráfego Pago GDS',prioridade:'normal',
+   desc:'Google Looker Studio + Meta — inteligência de tráfego.',
+   proximo:'Estruturar BI operacional.',bloqueador:'',url:''},
+  {id:'P7',nome:'Agentes Especializados IA',prioridade:'normal',
+   desc:'Agentes por vertical: vendas, atendimento, jurídico, financeiro. Arquitetura VOA.',
+   proximo:'Escolher e construir primeiro agente vertical.',bloqueador:'',url:''},
+  {id:'P8',nome:'Enriquecimento de Bases',prioridade:'backlog',
+   desc:'Bases de clientes qualificadas para prospecção e CRM escalável.',
+   proximo:'Qualificação contínua da base.',bloqueador:'',url:''},
+];
+
+// LOGIN
+window.onload=()=>{
+  sessionStorage.setItem('mb9_auth','ok');
+  showApp();
+  renderProjetos();
+};
+
+function doLogin(){
+  const u=document.getElementById('login-user').value.trim().toLowerCase();
+  const p=document.getElementById('login-pass').value.trim();
+  const err=document.getElementById('login-err');
+  const validUser = CREDS.user.toLowerCase();
+  const validPass = CREDS.pass;
+  if(u===validUser && p===validPass){
+    sessionStorage.setItem('mb9_auth','ok');
+    err.textContent='';
+    showApp();
+  } else {
+    err.textContent='Incorreto. Usuário: Mb9 | Senha: 123456';
+    document.getElementById('login-pass').value='';
+    document.getElementById('login-pass').focus();
+  }
+}
+
+function doLogout(){
+  sessionStorage.removeItem('mb9_auth');
+  document.getElementById('app').style.display='none';
+  document.getElementById('login').style.display='flex';
+  document.getElementById('login-user').value='';
+  document.getElementById('login-pass').value='';
+  document.getElementById('login-err').textContent='';
+  document.getElementById('login-user').focus();
+}
+
+function showApp(){
+  document.getElementById('login').style.display='none';
+  document.getElementById('app').style.display='flex';
+  loadSupabase();
+  loadAZI();
+}
+
+// SUPABASE
+async function sbGet(table,q){
+  const r=await fetch(`${SUPA_URL}/rest/v1/${table}?${q}`,{
+    headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Accept':'application/json'}
+  });
+  if(!r.ok)throw new Error(r.status);
+  return r.json();
+}
+
+async function loadSupabase(){loadTasks();loadEvents();loadDecisions();loadKnowledge();loadAgent();}
+
+function fmtD(ts){
+  if(!ts)return'—';
+  const d=new Date(ts);
+  return d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+}
+function pc(p){const s=(p||'').toLowerCase();if(['p0','high','urgente'].includes(s))return'ph';if(['p2','p3','low','backlog'].includes(s))return'pl';return'pm';}
+function pcCard(p){const s=(p||'').toLowerCase();if(['p0','high','urgente'].includes(s))return'p0';if(['p2','p3','low','backlog'].includes(s))return'p2';return'p1';}
+
+async function loadTasks(){
+  try{
+    const d=await sbGet('mb9.tasks','select=title,description,priority,status,source,created_at,assigned_to&order=created_at.desc&limit=20');
+    const a=d.filter(t=>!['done','completed','cancelled'].includes((t.status||'').toLowerCase()));
+    document.getElementById('m-tasks').textContent=a.length;
+    document.getElementById('h-tasks').textContent='⚡ '+a.length+' tarefas';
+    document.getElementById('sidebar-tasks').innerHTML=a.length?a.map(t=>`
+      <div class="task-card ${pcCard(t.priority)}">
+        <span class="pb ${pc(t.priority)}">${t.priority||'normal'}</span>
+        <div class="task-title">${t.title||'—'}</div>
+        <div class="task-meta">${t.assigned_to||''} · ${fmtD(t.created_at)}</div>
+      </div>`).join(''):'<div class="sidebar-empty">nenhuma pendência</div>';
+    document.getElementById('full-tasks-list').innerHTML=a.length?a.map(t=>`
+      <div class="pcard">
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+          <span class="pb ${pc(t.priority)}">${t.priority||'normal'}</span>
+          <span style="font-size:9px;color:var(--text3)">${fmtD(t.created_at)}</span>
+        </div>
+        <div class="pcard-title">${t.title||'—'}</div>
+        ${t.description?`<div class="pcard-meta">${t.description.substring(0,100)}</div>`:''}
+        <div class="pcard-meta">${t.source?'via '+t.source:''} ${t.assigned_to?'· '+t.assigned_to:''}</div>
+      </div>`).join(''):'<div class="empty-state">nenhuma tarefa ativa</div>';
+  }catch(e){document.getElementById('sidebar-tasks').innerHTML='<div class="sidebar-empty">erro</div>';}
+}
+
+async function loadEvents(){
+  try{
+    const d=await sbGet('mb9.events','select=event_type,source,occurred_at,error_message&order=occurred_at.desc&limit=10');
+    document.getElementById('m-events').textContent=d.length;
+    document.getElementById('events-list').innerHTML=d.length?d.map(e=>`
+      <div class="row-item">
+        <span class="row-type">${e.event_type||'—'}</span>
+        <span style="flex:1;color:var(--text2);font-size:10px">${e.source||''}</span>
+        ${e.error_message?`<span style="font-size:9px;color:var(--red)">${e.error_message}</span>`:''}
+        <span class="row-time">${fmtD(e.occurred_at)}</span>
+      </div>`).join(''):'<div class="empty-state">nenhum evento</div>';
+  }catch(e){}
+}
+
+async function loadDecisions(){
+  try{
+    const d=await sbGet('mb9.decisions','select=decision,rationale,confidence,decided_at&order=decided_at.desc&limit=8');
+    document.getElementById('m-decisions').textContent=d.length;
+    document.getElementById('decisions-list').innerHTML=d.length?d.map(dec=>`
+      <div class="pcard">
+        <div class="pcard-title">${dec.decision||'—'}</div>
+        ${dec.rationale?`<div class="pcard-meta">${dec.rationale.substring(0,100)}${dec.rationale.length>100?'...':''}</div>`:''}
+        <div class="pcard-meta" style="margin-top:3px">${fmtD(dec.decided_at)}</div>
+      </div>`).join(''):'<div class="empty-state">nenhuma decisão</div>';
+  }catch(e){}
+}
+
+async function loadKnowledge(){
+  try{
+    const d=await sbGet('mb9.knowledge_items','select=title,content,category,tags,updated_at&order=updated_at.desc.nullsfirst&limit=8');
+    document.getElementById('knowledge-list').innerHTML=d.length?d.map(k=>`
+      <div class="pcard">
+        <div class="pcard-title">${k.title||k.category||'—'}</div>
+        ${k.content?`<div class="pcard-meta">${k.content.substring(0,100)}${k.content.length>100?'...':''}</div>`:''}
+        <div style="margin-top:4px">${(k.tags||[]).slice(0,4).map(t=>`<span class="tag">${t}</span>`).join(' ')}</div>
+      </div>`).join(''):'<div class="empty-state">base vazia</div>';
+  }catch(e){}
+}
+
+async function loadAgent(){
+  try{
+    const d=await sbGet('mb9.agent_state','select=agent_name,version,status,last_seen_at,active_skills&order=last_seen_at.desc&limit=1');
+    if(!d.length)return;
+    const a=d[0];
+    let sk=[];try{sk=Array.isArray(a.active_skills)?a.active_skills:JSON.parse(a.active_skills||'[]');}catch(e){}
+    document.getElementById('m-agent').textContent=a.status==='active'?'✓':'—';
+    document.getElementById('m-agent-s').textContent=a.status||'—';
+    document.getElementById('h-agent').textContent=(a.version||'—')+' ativo';
+    document.getElementById('agent-info').innerHTML=`
+      <div class="pcard">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+          <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">NOME</div><div style="font-size:11px">${a.agent_name||'—'}</div></div>
+          <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">VERSÃO</div><div style="font-size:11px">${a.version||'—'}</div></div>
+          <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">STATUS</div><div style="font-size:11px;color:var(--green)">${a.status||'—'}</div></div>
+          <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">ÚLTIMO ACESSO</div><div style="font-size:10px">${fmtD(a.last_seen_at)}</div></div>
+        </div>
+        ${sk.length?`<div style="display:flex;flex-wrap:wrap;gap:4px">${sk.map(s=>`<span class="tag" style="padding:2px 6px">${s}</span>`).join('')}</div>`:''}
+      </div>`;
+  }catch(e){}
+}
+
+async function vmaxGet(table,q){
+  const r=await fetch(`${VMAX_URL}/rest/v1/${table}?${q}`,{
+    headers:{'apikey':VMAX_KEY,'Authorization':'Bearer '+VMAX_KEY,'Accept':'application/json'}
+  });
+  if(!r.ok)throw new Error(r.status);
+  return r.json();
+}
+
+async function loadAZI(){
+  loadAZIDashboard();
+  loadAZINOC();
+  loadAZIFinancialQueue();
+  loadAZIGargalos();
+  loadAZIHealth();
+}
+
+async function loadAZIDashboard(){
+  try{
+    const d=await fetch(`${VMAX_URL}/rest/v1/erp_previdenciario_dashboard?limit=1`,{
+      headers:{'apikey':VMAX_KEY,'Authorization':'Bearer '+VMAX_KEY,'Accept':'application/json'}
+    });
+    if(!d.ok)throw new Error(d.status);
+    const data=await d.json();
+    if(data.length){
+      const row=data[0];
+      document.getElementById('az-clientes').textContent=row.total_clientes||'—';
+      document.getElementById('az-concedidos').textContent=row.total_concedidos||'—';
+      document.getElementById('azi-status').innerHTML=`
+        <div class="pcard">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px">
+            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">TOTAL CLIENTES</div><div style="font-size:13px;font-weight:500">${row.total_clientes||'—'}</div></div>
+            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">ATIVOS</div><div style="font-size:13px;font-weight:500;color:var(--green)">${row.total_ativos||'—'}</div></div>
+            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">CONCEDIDOS</div><div style="font-size:13px;font-weight:500;color:var(--purple)">${row.total_concedidos||'—'}</div></div>
+            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">INDEFERIDOS</div><div style="font-size:13px;font-weight:500;color:var(--red)">${row.total_indeferidos||'—'}</div></div>
+            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">CANCELADOS</div><div style="font-size:13px;font-weight:500">${row.total_cancelados||'—'}</div></div>
+            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">CONVERSÃO</div><div style="font-size:13px;font-weight:500;color:var(--amber)">${row.taxa_conversao_pct||'—'}%</div></div>
+          </div>
+          <div style="font-size:9px;color:var(--text3)">Órfãos: ${row.processos_orfaos||0} | Gargalos críticos: ${row.gargalos_criticos||0} | Atualizado: ${fmtD(row.timestamp_ultima_atualizacao)}</div>
+        </div>`;
+    }
+  }catch(e){
+    document.getElementById('azi-status').innerHTML='<div class="empty-state">RLS ativo — dados protegidos ou indisponíveis via anon key</div>';
+  }
+}
+
+async function loadAZINOC(){
+  try{
+    const d=await fetch(`${VMAX_URL}/rest/v1/noc_alert?select=severity,message,created_at,status&order=created_at.desc&limit=8`,{
+      headers:{'apikey':VMAX_KEY,'Authorization':'Bearer '+VMAX_KEY,'Accept':'application/json'}
+    });
+    if(!d.ok)throw new Error(d.status);
+    const data=await d.json();
+    const el=document.getElementById('azi-noc');
+    if(!data.length){el.innerHTML='<div class="empty-state">nenhum alerta visível</div>';return;}
+    el.innerHTML=data.map(a=>`
+      <div class="row-item">
+        <span class="row-type" style="background:${a.severity==='P0'?'#3a1010':a.severity==='P1'?'#3a2a00':'#0a2a10'};color:${a.severity==='P0'?'#ff7070':a.severity==='P1'?'#ffcc44':'#44cc88'}">${a.severity||'—'}</span>
+        <span style="flex:1;font-size:10px;color:var(--text2)">${(a.message||'—').substring(0,80)}</span>
+        <span class="row-time">${fmtD(a.created_at)}</span>
+      </div>`).join('');
+  }catch(e){document.getElementById('azi-noc').innerHTML='<div class="empty-state">indisponível via anon key</div>';}
+}
+
+async function loadAZIFinancialQueue(){
+  try{
+    const d=await fetch(`${VMAX_URL}/rest/v1/financial_queue?select=status,amount,created_at,correlation_id&order=created_at.desc&limit=10`,{
+      headers:{'apikey':VMAX_KEY,'Authorization':'Bearer '+VMAX_KEY,'Accept':'application/json'}
+    });
+    if(!d.ok)throw new Error(d.status);
+    const data=await d.json();
+    const el=document.getElementById('azi-fq');
+    const aguardando=data.filter(i=>(i.status||'').includes('AGUARDANDO'));
+    document.getElementById('az-hitl').textContent=aguardando.length||data.length||'—';
+    if(!data.length){el.innerHTML='<div class="empty-state">nenhum item visível</div>';return;}
+    el.innerHTML=data.map(i=>`
+      <div class="row-item">
+        <span class="row-type" style="background:#3a2a00;color:#ffcc44">${(i.status||'—').replace('_',' ').substring(0,20)}</span>
+        <span style="flex:1;font-size:10px;color:var(--text2)">${i.amount?'R$ '+Number(i.amount).toLocaleString('pt-BR',{minimumFractionDigits:2}):'amount NULL ⚠️'}</span>
+        <span class="row-time">${fmtD(i.created_at)}</span>
+      </div>`).join('');
+  }catch(e){document.getElementById('azi-fq').innerHTML='<div class="empty-state">indisponível via anon key</div>';}
+}
+
+async function loadAZIGargalos(){
+  try{
+    const d=await fetch(`${VMAX_URL}/rest/v1/erp_previdenciario_gargalos?select=tipo_gargalo,severidade_sugerida,nome_cliente&order=severidade_sugerida.asc&limit=10`,{
+      headers:{'apikey':VMAX_KEY,'Authorization':'Bearer '+VMAX_KEY,'Accept':'application/json'}
+    });
+    if(!d.ok)throw new Error(d.status);
+    const data=await d.json();
+    const el=document.getElementById('azi-gargalos');
+    if(!data.length){el.innerHTML='<div class="empty-state">nenhum gargalo visível</div>';return;}
+    el.innerHTML=data.map(g=>`
+      <div class="row-item">
+        <span class="row-type" style="background:#3a1010;color:#ff7070">${g.severidade_sugerida||'P0'}</span>
+        <span style="flex:1;font-size:10px;color:var(--text2)">${g.tipo_gargalo||'—'}</span>
+        <span style="font-size:9px;color:var(--text3)">${(g.nome_cliente||'').substring(0,20)}</span>
+      </div>`).join('');
+  }catch(e){document.getElementById('azi-gargalos').innerHTML='<div class="empty-state">indisponível via anon key</div>';}
+}
+
+async function loadAZIHealth(){
+  try{
+    const d=await fetch(`${VMAX_URL}/rest/v1/v_system_health?limit=1`,{
+      headers:{'apikey':VMAX_KEY,'Authorization':'Bearer '+VMAX_KEY,'Accept':'application/json'}
+    });
+    if(!d.ok)throw new Error(d.status);
+    const data=await d.json();
+    const el=document.getElementById('azi-health');
+    if(!data.length){el.innerHTML='<div class="empty-state">health check indisponível</div>';return;}
+    const h=data[0];
+    const fields=['agent_active','session_recorded','events_flowing','tasks_persisted','logs_active','sla_rules_loaded'];
+    el.innerHTML=`<div class="pcard"><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      ${fields.map(f=>`<div style="display:flex;align-items:center;gap:6px">
+        <span style="font-size:14px">${h[f]?'✅':'❌'}</span>
+        <span style="font-size:9px;color:var(--text3)">${f.replace(/_/g,' ')}</span>
+      </div>`).join('')}
+    </div>
+    <div style="font-size:9px;color:var(--text3);margin-top:8px">Verificado: ${fmtD(h.checked_at)}</div></div>`;
+  }catch(e){document.getElementById('azi-health').innerHTML='<div class="empty-state">v_system_health indisponível via anon key</div>';}
+}
+
+function renderProjetos(){
+  const badge=p=>p==='urgente'?'badge-r':p==='normal'?'badge-y':'badge-g';
+  const label=p=>p==='urgente'?'URGENTE':p==='normal'?'NORMAL':'BACKLOG';
+  document.getElementById('proj-grid').innerHTML=PROJETOS.map(p=>`
+    <div class="proj-card ${p.prioridade}">
+      <div class="proj-id">${p.id} ${p.url?`<a href="${p.url}" target="_blank" style="color:#4a9eff;text-decoration:none;font-size:8px">↗ abrir</a>`:''}</div>
+      <div class="proj-name">${p.nome}</div>
+      <div class="proj-desc">${p.desc}</div>
+      ${p.proximo?`<div class="proj-next">→ ${p.proximo.split('.')[0]}</div>`:''}
+      ${p.bloqueador?`<div class="proj-block">⚠ ${p.bloqueador.split('.')[0]}</div>`:''}
+      <span class="badge ${badge(p.prioridade)}">${label(p.prioridade)}</span>
+    </div>`).join('');
+}
+
+// ═══ CHAT MB9 — OpenAI GPT-4o ═══
+let chatHistory = [];
+let chatLoading = false;
+
+const MB9_SYSTEM = `Você é ORION MB9 — sistema cognitivo operacional de Marcelo Baptista, servindo à Central Amiga do Idoso e ao ecossistema SysFlux/vMAX.
+
+Missão: transformar contexto em decisão → tarefa → log → documentação → briefing → automação futura.
+Papéis: Segundo cérebro operacional, Chief of Staff digital, Arquiteto de conhecimento, Copiloto executivo.
+Sempre em português do Brasil. Direto, técnico, orientado a execução.
+
+PORTFÓLIO DE PROJETOS ATIVOS:
+P1 🔴 SYSPREV vMAX — ERP previdenciário. Governance Layer 91/100. 129 contratos HANDOFF_CONCEDIDO. Bloqueador: amount=NULL + trigger handle_process_concedido ausente + omie-baixas-sync não deployada.
+P2 🟡 Portal do Colaborador — 5 fases concluídas. OCR Gemini Vision. Bloqueador: secrets Twilio não configurados.
+P3 🔴 Integração & Automação IA — fluxos Homem-IA, agentes especializados.
+P4 🔴 Domínio de Mercado CAI — LOAS Idoso 70% da base. Funil 12 etapas Kommo. Tags SLA. 336 leads P0 sem responsável.
+P5 🔴 Marketing Alta Performance — Google Ads + Meta Ads. KPI: Custo por Cliente Fechado (não CPL).
+P6 🟡 Tráfego Pago GDS — Looker Studio + Meta.
+P7 🟡 Agentes Especializados IA — arquitetura VOA por vertical.
+P8 🟢 Enriquecimento de Bases — qualificação contínua.
+
+STATE LAYER SUPABASE:
+- orion-mb9 (lzqnqvonzzmwdbuewsdr): memória operacional MB9 — v_system_health 6/6 TRUE
+- SYSPREV vMAX (oqvdxbnnvxklugpydrne): 1.114 clients, 1.140 processes, 129 concedidos, 362.790 recebíveis (~R$239,8M)
+
+AZI vMAX SKILLS: Receivables Scan, Customer Quality, Concession Watchdog, Collection Radar, Margin Projector, Revenue Leakage Hunter.
+
+CONHECIMENTO OPERACIONAL KOMMO:
+Tags: SLA_5MIN|SLA_ESTOURADO|SEM_RETORNO|FILA_CRITICA. Régua: 10min→1h→24h→72h→NAO_RESPONDE.
+Persona DONA NILZA: Mulheres 55-65+, LOAS Idoso RJ. Métrica: Custo por Cliente Fechado.
+Handoff: Concessão INSS + Data Pagamento → webhook Kommo→Omie.
+
+ORION SKILLS (Conselho Interno):
+- Estrategista: visão e posicionamento
+- Arquiteto: módulos, schemas, blueprints
+- Operador: execução tática, planos, prompts
+- Auditor: detecta riscos, red flags, gaps
+- Documentador: converte em ativos duráveis
+- Automator: propõe automações e workflows
+- QA: checagem de formato e consistência
+
+AUDITORIA RED FLAGS:
+- CPFs duplicados ou nulos
+- amount=NULL em financial_queue
+- Leads sem responsável designado
+- Processos sem DIB
+- Cobranças sem rastreabilidade
+- Handoffs Kommo→Omie não executados
+
+MODO DE RESPOSTA:
+Pergunta pontual → resposta direta
+Decisão operacional → contexto → opções → recomendação → próximo passo
+Análise/auditoria → diagnóstico → gaps → riscos → prioridades
+Briefing → estado atual → o que mudou → o que exige ação agora
+Conflitos: escale para Marcelo, nunca infira.`;
+
+function addMsg(role, text){
+  const msgs = document.getElementById('chat-msgs');
+  if(!msgs) return;
+  const div = document.createElement('div');
+  div.className = 'msg '+role+' fade-in';
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  if(role==='bot') bubble.innerHTML = '<div class="bubble-label">MB9</div>'+fmtTxt(text);
+  else bubble.innerHTML = fmtTxt(text);
+  div.appendChild(bubble);
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function fmtTxt(t){
+  return t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g,'<em>$1</em>')
+    .replace(/`(.*?)`/g,'<code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">$1</code>')
+    .replace(/
+/g,'<br/>');
+}
+
+function sendQ(q){
+  document.getElementById('chat-in').value=q;
+  if(!q.endsWith(' ')) sendMsg();
+  else document.getElementById('chat-in').focus();
+}
+
+async function sendMsg(){
+  const inp = document.getElementById('chat-in');
+  const text = inp.value.trim();
+  if(!text||chatLoading) return;
+  inp.value=''; inp.style.height='auto';
+  addMsg('user', text);
+  chatHistory.push({role:'user', content:text});
+  chatLoading=true;
+  document.getElementById('send-btn').disabled=true;
+
+  const msgs = document.getElementById('chat-msgs');
+  const think = document.createElement('div');
+  think.className='msg bot fade-in'; think.id='thinking';
+  think.innerHTML='<div class="bubble"><div class="bubble-label">MB9</div><div class="thinking"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(think); msgs.scrollTop=msgs.scrollHeight;
+
+  try{
+    // Contexto ao vivo do Supabase
+    let ctx = '';
+    try{
+      const [tasks, events] = await Promise.all([
+        fetch(`${SUPA_URL}/rest/v1/mb9.tasks?select=title,priority,status&order=created_at.desc&limit=8`,{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}}).then(r=>r.json()),
+        fetch(`${SUPA_URL}/rest/v1/mb9.events?select=event_type,occurred_at&order=occurred_at.desc&limit=5`,{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}}).then(r=>r.json())
+      ]);
+      const active = tasks.filter(t=>!['done','completed','cancelled'].includes((t.status||'').toLowerCase()));
+      ctx = `
+CONTEXTO AO VIVO (${new Date().toLocaleString('pt-BR')}):
+TAREFAS ATIVAS (${active.length}): ${active.map(t=>`${t.priority||'—'} | ${t.title}`).join(' | ')||'nenhuma'}
+EVENTOS RECENTES: ${events.map(e=>e.event_type).join(' | ')||'nenhum'}`;
+    }catch(e){}
+
+    const res = await fetch('https://api.openai.com/v1/chat/completions',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+OPENAI_KEY},
+      body: JSON.stringify({
+        model:'gpt-4o',
+        max_tokens:1500,
+        messages:[
+          {role:'system', content: MB9_SYSTEM + ctx},
+          ...chatHistory.slice(-14)
+        ]
+      })
+    });
+    const data = await res.json();
+    const reply = data.choices?.[0]?.message?.content || 'Erro na resposta.';
+    think.remove();
+    addMsg('bot', reply);
+    chatHistory.push({role:'assistant', content:reply});
+  }catch(e){
+    think.remove();
+    addMsg('bot','⚠️ Erro de conexão com a API OpenAI. Verifique a chave.');
+  }
+  chatLoading=false;
+  document.getElementById('send-btn').disabled=false;
+}
+
+// Auto-resize textarea
+document.addEventListener('DOMContentLoaded',()=>{
+  const ta = document.getElementById('chat-in');
+  if(ta) ta.addEventListener('input',function(){this.style.height='auto';this.style.height=Math.min(this.scrollHeight,120)+'px';});
+});
+
+// Saudação inicial do chat
+function initChat(){
+  const msgs = document.getElementById('chat-msgs');
+  if(msgs && msgs.children.length===0){
+    addMsg('bot','🟣 **ORION MB9 online.**\n\nOlá, Marcelo Baptista. Powered by GPT-4o.\n\n**Status crítico:**\n🔴 SYSPREV vMAX — 129 contratos aguardando HITL. Bloqueador: `amount=NULL`.\n🔴 Portal do Colaborador — Twilio shadow mode.\n🟡 AZI vMAX — conectado ao SysFlux.\n\nO que você quer atacar agora?');
+  }
+}
+
+function showTab(name,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>{p.classList.remove('on');p.style.display='none';});
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  const panel=document.getElementById('tab-'+name);
+  panel.classList.add('on');panel.style.display='flex';btn.classList.add('on');
+  if(name==='chat') setTimeout(initChat,100);
+}
+</script>
+</body>
+</html>
