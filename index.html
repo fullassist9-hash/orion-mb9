@@ -277,7 +277,7 @@ const SUPA_URL = 'https://lzqnqvonzzmwdbuewsdr.supabase.co';
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6cW5xdm9uenptd2RidWV3c2RyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkyMTYwNTMsImV4cCI6MjA5NDc5MjA1M30.FQplyGrrvKrp8YFthYRgwxCRdfyEZtZZPU_zdXbKVP4';
 
 // OPENAI — chat MB9
-const OPENAI_KEY = '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';
+// OPENAI_KEY removida — chamadas via proxy Supabase
 
 // SYSPREV vMAX / AZI vMAX — banco operacional e financeiro
 const VMAX_URL = 'https://oqvdxbnnvxklugpydrne.supabase.co';
@@ -773,9 +773,9 @@ TAREFAS ATIVAS (${active.length}): ${active.map(t=>`${t.priority||'—'} | ${t.t
 EVENTOS RECENTES: ${events.map(e=>e.event_type).join(' | ')||'nenhum'}`;
     }catch(e){}
 
-    const res = await fetch('https://api.openai.com/v1/chat/completions',{
+    const res = await fetch('https://oqvdxbnnvxklugpydrne.supabase.co/functions/v1/openai-proxy',{
       method:'POST',
-      headers:{'Content-Type':'application/json','Authorization':'Bearer '+OPENAI_KEY},
+      headers:{'Content-Type':'application/json',},
       body: JSON.stringify({
         model:'gpt-4o',
         max_tokens:1500,
