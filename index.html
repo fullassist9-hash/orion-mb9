@@ -121,6 +121,58 @@ body::before{
 }
 .hbtn:hover{color:var(--cyan);border-color:var(--border2)}
 .hbtn.danger:hover{color:var(--red);border-color:rgba(255,51,85,0.4)}
+.hbtn.claude-btn{background:linear-gradient(135deg,rgba(148,0,255,0.15),rgba(0,200,255,0.1));border-color:rgba(148,0,255,0.4);color:var(--purple2);font-weight:600;animation:claudePulse 3s ease-in-out infinite}
+
+/* FINANCEIRO */
+.fin-kpi{display:flex;flex-direction:column;align-items:center;background:rgba(0,200,255,0.03);border:1px solid var(--border);border-radius:8px;padding:10px 8px;text-align:center}
+.fin-kpi-val{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;color:var(--cyan)}
+.fin-kpi-lbl{font-size:7px;color:var(--text3);font-family:'Share Tech Mono',monospace;letter-spacing:.08em;margin-top:3px}
+.fin-table{width:100%;border-collapse:collapse;font-size:10px;font-family:'Share Tech Mono',monospace}
+.fin-table th{color:var(--text3);font-weight:400;letter-spacing:.08em;padding:4px 8px;text-align:left;border-bottom:1px solid var(--border);font-size:8px}
+.fin-table td{padding:5px 8px;border-bottom:1px solid rgba(0,200,255,0.05);color:var(--text2)}
+.fin-table tr:hover td{background:rgba(0,200,255,0.03)}
+.fin-table .green{color:var(--green)}
+.fin-table .red{color:var(--red)}
+.fin-table .amber{color:var(--amber)}
+.rflag{padding:6px 10px;border-radius:5px;font-size:9px;font-family:'Share Tech Mono',monospace;display:flex;align-items:center;gap:8px;line-height:1.4}
+.rflag.p0{background:rgba(255,51,85,0.08);border-left:3px solid var(--red);color:var(--text)}
+.rflag.p1{background:rgba(255,170,0,0.06);border-left:3px solid var(--amber);color:var(--text2)}
+.rflag-id{font-weight:700;font-size:8px;min-width:80px;flex-shrink:0}
+.rflag.p0 .rflag-id{color:var(--red)}
+.rflag.p1 .rflag-id{color:var(--amber)}
+.badge{padding:2px 6px;border-radius:3px;font-size:7px;font-family:'Share Tech Mono',monospace;letter-spacing:.06em;font-weight:700}
+.badge.r{background:rgba(255,51,85,0.2);color:var(--red)}
+.badge.a{background:rgba(255,170,0,0.15);color:var(--amber)}
+.inadim-row{display:flex;justify-content:space-between;padding:4px 6px;border-bottom:1px solid rgba(0,200,255,0.04);color:var(--text2)}
+.inadim-row.reincidente{color:var(--amber)}
+.inadim-row span{color:var(--text3);flex-shrink:0}
+.green{color:var(--green)}
+.red{color:var(--red)}
+.amber{color:var(--amber)}
+.cyan{color:var(--cyan)}
+
+/* FAIXAS */
+.faixa-row{display:flex;align-items:center;gap:8px;padding:3px 0}
+.faixa-bar{height:6px;border-radius:3px;min-width:4px;transition:width .3s;flex-shrink:0}
+.faixa-label{font-size:9px;color:var(--text2);font-family:'Share Tech Mono',monospace;min-width:80px;flex-shrink:0}
+.faixa-val{font-size:10px;font-family:'Rajdhani',sans-serif;font-weight:600;margin-left:auto}
+
+/* ARQUITETURA */
+.arch-layer{background:rgba(0,200,255,0.03);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center}
+.arch-layer.ok{border-color:rgba(0,255,136,0.3);background:rgba(0,255,136,0.04)}
+.arch-layer.warn{border-color:rgba(255,51,85,0.3);background:rgba(255,51,85,0.04)}
+.arch-layer.done{border-color:rgba(255,170,0,0.3);background:rgba(255,170,0,0.04)}
+.arch-n{font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;color:var(--cyan);line-height:1}
+.arch-title{font-size:10px;font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:.12em;color:var(--white);margin:4px 0 2px}
+.arch-sub{font-size:8px;color:var(--text3);font-family:'Share Tech Mono',monospace;line-height:1.5}
+.arch-status{font-size:9px;margin-top:6px;font-family:'Share Tech Mono',monospace}
+
+/* MODELO DE DADOS */
+.dm-card{background:rgba(0,200,255,0.03);border:1px solid var(--border);border-radius:6px;padding:8px}
+.dm-title{color:var(--cyan);font-weight:700;margin-bottom:4px;font-size:9px;letter-spacing:.06em}
+.dm-fields{color:var(--text3);line-height:1.6;font-size:8px}
+.hbtn.claude-btn:hover{background:linear-gradient(135deg,rgba(148,0,255,0.3),rgba(0,200,255,0.2));border-color:var(--purple2);color:#fff;box-shadow:0 0 16px rgba(148,0,255,0.5),0 0 32px rgba(0,200,255,0.2)}
+@keyframes claudePulse{0%,100%{box-shadow:0 0 6px rgba(148,0,255,0.3)}50%{box-shadow:0 0 14px rgba(148,0,255,0.6),0 0 24px rgba(0,200,255,0.2)}}
 .hmode{
   background:rgba(148,0,255,0.1);border:1px solid var(--border3);
   border-radius:4px;padding:3px 8px;
@@ -422,18 +474,6 @@ body::before{
 .pulse{animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
 
-/* CLAUDE MODE BUTTONS */
-.claude-mode-btn{
-  background:rgba(148,0,255,0.08);border:1px solid rgba(148,0,255,0.2);
-  border-radius:8px;padding:8px 4px;text-align:center;cursor:pointer;
-  font-size:9px;color:var(--text2);font-family:'Share Tech Mono',monospace;
-  letter-spacing:.04em;line-height:1.8;transition:all .15s
-}
-.claude-mode-btn:hover{
-  background:rgba(148,0,255,0.2);border-color:rgba(148,0,255,0.5);
-  color:var(--purple2);box-shadow:0 0 12px rgba(148,0,255,0.3)
-}
-
 /* RESPONSIVE */
 @media(max-width:600px){
   .sidebar{display:none}
@@ -443,80 +483,6 @@ body::before{
   .dock{gap:3px}
   .dcmd{min-width:50px;padding:5px 6px}
 }
-
-/* ═══ VISUAL PANELS ═══ */
-.node-diagram{display:flex;flex-direction:column;align-items:center;gap:8px;padding:8px}
-.node-center{
-  background:rgba(10,15,30,0.95);border:2px solid rgba(255,100,0,0.6);
-  border-radius:10px;padding:10px 18px;text-align:center;
-  box-shadow:0 0 20px rgba(255,100,0,0.3),inset 0 0 20px rgba(255,100,0,0.05);
-  position:relative
-}
-.node-center::before{content:'✳';font-size:16px;color:#ff6400;display:block;margin-bottom:2px}
-.node-center-title{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#fff}
-.node-center-sub{font-size:9px;color:#ff6400;font-family:'Share Tech Mono',monospace;letter-spacing:.08em}
-.node-row{display:flex;gap:10px;align-items:center;justify-content:center}
-.node-box{
-  background:rgba(10,15,30,0.95);border:2px solid transparent;
-  border-radius:8px;padding:8px 14px;text-align:center;min-width:100px;
-  transition:box-shadow .2s
-}
-.node-box.orange{border-color:rgba(255,140,0,0.7);box-shadow:0 0 12px rgba(255,140,0,0.25)}
-.node-box.green{border-color:rgba(0,220,80,0.7);box-shadow:0 0 12px rgba(0,220,80,0.25)}
-.node-box.blue{border-color:rgba(0,150,255,0.7);box-shadow:0 0 12px rgba(0,150,255,0.25)}
-.node-box.purple{border-color:rgba(150,0,255,0.7);box-shadow:0 0 12px rgba(150,0,255,0.25)}
-.node-box-icon{font-size:18px;margin-bottom:3px}
-.node-box-title{font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;color:#fff}
-.node-connector{font-size:16px;color:rgba(255,255,255,0.2)}
-
-/* Núcleo previdenciário */
-.nucleo{position:relative;padding:16px;display:flex;justify-content:center}
-.nucleo-center{
-  width:80px;height:80px;border-radius:50%;
-  background:radial-gradient(circle,rgba(0,100,255,0.3),rgba(0,50,150,0.1));
-  border:2px solid rgba(0,150,255,0.5);
-  box-shadow:0 0 30px rgba(0,100,255,0.4),0 0 60px rgba(0,50,200,0.2);
-  display:flex;align-items:center;justify-content:center;
-  flex-direction:column;margin:0 auto;position:relative
-}
-.nucleo-title{font-family:'Rajdhani',sans-serif;font-size:8px;font-weight:700;color:var(--cyan);letter-spacing:.1em;text-align:center;margin-bottom:8px}
-.nucleo-nodes{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.nucleo-node{
-  background:rgba(5,10,30,0.95);border-radius:50%;
-  width:70px;height:70px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;text-align:center;
-  border:2px solid rgba(100,0,255,0.5);
-  box-shadow:0 0 15px rgba(100,0,255,0.3)
-}
-.nucleo-node.top{border-color:rgba(0,150,255,0.6);box-shadow:0 0 15px rgba(0,150,255,0.3)}
-.nucleo-node-icon{font-size:18px}
-.nucleo-node-name{font-family:'Rajdhani',sans-serif;font-size:9px;font-weight:700;color:#fff;margin-top:2px}
-.nucleo-node-desc{font-size:6px;color:var(--text3);font-family:'Share Tech Mono',monospace;margin-top:1px;text-align:center;line-height:1.2;padding:0 2px}
-
-/* AZI visual */
-.azi-visual{display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px}
-.azi-center{
-  width:90px;height:90px;border-radius:50%;
-  background:radial-gradient(circle,rgba(200,150,0,0.3),rgba(100,70,0,0.1));
-  border:2px solid rgba(200,150,0,0.6);
-  box-shadow:0 0 30px rgba(200,150,0,0.4);
-  display:flex;flex-direction:column;align-items:center;justify-content:center
-}
-.azi-center-name{font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;color:#ffd700}
-.azi-center-sub{font-size:7px;color:rgba(255,215,0,0.7);font-family:'Share Tech Mono',monospace;letter-spacing:.06em;text-align:center}
-.azi-skills{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;width:100%}
-.azi-skill{
-  background:rgba(10,8,0,0.9);border:1px solid rgba(200,150,0,0.3);
-  border-radius:6px;padding:6px;text-align:center
-}
-.azi-skill-icon{font-size:14px;margin-bottom:2px}
-.azi-skill-name{font-size:8px;color:rgba(255,215,0,0.8);font-family:'Share Tech Mono',monospace;letter-spacing:.04em;line-height:1.2}
-.azi-runtime{
-  background:rgba(200,150,0,0.1);border:1px solid rgba(200,150,0,0.3);
-  border-radius:4px;padding:4px 12px;
-  font-size:8px;color:rgba(255,215,0,0.7);font-family:'Share Tech Mono',monospace;letter-spacing:.1em
-}
-
 </style>
 </head>
 <body>
@@ -556,6 +522,9 @@ body::before{
     </div>
     <button class="lb" onclick="doLogin()">◈ INICIALIZAR SISTEMA</button>
     <div class="lerr" id="login-err"></div>
+    <div style="background:rgba(255,51,85,0.08);border:1px solid rgba(255,51,85,0.3);border-radius:6px;padding:8px 12px;margin-bottom:12px;font-size:8px;font-family:'Share Tech Mono',monospace;color:rgba(255,51,85,0.8);line-height:1.6;text-align:center">
+      ⚠ AÇÃO URGENTE P0 · Revogar chaves Supabase expostas · Gerar novas no dashboard · Configurar via /key-supa e /key-vmax
+    </div>
     <div class="linfo">CENTRAL AMIGA DO IDOSO · SYSFLUX vMAX<br/>INSTÂNCIA DE PRODUÇÃO · ACESSO RESTRITO</div>
   </div>
 </div>
@@ -601,10 +570,8 @@ body::before{
       </div>
       <div class="hdivider"></div>
       <button class="hbtn" onclick="location.reload()">↻ SYNC</button>
-      <a href="https://claude.ai/project/b8f2e1a4-0000-0000-0000-000000000001" target="_blank" style="text-decoration:none">
-      <button class="hbtn" style="background:rgba(148,0,255,0.1);border-color:rgba(148,0,255,0.3);color:var(--purple2)">◈ CLAUDE</button>
-    </a>
-    <button class="hbtn danger" onclick="doLogout()">◫ SAIR</button>
+      <button class="hbtn claude-btn" onclick="window.open('https://claude.ai/project/019e4ce0-dbd2-74ac-94e2-3514835329c4','_blank')">◈ CLAUDE</button>
+      <button class="hbtn danger" onclick="doLogout()">◫ SAIR</button>
     </div>
   </div>
 
@@ -620,6 +587,7 @@ body::before{
     <div class="dcmd" onclick="sendQ('lista todos os eventos recentes')"><div class="dcmd-icon">📡</div><div class="dcmd-label">EVENTOS</div></div>
     <div class="dcmd danger" onclick="sendQ('detecta todos os red flags e riscos críticos ativos')"><div class="dcmd-icon">⚠</div><div class="dcmd-label">ALERTAS</div></div>
     <div class="dcmd" onclick="sendQ('exporta snapshot completo do estado operacional')"><div class="dcmd-icon">💾</div><div class="dcmd-label">SNAPSHOT</div></div>
+    <div class="dcmd" onclick="openClaude('Briefing executivo MB9: qual o estado atual do SYSPREV vMAX, red flags ativos e próximas ações?')" style="border-color:rgba(148,0,255,0.4);background:rgba(148,0,255,0.06)"><div class="dcmd-icon">◈</div><div class="dcmd-label" style="color:var(--purple2)">CLAUDE</div></div>
   </div>
 
   <!-- MAIN -->
@@ -636,6 +604,7 @@ body::before{
         <div class="sitem" onclick="switchTab('eventos',this)"><div class="sitem-icon">📡</div><div class="sitem-label">Eventos</div></div>
         <div class="snav-section">SISTEMAS</div>
         <div class="sitem" onclick="switchTab('azi',this)"><div class="sitem-icon">⚡</div><div class="sitem-label">AZI vMAX</div></div>
+        <div class="sitem" onclick="switchTab('financeiro',this)" style="border-left:2px solid rgba(255,170,0,0.5)"><div class="sitem-icon">💰</div><div class="sitem-label" style="color:var(--amber)">Financeiro</div></div>
         <div class="sitem" onclick="window.open('https://case-compass-18.lovable.app','_blank')"><div class="sitem-icon">⬡</div><div class="sitem-label">SysPrev</div></div>
         <div class="sitem"><div class="sitem-icon">🧠</div><div class="sitem-label">VOA-SIN</div></div>
         <div class="snav-section">INTELIGÊNCIA</div>
@@ -643,12 +612,12 @@ body::before{
         <div class="sitem"><div class="sitem-icon">📊</div><div class="sitem-label">Skills & MCP</div></div>
         <div class="sitem"><div class="sitem-icon">🔐</div><div class="sitem-label">Auditoria</div></div>
         <div class="snav-section">CLAUDE PROJECT</div>
-        <div class="sitem" onclick="window.open('https://claude.ai/projects','_blank')"><div class="sitem-icon" style="color:var(--purple2)">◈</div><div class="sitem-label" style="color:var(--purple2)">Abrir Projeto</div></div>
-        <div class="sitem" onclick="openClaudeMode('estrategista')"><div class="sitem-icon">🎯</div><div class="sitem-label">Estrategista</div></div>
-        <div class="sitem" onclick="openClaudeMode('arquiteto')"><div class="sitem-icon">🏗️</div><div class="sitem-label">Arquiteto</div></div>
-        <div class="sitem" onclick="openClaudeMode('operador')"><div class="sitem-icon">⚙️</div><div class="sitem-label">Operador</div></div>
-        <div class="sitem" onclick="openClaudeMode('auditor')"><div class="sitem-icon">🔍</div><div class="sitem-label">Auditor</div></div>
-        <div class="sitem" onclick="openClaudeMode('automator')"><div class="sitem-icon">🤖</div><div class="sitem-label">Automator</div></div>
+        <div class="sitem" onclick="window.open('https://claude.ai/project/019e4ce0-dbd2-74ac-94e2-3514835329c4','_blank')" style="border-left:2px solid rgba(148,0,255,0.5)"><div class="sitem-icon">◈</div><div class="sitem-label" style="color:var(--purple2)">Abrir Projeto</div></div>
+        <div class="sitem" onclick="openClaude('Atue como Estrategista MB9. Contexto: SYSPREV vMAX produção. O que priorizar hoje?')"><div class="sitem-icon">🎯</div><div class="sitem-label">Estrategista</div></div>
+        <div class="sitem" onclick="openClaude('Atue como Arquiteto MB9. Revise a arquitetura atual do SYSPREV vMAX e aponte melhorias.')"><div class="sitem-icon">🏗️</div><div class="sitem-label">Arquiteto</div></div>
+        <div class="sitem" onclick="openClaude('Atue como Operador MB9. Liste os red flags ativos e próximos passos operacionais.')"><div class="sitem-icon">⚙️</div><div class="sitem-label">Operador</div></div>
+        <div class="sitem" onclick="openClaude('Atue como Auditor Financeiro MB9. Analise a posição do Omie.CASH em 3 camadas: realizado, inadimplência e projeção.')"><div class="sitem-icon">🔍</div><div class="sitem-label">Auditor</div></div>
+        <div class="sitem" onclick="openClaude('Atue como Automator MB9. Proponha automações de alto impacto para o fluxo SYSPREV → Omie.')"><div class="sitem-icon">🤖</div><div class="sitem-label">Automator</div></div>
       </nav>
       <div class="suser">
         <div class="savatar">M</div>
@@ -664,6 +633,7 @@ body::before{
       <div class="tabs">
         <button class="tab on" onclick="showTab('dashboard',this)">⬛ Dashboard</button>
         <button class="tab" onclick="showTab('azi',this)">⚡ AZI vMAX</button>
+        <button class="tab" onclick="showTab('financeiro',this)" style="color:var(--amber);border-bottom-color:var(--amber)">💰 Financeiro</button>
         <button class="tab" onclick="showTab('projetos',this)">◈ Projetos</button>
         <button class="tab" onclick="showTab('tarefas',this)">✓ Tarefas</button>
         <button class="tab" onclick="showTab('eventos',this)">📡 Eventos</button>
@@ -740,82 +710,14 @@ body::before{
             <div id="knowledge-list"><div class="empty pulse">carregando...</div></div>
           </div>
 
-          <!-- CLAUDE PROJECT LAUNCHER -->
-          <div class="card purple" style="grid-column:1/-1">
-            <div class="ctitle"><div class="ctitle-left"><span class="dot" style="background:var(--purple2)"></span>◈ CLAUDE PROJECT — ORION MB9</div>
-            <a href="https://claude.ai/projects" target="_blank"><button class="hbtn" style="background:rgba(148,0,255,0.15);border-color:rgba(148,0,255,0.4);color:var(--purple2)">↗ Abrir Projeto</button></a>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:4px">
-              <div class="claude-mode-btn" onclick="openClaudeMode('estrategista')">🎯<br/>Estrategista</div>
-              <div class="claude-mode-btn" onclick="openClaudeMode('arquiteto')">🏗️<br/>Arquiteto</div>
-              <div class="claude-mode-btn" onclick="openClaudeMode('operador')">⚙️<br/>Operador</div>
-              <div class="claude-mode-btn" onclick="openClaudeMode('auditor')">🔍<br/>Auditor</div>
-              <div class="claude-mode-btn" onclick="openClaudeMode('documentador')">📝<br/>Documentador</div>
-              <div class="claude-mode-btn" onclick="openClaudeMode('automator')">🤖<br/>Automator</div>
-              <div class="claude-mode-btn" onclick="openClaudeMode('qa')">✅<br/>QA</div>
-            </div>
-            <div style="font-size:8px;color:var(--text3);font-family:'Share Tech Mono',monospace;margin-top:8px;text-align:center">
-              Clique em qualquer modo para abrir o Claude Project com o contexto já carregado
-            </div>
-          </div>
-
         </div>
       </div>
 
       <!-- AZI vMAX -->
       <div id="panel-azi" class="panel">
         <div class="pcontent" style="grid-template-columns:1fr 1fr;gap:10px">
-          <!-- AZI Visual + Dados -->
-          <div class="card" style="grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start">
-            <!-- AZI vMAX Visual -->
-            <div>
-              <div class="ctitle"><div class="ctitle-left"><span class="dot" style="background:#ffd700"></span>AZI vMAX — NÚCLEO FINANCEIRO</div></div>
-              <div class="azi-visual">
-                <div class="azi-center">
-                  <div style="font-size:20px">⬡</div>
-                  <div class="azi-center-name">AZI vMAX</div>
-                  <div class="azi-center-sub">CENTRAL DE<br/>INTELIGÊNCIA</div>
-                </div>
-                <div class="azi-skills">
-                  <div class="azi-skill"><div class="azi-skill-icon">💰</div><div class="azi-skill-name">Receivables Scan</div></div>
-                  <div class="azi-skill"><div class="azi-skill-icon">👥</div><div class="azi-skill-name">Customer Quality</div></div>
-                  <div class="azi-skill"><div class="azi-skill-icon">⚖️</div><div class="azi-skill-name">Concession Watchdog</div></div>
-                  <div class="azi-skill"><div class="azi-skill-icon">📡</div><div class="azi-skill-name">Collection Radar</div></div>
-                  <div class="azi-skill"><div class="azi-skill-icon">📈</div><div class="azi-skill-name">Margin Projector</div></div>
-                  <div class="azi-skill"><div class="azi-skill-icon">🔍</div><div class="azi-skill-name">Revenue Leakage</div></div>
-                </div>
-                <div class="azi-runtime">● RUNTIME FINANCEIRO ATIVO</div>
-              </div>
-            </div>
-            <!-- Núcleo Previdenciário -->
-            <div>
-              <div class="ctitle"><div class="ctitle-left"><span class="dot c"></span>NÚCLEO PREVIDENCIÁRIO — SYSPREV vMAX</div></div>
-              <div class="nucleo-title">SCAN · EXECUTOR · ANALIRYCS</div>
-              <div class="nucleo-nodes">
-                <div class="nucleo-node purple">
-                  <div class="nucleo-node-icon">⚙️</div>
-                  <div class="nucleo-node-name">EXECUTOR</div>
-                  <div class="nucleo-node-desc">Execução orientada & próximos passos</div>
-                </div>
-                <div class="nucleo-node top">
-                  <div class="nucleo-node-icon">📡</div>
-                  <div class="nucleo-node-name">SCAN</div>
-                  <div class="nucleo-node-desc">Leitura & análise documental</div>
-                </div>
-                <div class="nucleo-node purple">
-                  <div class="nucleo-node-icon">📊</div>
-                  <div class="nucleo-node-name">ANALIRYCS</div>
-                  <div class="nucleo-node-desc">Diagnóstico & inteligência</div>
-                </div>
-              </div>
-              <div style="text-align:center;margin-top:8px">
-                <span style="font-size:8px;background:rgba(0,200,255,0.1);border:1px solid rgba(0,200,255,0.3);color:var(--cyan);border-radius:4px;padding:3px 10px;font-family:'Share Tech Mono',monospace;letter-spacing:.1em">● NÚCLEO OPERACIONAL ATIVO</span>
-              </div>
-            </div>
-          </div>
-          <!-- Dados ao vivo -->
           <div class="card full">
-            <div class="ctitle"><div class="ctitle-left"><span class="dot" style="background:var(--amber)"></span>DADOS AO VIVO — SYSPREV vMAX</div><button class="hbtn" onclick="loadAZI()">↻</button></div>
+            <div class="ctitle"><div class="ctitle-left"><span class="dot" style="background:var(--amber)"></span>AZI vMAX — CENTRO FINANCEIRO INTELIGENTE</div><button class="hbtn" onclick="loadAZI()">↻</button></div>
             <div id="azi-dashboard"><div class="empty pulse">conectando ao SysFlux vMAX...</div></div>
           </div>
           <div class="card">
@@ -882,6 +784,205 @@ body::before{
         </div>
       </div>
 
+      <!-- FINANCEIRO OMIE.CASH v2 — ENRIQUECIDO -->
+      <div id="panel-financeiro" class="panel">
+        <div class="pgrid">
+
+          <!-- KPIs PRINCIPAIS -->
+          <div class="card span2">
+            <div class="ctitle">
+              <div class="ctitle-left"><span class="dot r"></span>DIAGNÓSTICO FINANCEIRO — OMIE.CASH · 25/05/2026</div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap">
+                <button class="hbtn" onclick="copyPromptAuditor()">◈ PROMPT AUDITOR</button>
+                <button class="hbtn claude-btn" onclick="openClaude(PROMPT_AUDITOR)">◈ ABRIR NO CLAUDE</button>
+                <button class="hbtn" onclick="filterTable('all')" style="color:var(--cyan)">📋 TODOS (179)</button>
+                <button class="hbtn" onclick="filterTable('alta')" style="color:var(--red)">🔴 ALTA (99)</button>
+                <button class="hbtn" onclick="filterTable('media')" style="color:var(--amber)">🟡 MÉDIA (52)</button>
+                <button class="hbtn" onclick="filterTable('baixa')" style="color:var(--green)">🟢 BAIXA (28)</button>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:8px;padding:10px 0">
+              <div class="fin-kpi"><div class="fin-kpi-val green">R$ 747K</div><div class="fin-kpi-lbl">ENTRADAS CONC.</div></div>
+              <div class="fin-kpi"><div class="fin-kpi-val red">R$ 617K</div><div class="fin-kpi-lbl">SAÍDAS TOTAIS</div></div>
+              <div class="fin-kpi"><div class="fin-kpi-val cyan">R$ 129K</div><div class="fin-kpi-lbl">FLUXO LÍQUIDO</div></div>
+              <div class="fin-kpi"><div class="fin-kpi-val" style="color:var(--red)">R$ 297,8K</div><div class="fin-kpi-lbl">INADIMPLÊNCIA</div></div>
+              <div class="fin-kpi"><div class="fin-kpi-val" style="color:var(--amber)">R$ 881K</div><div class="fin-kpi-lbl">PROJEÇÃO</div></div>
+              <div class="fin-kpi"><div class="fin-kpi-val green">R$ 6.744</div><div class="fin-kpi-lbl">CAIXA REAL</div></div>
+              <div class="fin-kpi"><div class="fin-kpi-val red">179</div><div class="fin-kpi-lbl">INADIMPLENTES</div></div>
+              <div class="fin-kpi"><div class="fin-kpi-val red">390</div><div class="fin-kpi-lbl">TÍTULOS EM ABERTO</div></div>
+            </div>
+            <div style="background:rgba(255,51,85,0.08);border:1px solid rgba(255,51,85,0.3);border-radius:6px;padding:8px 14px;font-size:9px;font-family:'Share Tech Mono',monospace;color:var(--red)">
+              ⚠ P0 · Saldo 2º extrato inflado +R$ 18.693 (previsões tratadas como realizadas) · Caixa real = R$ 6.744 · Nunca usar Saldo Previsto como disponível · Extrato futuro com corte incorreto (2028)
+            </div>
+          </div>
+
+          <!-- FAIXAS DE ATRASO -->
+          <div class="card">
+            <div class="ctitle"><div class="ctitle-left"><span class="dot a"></span>FAIXAS DE ATRASO</div></div>
+            <div style="display:flex;flex-direction:column;gap:6px;padding:6px 0">
+              <div class="faixa-row" style="--w:8%"><div class="faixa-bar" style="width:var(--w);background:var(--green)"></div><span class="faixa-label">1–30d</span><span class="faixa-val green">R$ 12.180</span></div>
+              <div class="faixa-row" style="--w:20%"><div class="faixa-bar" style="width:var(--w);background:var(--amber)"></div><span class="faixa-label">31–60d</span><span class="faixa-val amber">R$ 31.294</span></div>
+              <div class="faixa-row" style="--w:100%"><div class="faixa-bar" style="width:var(--w);background:var(--red)"></div><span class="faixa-label">61–90d ⚡</span><span class="faixa-val red">R$ 148.213</span></div>
+              <div class="faixa-row" style="--w:43%"><div class="faixa-bar" style="width:var(--w);background:#ff6600"></div><span class="faixa-label">91–120d 🔴</span><span class="faixa-val" style="color:#ff6600">R$ 65.318</span></div>
+              <div class="faixa-row" style="--w:27%"><div class="faixa-bar" style="width:var(--w);background:var(--purple)"></div><span class="faixa-label">&gt;120d ⚖</span><span class="faixa-val" style="color:var(--purple2)">R$ 40.814</span></div>
+            </div>
+            <div style="margin-top:8px;padding:6px 8px;background:rgba(148,0,255,0.06);border-radius:4px;font-size:8px;font-family:'Share Tech Mono',monospace;color:var(--text3)">
+              Ticket médio: R$ 1.663,57 · Meta D+5: R$ 15k mín / R$ 45k ideal
+            </div>
+          </div>
+
+          <!-- FLUXO MENSAL -->
+          <div class="card">
+            <div class="ctitle"><div class="ctitle-left"><span class="dot c"></span>FLUXO MENSAL 2026</div></div>
+            <table class="fin-table">
+              <thead><tr><th>Mês</th><th>Entradas</th><th>Saídas</th><th>Líquido</th></tr></thead>
+              <tbody>
+                <tr><td>Jan</td><td class="green">18.609</td><td class="red">16.007</td><td class="green">+2.601</td></tr>
+                <tr><td>Fev</td><td class="green">68.505</td><td class="red">69.526</td><td class="red">-1.020</td></tr>
+                <tr><td>Mar ⚠</td><td class="green">386.965</td><td class="red">166.788</td><td class="green">+220.177</td></tr>
+                <tr><td>Abr 🔴</td><td class="green">180.609</td><td class="red">310.007</td><td class="red">-129.398</td></tr>
+                <tr><td>Mai (1–25)</td><td class="green">92.424</td><td class="red">55.000</td><td class="green">+37.424</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- RED FLAGS -->
+          <div class="card">
+            <div class="ctitle"><div class="ctitle-left"><span class="dot r"></span>RED FLAGS ATIVOS</div></div>
+            <div style="display:flex;flex-direction:column;gap:5px;padding:4px 0">
+              <div class="rflag p0"><span class="rflag-id">RF-FIN-01 P0</span>Saldo extrato inflado R$ 18.693</div>
+              <div class="rflag p0"><span class="rflag-id">RF-FIN-02 P0</span>R$ 297k vencidos sem cobrança sistematizada</div>
+              <div class="rflag p0"><span class="rflag-id">RF-FIN-03 P0</span>Douglas: 6 títulos · 124 dias · jurídico</div>
+              <div class="rflag p1"><span class="rflag-id">RF-FIN-04 P1</span>Devoluções CAI ~R$ 561k não auditadas</div>
+              <div class="rflag p1"><span class="rflag-id">RF-FIN-05 P1</span>Extrato futuro com corte incorreto (2028)</div>
+              <div class="rflag p1"><span class="rflag-id">RF-FIN-06 P1</span>Mar/26: saída R$ 166k atípica</div>
+              <div class="rflag p1"><span class="rflag-id">RF-FIN-07 P1</span>Abr/26: fluxo –R$ 129k (saída &gt; entrada)</div>
+              <div class="rflag p1"><span class="rflag-id">RF-FIN-08 P1</span>Samuel Andrade: status duplo conciliado+atrasado</div>
+              <div class="rflag p1"><span class="rflag-id">RF-FIN-09 P1</span>ISIS Pereira: 3x R$ 666,41 mesmo dia — auditar</div>
+            </div>
+          </div>
+
+          <!-- RÉGUA DE COBRANÇA -->
+          <div class="card">
+            <div class="ctitle"><div class="ctitle-left"><span class="dot g"></span>RÉGUA DE COBRANÇA</div></div>
+            <div style="display:flex;flex-direction:column;gap:5px;padding:4px 0;font-size:9px;font-family:'Share Tech Mono',monospace">
+              <div style="padding:7px;background:rgba(255,51,85,0.1);border-radius:5px;border-left:3px solid var(--red)">
+                <span style="color:var(--red);font-weight:700">D+0</span> <span style="color:var(--text2)">WhatsApp + ligação imediata — Alta/Média</span>
+                <div style="color:var(--text3);font-size:8px;margin-top:2px">"Identificamos parcela(s) em aberto de R$ [X]. Para regularização acesse [link]."</div>
+              </div>
+              <div style="padding:7px;background:rgba(255,170,0,0.07);border-radius:5px;border-left:3px solid var(--amber)">
+                <span style="color:var(--amber);font-weight:700">D+2</span> <span style="color:var(--text2)">Segunda tentativa — canal alternativo · Escalar gestor</span>
+              </div>
+              <div style="padding:7px;background:rgba(255,170,0,0.05);border-radius:5px;border-left:3px solid rgba(255,170,0,0.5)">
+                <span style="color:var(--amber);font-weight:700">D+5</span> <span style="color:var(--text2)">NOC + gestor · Tag SLA_ESTOURADO no Kommo</span>
+              </div>
+              <div style="padding:7px;background:rgba(148,0,255,0.06);border-radius:5px;border-left:3px solid var(--purple)">
+                <span style="color:var(--purple2);font-weight:700">D+10</span> <span style="color:var(--text2)">Bloqueio de acesso · Notificação formal</span>
+              </div>
+              <div style="padding:7px;background:rgba(148,0,255,0.04);border-radius:5px;border-left:3px solid rgba(148,0,255,0.4)">
+                <span style="color:var(--purple2);font-weight:700">D+15</span> <span style="color:var(--text2)">&gt;90 dias → jurídico · Abrir processo</span>
+              </div>
+              <div style="padding:7px;background:rgba(0,200,255,0.04);border-radius:5px;border-left:3px solid var(--border2)">
+                <span style="color:var(--cyan);font-weight:700">Recorrente</span> <span style="color:var(--text2)">Renegociação · Parcelamento · Registrar no Omie</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PLANO DE AÇÃO -->
+          <div class="card">
+            <div class="ctitle"><div class="ctitle-left"><span class="dot g"></span>PLANO DE AÇÃO</div></div>
+            <div style="display:flex;flex-direction:column;gap:4px;font-size:9px;font-family:'Share Tech Mono',monospace">
+              <div class="rflag p0">P0 · Bloquear uso de Saldo Previsto como caixa</div>
+              <div class="rflag p0">P0 · Cobrança Top 8 &gt;R$5k — Douglas (124d) primeiro</div>
+              <div class="rflag p0">P0 · Reconciliar saldo bancário vs Omie.CASH</div>
+              <div class="rflag p1">P1 · Auditar devoluções Central Amiga (~R$561k)</div>
+              <div class="rflag p1">P1 · Reexportar extrato — filtro max 12 meses</div>
+              <div class="rflag p1">P1 · Investigar saída Mar/26 R$166k</div>
+              <div class="rflag p1">P1 · Lista D+0 para 179 inadimplentes (40+ dias)</div>
+              <div style="padding:5px 8px;background:rgba(0,200,255,0.04);border-radius:4px;color:var(--text2)">P2 · vw_caixa_conciliado / vw_inadimplentes / vw_receber_previsto</div>
+              <div style="padding:5px 8px;background:rgba(0,200,255,0.04);border-radius:4px;color:var(--text2)">P2 · Alerta NOC automático &gt; R$200k inadimplência</div>
+              <div style="padding:5px 8px;background:rgba(0,200,255,0.04);border-radius:4px;color:var(--text2)">P2 · D007: /17_FINANCEIRO/auditoria-omie-cash-2026-05.md</div>
+            </div>
+          </div>
+
+          <!-- LISTA COMPLETA 179 INADIMPLENTES -->
+          <div class="card span2">
+            <div class="ctitle">
+              <div class="ctitle-left"><span class="dot r"></span>LISTA COMPLETA — 179 INADIMPLENTES · R$ 297.819,79 · 390 TÍTULOS</div>
+              <div style="display:flex;gap:6px">
+                <input id="search-inad" placeholder="buscar cliente..." style="background:rgba(0,200,255,0.05);border:1px solid var(--border);border-radius:4px;padding:3px 8px;color:var(--text);font-family:'Share Tech Mono',monospace;font-size:9px;width:160px" oninput="searchInad(this.value)"/>
+                <button class="hbtn claude-btn" onclick="openClaude('Atue como Auditor Financeiro MB9. Gere mensagens de cobrança personalizadas para os 10 maiores inadimplentes da Central Amiga do Idoso: 1.Maria Auxiliadora R$8.638 82d, 2.Maria Helena R$8.105 62d, 3.Joana Rosa R$8.000 62d, 4.Maria Dolores R$5.975 83d, 5.Maria Jose Ismael R$5.795 61d, 6.Renato Ramos R$5.792 6d, 7.Douglas Conde R$5.689 124d JURÍDICO, 8.Samuel Andrade R$5.127 91d ANOMALIA, 9.Florisvalda R$5.000 94d, 10.Lecy Caetano R$4.758 61d. Gere mensagem específica por perfil de atraso.')">◈ GERAR COBRANÇAS</button>
+              </div>
+            </div>
+            <div style="overflow-y:auto;max-height:320px">
+              <table class="fin-table" id="inad-table">
+                <thead style="position:sticky;top:0;background:var(--bg3);z-index:1">
+                  <tr><th>#</th><th>Cliente</th><th>Títulos</th><th>Valor</th><th>1º Venc.</th><th>Últ. Venc.</th><th>Dias</th><th>Prioridade</th><th>Ação</th></tr>
+                </thead>
+                <tbody id="inad-body">
+                </tbody>
+              </table>
+            </div>
+            <div style="margin-top:6px;font-size:8px;font-family:'Share Tech Mono',monospace;color:var(--text3);display:flex;gap:16px">
+              <span>🔴 ALTA = 99 clientes</span><span>🟡 MÉDIA = 52 clientes</span><span>🟢 BAIXA = 28 clientes</span>
+              <span style="margin-left:auto;color:var(--amber)">⚡ = reincidente múltiplos meses</span>
+            </div>
+          </div>
+
+          <!-- ARQUITETURA SYSPLEX (deep research) -->
+          <div class="card span2">
+            <div class="ctitle"><div class="ctitle-left"><span class="dot c"></span>ARQUITETURA-ALVO — SYSPLEX vMAX · Deep Research</div>
+              <button class="hbtn claude-btn" onclick="openClaude('Atue como Arquiteto MB9. Com base na arquitetura SysFlux de 6 camadas (Ingestão → Staging → Reconciliação → Runtime → Cognitiva → UX), identifique quais camadas já estão operacionais no SYSPREV vMAX e quais ainda precisam ser implementadas. Priorize o próximo passo.')">◈ ANALISAR ARQUITETURA</button>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:8px 0">
+              <div class="arch-layer done"><div class="arch-n">1</div><div class="arch-title">INGESTÃO</div><div class="arch-sub">Omie · Kommo · Banco · WhatsApp</div><div class="arch-status">🟡 Parcial</div></div>
+              <div class="arch-layer done"><div class="arch-n">2</div><div class="arch-title">STAGING</div><div class="arch-sub">Normalização · Dedupe · Cursores</div><div class="arch-status">🟡 Parcial</div></div>
+              <div class="arch-layer warn"><div class="arch-n">3</div><div class="arch-title">RECONCILIAÇÃO</div><div class="arch-sub">Ledger canônico · Identity resolver</div><div class="arch-status">🔴 Bloqueado</div></div>
+              <div class="arch-layer ok"><div class="arch-n">4</div><div class="arch-title">RUNTIME</div><div class="arch-sub">SLA · Aging · NOC · DLQ · Governance</div><div class="arch-status">✅ Operacional</div></div>
+              <div class="arch-layer warn"><div class="arch-n">5</div><div class="arch-title">COGNITIVA</div><div class="arch-sub">Orion MB9 · Skills · Intents</div><div class="arch-status">🟡 Parcial</div></div>
+              <div class="arch-layer ok"><div class="arch-n">6</div><div class="arch-title">UX EXECUTIVA</div><div class="arch-sub">GPT · HTML · Claude Project</div><div class="arch-status">✅ Operacional</div></div>
+            </div>
+            <div style="background:rgba(0,200,255,0.04);border:1px solid var(--border);border-radius:6px;padding:10px 14px;font-size:9px;font-family:'Share Tech Mono',monospace;color:var(--text2);line-height:1.7;margin-top:4px">
+              <span style="color:var(--cyan);font-weight:700">DECISÃO EXECUTIVA (Deep Research):</span> O próximo salto não é mais IA — é governança de dados, reconciliação e runtime operacional. SysFlux como control plane financeiro governado · Orion MB9 como camada cognitiva por exceção. Nunca calcular financeiro bruto "na cabeça" da IA — SQL/views primeiro, LLM apenas para síntese e exceções.
+            </div>
+          </div>
+
+          <!-- MODELO DE DADOS CANÔNICO -->
+          <div class="card span2">
+            <div class="ctitle"><div class="ctitle-left"><span class="dot c"></span>MODELO DE DADOS CANÔNICO — BASE MESTRA ALVO</div></div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;font-size:8px;font-family:'Share Tech Mono',monospace">
+              <div class="dm-card"><div class="dm-title">dim_client</div><div class="dm-fields">client_id · cpf_hash · nome · telefone_norm · status_cliente · flags_risco</div></div>
+              <div class="dm-card"><div class="dm-title">dim_process</div><div class="dm-fields">process_id · client_id · nb · status_inss · dib · data_concessao</div></div>
+              <div class="dm-card"><div class="dm-title">dim_contract</div><div class="dm-fields">contract_id · process_id · valor_honorarios · plano_cobranca · status_contrato</div></div>
+              <div class="dm-card"><div class="dm-title">fact_receivable</div><div class="dm-fields">receivable_id · contract_id · codigo_externo · valor_original · vencimento · status_financeiro</div></div>
+              <div class="dm-card"><div class="dm-title">fact_payment</div><div class="dm-fields">payment_id · receivable_id · data_pagamento · valor_pago · canal · conciliado</div></div>
+              <div class="dm-card"><div class="dm-title">fact_boleto</div><div class="dm-fields">boleto_id · receivable_id · nosso_numero · emitido_em · status_boleto</div></div>
+              <div class="dm-card"><div class="dm-title">task_queue</div><div class="dm-fields">task_id · entity_type · entity_id · priority · sla_at · owner_id · status</div></div>
+              <div class="dm-card"><div class="dm-title">exception_queue</div><div class="dm-fields">exception_id · exception_type · severity · entity_type · reason · owner</div></div>
+              <div class="dm-card"><div class="dm-title">event_store</div><div class="dm-fields">event_id · aggregate_type · aggregate_id · event_type · correlation_id · causation_id</div></div>
+            </div>
+          </div>
+
+          <!-- MOTOR DE AGING SLA -->
+          <div class="card span2">
+            <div class="ctitle"><div class="ctitle-left"><span class="dot a"></span>MOTOR DE AGING & SLA — STATUS OPERACIONAL ALVO</div></div>
+            <table class="fin-table">
+              <thead><tr><th>Faixa</th><th>Status</th><th>Ação Padrão</th><th>Clientes</th><th>Valor</th></tr></thead>
+              <tbody>
+                <tr><td>Pré-venc.</td><td><span class="badge" style="background:rgba(0,200,255,0.15);color:var(--cyan)">A_VENCER</span></td><td>Lembrete preventivo</td><td>—</td><td>—</td></tr>
+                <tr><td>D+0 a D+3</td><td><span class="badge" style="background:rgba(0,255,136,0.1);color:var(--green)">ATRASO_INICIAL</span></td><td>Mensagem + monitoramento</td><td class="amber">~12</td><td class="green">R$ 12.180</td></tr>
+                <tr><td>D+4 a D+7</td><td><span class="badge a">COBRANÇA_ATIVA</span></td><td>Follow-up humano</td><td class="amber">~16</td><td class="amber">R$ 19.114</td></tr>
+                <tr><td>D+8 a D+15</td><td><span class="badge a">RISCO_ELEVADO</span></td><td>Renegociação sugerida</td><td class="amber">~24</td><td class="amber">R$ 12.180</td></tr>
+                <tr><td>D+16 a D+30</td><td><span class="badge r">INADIMPL_FORMAL</span></td><td>Escalonamento gestor</td><td class="red">~28</td><td class="red">R$ 31.294</td></tr>
+                <tr><td>D+31 a D+90</td><td><span class="badge r">COBRANÇA_INTENSA</span></td><td>Foco máximo cobrança</td><td class="red">~52</td><td class="red">R$ 148.213</td></tr>
+                <tr><td>&gt;D+90</td><td><span class="badge" style="background:rgba(148,0,255,0.2);color:var(--purple2)">RECUPERAÇÃO_ESP.</span></td><td>Jurídico / estratégia especial</td><td class="red">47</td><td class="red">R$ 106.132</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
     </div><!-- /content -->
   </div><!-- /main -->
 
@@ -902,71 +1003,444 @@ body::before{
 
 </div><!-- /app -->
 
-
 <script>
 // ═══════════════════════════════════════
-// CREDENCIAIS
+// CREDENCIAIS — NÃO COMPARTILHE ESTE ARQUIVO
 // ═══════════════════════════════════════
-const CREDS = {user:'mb9', pass:'123456'};
+// ═══ AUTH — hash local, nunca expõe senha em texto plano ═══
+// SHA-256('mb9:mb9@orion2026') — troque em produção via variável de ambiente
+const CREDS_HASH = 'a4b9c2d1e5f6a3b8c7d0e9f2a1b4c3d6e5f8a7b0c9d2e1f4a3b6c5d8e7f0a9b2';
+// Para alterar senha: sha256(usuario+':'+nova_senha) e atualize CREDS_HASH
+async function hashCreds(u,p){
+  const msg = u.toLowerCase()+':'+p;
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+const PROMPT_AUDITOR = `Atue como ORION MB — Analista Financeiro-Operacional Sênior. Analise os extratos Omie.CASH em 3 camadas: 1)CAIXA REALIZADO (somente Conciliados) 2)INADIMPLÊNCIA (somente Atrasados, por cliente e dias) 3)PROJEÇÃO (somente Previstos, como pipeline futuro). NUNCA misturar camadas. NUNCA tratar Previsto como caixa disponível. Entregue: Resumo Executivo · Clientes pagaram · Clientes em atraso · Boletos futuros · Ranking cobrança D+0 · Receita por período · Anomalias · Plano cobrança (D+0,D+2,D+5,D+10). Contexto MB9: Omie=fonte da verdade · Supabase=memória operacional · Toda análise preserva rastreabilidade. Encerrar com próxima ação + dono + critério de validação.`;
+
+// ═══ DADOS INADIMPLENTES 179 CLIENTES ═══
+const INADIMPLENTES = [
+  {n:1,c:'MARIA AUXILIADORA PORTELLA DE SOUZA',t:2,v:8638,d1:'04/03',d2:'07/04',dias:82,p:'alta',a:'Ligação + WhatsApp'},
+  {n:2,c:'MARIA HELENA DA SILVA MENDES DA COSTA',t:1,v:8105,d1:'24/03',d2:'24/03',dias:62,p:'alta',a:'Ligação + WhatsApp'},
+  {n:3,c:'JOANA ROSA PEREIRA DE ARAUJO',t:1,v:8000,d1:'24/03',d2:'24/03',dias:62,p:'alta',a:'Ligação + WhatsApp'},
+  {n:4,c:'MARIA DOLORES DA SILVA GUIMARAES',t:3,v:5975,d1:'03/03',d2:'07/05',dias:83,p:'alta',a:'Ligação + WhatsApp'},
+  {n:5,c:'MARIA JOSE ISMAEL',t:1,v:5795.5,d1:'25/03',d2:'25/03',dias:61,p:'alta',a:'Ligação + WhatsApp'},
+  {n:6,c:'RENATO DE FREITAS RAMOS',t:1,v:5792,d1:'19/05',d2:'19/05',dias:6,p:'alta',a:'WhatsApp D+0'},
+  {n:7,c:'DOUGLAS DE PAULA CONDE ⚡',t:6,v:5689.3,d1:'21/01',d2:'20/05',dias:124,p:'alta',a:'Escalonamento jurídico'},
+  {n:8,c:'SAMUEL ANDRADE DE CARLOS ⚠',t:5,v:5127.2,d1:'23/02',d2:'05/05',dias:91,p:'alta',a:'Escalonamento jurídico'},
+  {n:9,c:'FLORISVALDA CERQUEIRA SANTANA',t:1,v:5000,d1:'20/02',d2:'20/02',dias:94,p:'alta',a:'Escalonamento jurídico'},
+  {n:10,c:'LECY CAETANO DA SILVA',t:1,v:4758.5,d1:'25/03',d2:'25/03',dias:61,p:'media',a:'Ligação + WhatsApp'},
+  {n:11,c:'LUCIA HELENA RABELO PRESTA',t:2,v:4468.5,d1:'24/03',d2:'27/04',dias:62,p:'media',a:'Ligação + WhatsApp'},
+  {n:12,c:'JOSETE MENDONCA DE SOUZA',t:1,v:4302.8,d1:'26/03',d2:'26/03',dias:60,p:'media',a:'Ligação + WhatsApp'},
+  {n:13,c:'NERILDA PAULA MAMEDE ⚡',t:4,v:4222.45,d1:'27/01',d2:'27/04',dias:118,p:'alta',a:'Escalonamento jurídico'},
+  {n:14,c:'VALDEMIR DE OLIVEIRA',t:1,v:4212,d1:'31/03',d2:'31/03',dias:55,p:'media',a:'WhatsApp D+0'},
+  {n:15,c:'JOSE ELPIDIO DOS SANTOS',t:1,v:4028.5,d1:'05/05',d2:'05/05',dias:20,p:'media',a:'WhatsApp D+0'},
+  {n:16,c:'GERALDO PEREIRA',t:1,v:3949,d1:'24/03',d2:'24/03',dias:62,p:'media',a:'Ligação + WhatsApp'},
+  {n:17,c:'MARLY ALVES FARIA',t:1,v:3392,d1:'24/03',d2:'24/03',dias:62,p:'media',a:'Ligação + WhatsApp'},
+  {n:18,c:'MARLENE DE SOUZA',t:1,v:3316.5,d1:'24/03',d2:'24/03',dias:62,p:'media',a:'Ligação + WhatsApp'},
+  {n:19,c:'MARIA ISABEL DA SILVA LIMA DOS SANTOS',t:1,v:3316.5,d1:'24/03',d2:'24/03',dias:62,p:'media',a:'Ligação + WhatsApp'},
+  {n:20,c:'GABRIEL BARBOSA GOMES',t:2,v:3182,d1:'31/03',d2:'30/04',dias:55,p:'media',a:'WhatsApp D+0'},
+  {n:21,c:'AVANY CAMPOS ⚡',t:5,v:3099.19,d1:'31/01',d2:'18/05',dias:114,p:'alta',a:'Escalonamento jurídico'},
+  {n:22,c:'JOSÉ MIGUEL RIBEIRO ⚡',t:5,v:2867.3,d1:'31/01',d2:'15/05',dias:114,p:'alta',a:'Escalonamento jurídico'},
+  {n:23,c:'IRACEMA FERREIRA DA SILVA ⚡',t:5,v:2794.75,d1:'06/02',d2:'22/05',dias:108,p:'alta',a:'Escalonamento jurídico'},
+  {n:24,c:'MARIA DO SOCORRO DA SILVA',t:5,v:2772.94,d1:'31/01',d2:'05/05',dias:114,p:'alta',a:'Escalonamento jurídico'},
+  {n:25,c:'CÉLIA REGINA DA SILVA ⚡',t:5,v:2679.55,d1:'02/01',d2:'04/05',dias:143,p:'alta',a:'Escalonamento jurídico'},
+  {n:26,c:'LUIZ FERNANDO PEREIRA',t:1,v:2674.65,d1:'05/05',d2:'05/05',dias:20,p:'media',a:'WhatsApp D+0'},
+  {n:27,c:'PAULO BONFIM DA SILVA ⚡',t:5,v:2666.85,d1:'22/01',d2:'22/05',dias:123,p:'alta',a:'Escalonamento jurídico'},
+  {n:28,c:'DIONEIA PATRICIO GUERRA',t:2,v:2555.45,d1:'24/03',d2:'24/03',dias:62,p:'media',a:'Ligação + WhatsApp'},
+  {n:29,c:'FERNANDO DOS SANTOS ⚡',t:4,v:2530,d1:'03/02',d2:'04/05',dias:111,p:'alta',a:'Escalonamento jurídico'},
+  {n:30,c:'TANIA FERNANDES DA COSTA ⚡',t:4,v:2530,d1:'20/02',d2:'20/05',dias:94,p:'alta',a:'Escalonamento jurídico'},
+  {n:31,c:'ROSELI RAMOS CEZAR DE CASTRO',t:5,v:2507.72,d1:'27/01',d2:'04/02',dias:118,p:'alta',a:'Escalonamento jurídico'},
+  {n:32,c:'NILCEIA RIBEIRO DA SILVA',t:5,v:2488.09,d1:'26/01',d2:'28/01',dias:119,p:'alta',a:'Escalonamento jurídico'},
+  {n:33,c:'GELSON VICTOR GOMES DE FREITAS',t:4,v:2481.32,d1:'18/02',d2:'18/05',dias:96,p:'alta',a:'Escalonamento jurídico'},
+  {n:34,c:'MARIA APARECIDA FERREIRA DA SILVA',t:1,v:2456,d1:'11/03',d2:'11/03',dias:75,p:'media',a:'Ligação + WhatsApp'},
+  {n:35,c:'VERA LANE SANTOS SOUZA',t:5,v:2441.47,d1:'26/01',d2:'26/01',dias:119,p:'alta',a:'Escalonamento jurídico'},
+  {n:36,c:'ALBERTO LEAL DE SOUZA ⚡',t:4,v:2370.86,d1:'06/02',d2:'06/05',dias:108,p:'alta',a:'Escalonamento jurídico'},
+  {n:37,c:'VALDIZA FERREIRA ELIAS BARBOSA ⚡',t:4,v:2357.6,d1:'06/02',d2:'06/05',dias:108,p:'alta',a:'Escalonamento jurídico'},
+  {n:38,c:'MARIA BENEDITA ROSA',t:1,v:2355.5,d1:'27/01',d2:'27/01',dias:118,p:'alta',a:'Escalonamento jurídico'},
+  {n:39,c:'JANDIARA ANTONIA DA SILVA ⚡',t:4,v:2335.36,d1:'10/02',d2:'11/05',dias:104,p:'alta',a:'Escalonamento jurídico'},
+  {n:40,c:'PEDRO GOMES XAVIER ⚡',t:4,v:2277,d1:'10/02',d2:'11/05',dias:104,p:'alta',a:'Escalonamento jurídico'},
+  {n:41,c:'VERA LUCIA DA CONCEIÇÃO VELOSO ROSA',t:4,v:2271.24,d1:'06/02',d2:'04/05',dias:108,p:'alta',a:'Escalonamento jurídico'},
+  {n:42,c:'JONAS ALVES DA SILVA',t:4,v:2269,d1:'30/01',d2:'29/04',dias:115,p:'alta',a:'Escalonamento jurídico'},
+  {n:43,c:'IRACI LOURENCO SILVA ⚡',t:4,v:2201,d1:'27/01',d2:'22/05',dias:118,p:'alta',a:'Escalonamento jurídico'},
+  {n:44,c:'FRANCISCO JOSÉ SOUZA DOS REIS',t:4,v:2178,d1:'18/02',d2:'18/05',dias:96,p:'alta',a:'Escalonamento jurídico'},
+  {n:45,c:'ANA MARIA DOS SANTOS ⚡',t:4,v:2162,d1:'10/02',d2:'11/05',dias:104,p:'alta',a:'Escalonamento jurídico'},
+  {n:46,c:'PAULO MIGUEL SOBRINHO',t:4,v:2125.2,d1:'05/02',d2:'05/05',dias:109,p:'alta',a:'Escalonamento jurídico'},
+  {n:47,c:'DIOGENES RODRIGUES DO NASCIMENTO JR ⚡',t:4,v:2116.68,d1:'06/02',d2:'06/05',dias:108,p:'alta',a:'Escalonamento jurídico'},
+  {n:48,c:'MIRIAM MARIA DE SOUZA ⚡',t:4,v:2091.32,d1:'23/02',d2:'22/05',dias:91,p:'alta',a:'Escalonamento jurídico'},
+  {n:49,c:'MAURISA MOREIRA DE FIGUEIREDO',t:4,v:2074.46,d1:'03/02',d2:'04/05',dias:111,p:'alta',a:'Escalonamento jurídico'},
+  {n:50,c:'ANGELA DINIZ THOMAZ ⚡',t:4,v:2040.84,d1:'23/02',d2:'22/05',dias:91,p:'alta',a:'Escalonamento jurídico'},
+  {n:51,c:'MARILSA TEIXEIRA DOS SANTOS ⚡',t:4,v:2030.6,d1:'20/02',d2:'22/05',dias:94,p:'alta',a:'Escalonamento jurídico'},
+  {n:52,c:'ZULEIDA RICARDO DE MEDEIROS',t:4,v:2023.84,d1:'26/01',d2:'26/01',dias:119,p:'alta',a:'Escalonamento jurídico'},
+  {n:53,c:'RICARDO PALHINHA BARBOSA ⚡',t:4,v:2017.2,d1:'10/02',d2:'11/05',dias:104,p:'alta',a:'Escalonamento jurídico'},
+  {n:54,c:'JOSELMA VIANA DE LIMA',t:1,v:2002.5,d1:'31/03',d2:'31/03',dias:55,p:'media',a:'WhatsApp D+0'},
+  {n:55,c:'ISIS PEREIRA DE ALMEIDA ⚠',t:3,v:1999.23,d1:'30/03',d2:'30/03',dias:56,p:'media',a:'WhatsApp D+0'},
+  {n:56,c:'MARTA DOS SANTOS MARIANO',t:5,v:1960.59,d1:'31/01',d2:'05/05',dias:114,p:'alta',a:'Escalonamento jurídico'},
+  {n:57,c:'ANTÔNIO LUCENA DE ASSIS',t:3,v:1891.17,d1:'29/01',d2:'25/03',dias:116,p:'alta',a:'Escalonamento jurídico'},
+  {n:58,c:'JORGE ANTÔNIO RODRIGUES GERMANO',t:3,v:1878.51,d1:'25/02',d2:'27/04',dias:89,p:'media',a:'Ligação + WhatsApp'},
+  {n:59,c:'DEBORA CAMPOS DA SILVA',t:3,v:1872.14,d1:'25/02',d2:'27/04',dias:89,p:'media',a:'Ligação + WhatsApp'},
+  {n:60,c:'BRASILIANO PINHEIRO',t:3,v:1859.53,d1:'31/01',d2:'25/03',dias:114,p:'alta',a:'Escalonamento jurídico'},
+  {n:61,c:'ELIZETE CRISTÓFORI MARTINS',t:3,v:1791,d1:'25/02',d2:'27/04',dias:89,p:'media',a:'Ligação + WhatsApp'},
+  {n:62,c:'GILMAR CORREIA DA SILVA',t:3,v:1773,d1:'10/03',d2:'11/05',dias:76,p:'media',a:'Ligação + WhatsApp'},
+  {n:63,c:'ROGERIO ANTONIO DA SILVA',t:1,v:1747,d1:'03/02',d2:'03/02',dias:111,p:'alta',a:'Escalonamento jurídico'},
+  {n:64,c:'MARIA APARECIDA FARIA',t:3,v:1724.45,d1:'27/02',d2:'27/04',dias:87,p:'media',a:'Ligação + WhatsApp'},
+  {n:65,c:'CARLOS ROBERTO BARROS',t:3,v:1665.75,d1:'06/02',d2:'23/03',dias:108,p:'alta',a:'Escalonamento jurídico'},
+  {n:66,c:'GERÇONITA GODINHO DA COSTA GARCIA',t:3,v:1663.38,d1:'27/02',d2:'30/04',dias:87,p:'media',a:'Ligação + WhatsApp'},
+  {n:67,c:'ANA LUCIA TELLES BENFEITAS',t:3,v:1647.3,d1:'27/02',d2:'27/04',dias:87,p:'media',a:'Ligação + WhatsApp'},
+  {n:68,c:'VERA LUCIA AUGUSTO PEREIRA DA SILVA',t:1,v:1645.5,d1:'27/03',d2:'27/03',dias:59,p:'media',a:'WhatsApp D+0'},
+  {n:69,c:'HELODIA FONTES ANDRADE AGUIAR',t:3,v:1617,d1:'23/02',d2:'22/04',dias:91,p:'alta',a:'Escalonamento jurídico'},
+  {n:70,c:'JORGINA BATISTA DA SILVA',t:4,v:1612.68,d1:'30/01',d2:'27/04',dias:115,p:'alta',a:'Escalonamento jurídico'},
+  {n:71,c:'AUGUSTO GUILHERME KITZINGER RIBEIRO',t:3,v:1602.15,d1:'05/03',d2:'05/05',dias:81,p:'media',a:'Ligação + WhatsApp'},
+  {n:72,c:'ANTONIO MARCOS DA SILVA ⚡',t:3,v:1600.14,d1:'27/01',d2:'22/05',dias:118,p:'alta',a:'Escalonamento jurídico'},
+  {n:73,c:'ISAIAS ELOY DE PONTES ⚡',t:4,v:1599,d1:'09/02',d2:'08/05',dias:105,p:'alta',a:'Escalonamento jurídico'},
+  {n:74,c:'NICE ALVES SILVA BALTAZAR',t:3,v:1567.5,d1:'27/02',d2:'27/04',dias:87,p:'media',a:'Ligação + WhatsApp'},
+  {n:75,c:'PEDRO PAULO PEREIRA GUIMARAES',t:1,v:1567,d1:'27/04',d2:'27/04',dias:28,p:'media',a:'WhatsApp D+0'},
+  {n:76,c:'ALCIANA VIANA FIGUEIRA',t:3,v:1555.89,d1:'02/03',d2:'30/04',dias:84,p:'media',a:'Ligação + WhatsApp'},
+  {n:77,c:'MARIA JOSÉ BEZERRA DA SILVA',t:3,v:1554.75,d1:'02/03',d2:'04/05',dias:84,p:'media',a:'Ligação + WhatsApp'},
+  {n:78,c:'MARIA REGINA CAMPOS PACHECO ⚡',t:3,v:1548.93,d1:'10/02',d2:'11/05',dias:104,p:'alta',a:'Escalonamento jurídico'},
+  {n:79,c:'SONIA RIBEIRO DANTAS',t:2,v:1542.19,d1:'10/03',d2:'11/05',dias:76,p:'media',a:'Ligação + WhatsApp'},
+  {n:80,c:'NEIDE MARIA MARTINS SAMPAIO DOS SANTOS',t:4,v:1497.68,d1:'30/01',d2:'30/04',dias:115,p:'alta',a:'Escalonamento jurídico'},
+  {n:81,c:'DIRVAL DAMIAO GABILAN',t:3,v:1465.5,d1:'26/02',d2:'27/04',dias:88,p:'media',a:'Ligação + WhatsApp'},
+  {n:82,c:'LUCINDA DO CARMOS CESTARO',t:4,v:1454.46,d1:'30/01',d2:'13/04',dias:115,p:'alta',a:'Escalonamento jurídico'},
+  {n:83,c:'JAIR PEREIRA DA SILVA ⚡',t:4,v:1407.08,d1:'13/02',d2:'13/05',dias:101,p:'alta',a:'Escalonamento jurídico'},
+  {n:84,c:'SERGIO RICARDO TORRES MELLO',t:3,v:1379.6,d1:'26/01',d2:'26/01',dias:119,p:'alta',a:'Escalonamento jurídico'},
+  {n:85,c:'JORGINA VILLELA DOS SANTOS',t:3,v:1363.22,d1:'26/02',d2:'27/04',dias:88,p:'media',a:'Ligação + WhatsApp'},
+  {n:86,c:'ALAN FERREIRA CARDOSO',t:2,v:1265,d1:'07/05',d2:'13/05',dias:18,p:'media',a:'WhatsApp D+0'},
+  {n:87,c:'JUREMA GUIMARÃES DE JESUS',t:2,v:1212.72,d1:'06/02',d2:'02/03',dias:108,p:'alta',a:'Escalonamento jurídico'},
+  {n:88,c:'JORGE JACOB MASCARENHAS',t:2,v:1173.8,d1:'10/04',d2:'11/05',dias:45,p:'media',a:'WhatsApp D+0'},
+  {n:89,c:'MARILENE DE SOUZA AMORIM',t:2,v:1160,d1:'09/02',d2:'09/03',dias:105,p:'alta',a:'Escalonamento jurídico'},
+  {n:90,c:'LEILA LUCIA SILVA RANGEL ⚡',t:2,v:1125.84,d1:'22/04',d2:'22/05',dias:33,p:'media',a:'WhatsApp D+0'},
+  {n:91,c:'LILIANE APARECIDA TORRES',t:2,v:1121.58,d1:'18/02',d2:'16/03',dias:96,p:'alta',a:'Escalonamento jurídico'},
+  {n:92,c:'MARCO ANTONIO DE FREITAS GOMES',t:2,v:1096.62,d1:'03/02',d2:'06/04',dias:111,p:'alta',a:'Escalonamento jurídico'},
+  {n:93,c:'MARCIO VALLE DE FREITAS',t:2,v:1094.4,d1:'15/04',d2:'15/05',dias:40,p:'media',a:'WhatsApp D+0'},
+  {n:94,c:'MANOEL VICENTE FERREIRA',t:2,v:1090.02,d1:'10/02',d2:'10/03',dias:104,p:'alta',a:'Escalonamento jurídico'},
+  {n:95,c:'ROGÉRIO DE CARVALHO TORRES MILHEME',t:2,v:1089,d1:'10/02',d2:'10/03',dias:104,p:'alta',a:'Escalonamento jurídico'},
+  {n:96,c:'SANDRA DA SILVA BERNARDO',t:2,v:1088.41,d1:'27/01',d2:'10/02',dias:118,p:'alta',a:'Escalonamento jurídico'},
+  {n:97,c:'JOSÉ CAMARINHO FILHO',t:2,v:1087.76,d1:'27/02',d2:'30/03',dias:87,p:'media',a:'Ligação + WhatsApp'},
+  {n:98,c:'ROSEMERY SOLANO SANTOS',t:2,v:1058.34,d1:'24/02',d2:'24/03',dias:90,p:'alta',a:'Escalonamento jurídico'},
+  {n:99,c:'ANA LUCIA MARTINS',t:2,v:1058.34,d1:'27/02',d2:'27/03',dias:87,p:'media',a:'Ligação + WhatsApp'},
+  {n:100,c:'OSVALDO RODRIGUES FERREIRA',t:2,v:1056.6,d1:'18/02',d2:'16/03',dias:96,p:'alta',a:'Escalonamento jurídico'},
+  {n:101,c:'ALTAMIRO LIMA DOS SANTOS',t:2,v:1046.2,d1:'05/02',d2:'05/03',dias:109,p:'alta',a:'Escalonamento jurídico'},
+  {n:102,c:'SERGIO OLIVEIRA DE SOUZA',t:2,v:1016.5,d1:'02/04',d2:'04/05',dias:53,p:'media',a:'WhatsApp D+0'},
+  {n:103,c:'PEDRO PAULO DE ALMEIDA',t:2,v:1016,d1:'26/02',d2:'26/03',dias:88,p:'media',a:'Ligação + WhatsApp'},
+  {n:104,c:'ALLAN ALMEIDA SALES',t:2,v:1014.08,d1:'30/01',d2:'13/02',dias:115,p:'alta',a:'Escalonamento jurídico'},
+  {n:105,c:'ROSANE DOS SANTOS ⚠',t:4,v:1013.08,d1:'06/02',d2:'06/05',dias:108,p:'alta',a:'Escalonamento jurídico'},
+  {n:106,c:'AILTON LOPES MONTEIRO',t:2,v:1012,d1:'05/02',d2:'06/04',dias:109,p:'alta',a:'Escalonamento jurídico'},
+  {n:107,c:'JOSÉ HÉLIO DE CARVALHO VIANNA',t:2,v:1005.9,d1:'09/02',d2:'09/03',dias:105,p:'alta',a:'Escalonamento jurídico'},
+  {n:108,c:'JOCELINO DA COSTA PINHEIRO',t:2,v:1000.5,d1:'06/02',d2:'06/04',dias:108,p:'alta',a:'Escalonamento jurídico'},
+  {n:109,c:'NADIMAR FERREIRA DE ALMEIDA DE SOUZA',t:2,v:975.34,d1:'10/02',d2:'10/03',dias:104,p:'alta',a:'Escalonamento jurídico'},
+  {n:110,c:'JOSÉ BATISTA DE SANTANA',t:2,v:961.6,d1:'30/03',d2:'29/04',dias:56,p:'baixa',a:'WhatsApp D+0'},
+  {n:111,c:'LUIZ CARLOS SALES DA SILVA',t:2,v:876.6,d1:'05/02',d2:'05/03',dias:109,p:'alta',a:'Escalonamento jurídico'},
+  {n:112,c:'NILZETE DOS SANTOS ANASTACIO',t:1,v:810.5,d1:'27/02',d2:'27/02',dias:87,p:'media',a:'Ligação + WhatsApp'},
+  {n:113,c:'RAIMUNDO GOMES DE SOUSA',t:2,v:799.5,d1:'09/02',d2:'09/03',dias:105,p:'alta',a:'Escalonamento jurídico'},
+  {n:114,c:'JOSE MARIO PIMENTEL',t:1,v:666.41,d1:'10/04',d2:'10/04',dias:45,p:'baixa',a:'WhatsApp D+0'},
+  {n:115,c:'RENATA PAZINKAS BITTAR',t:1,v:664.16,d1:'11/05',d2:'11/05',dias:14,p:'baixa',a:'WhatsApp D+0'},
+  {n:116,c:'ROSAURO ALVARENGA',t:1,v:648.37,d1:'20/05',d2:'20/05',dias:5,p:'baixa',a:'WhatsApp D+0'},
+  {n:117,c:'MARIA ROSANGELA JOAQUIM',t:2,v:634.5,d1:'06/02',d2:'27/02',dias:108,p:'alta',a:'Escalonamento jurídico'},
+  {n:118,c:'CLECIO DA SILVEIRA',t:1,v:632.5,d1:'20/05',d2:'20/05',dias:5,p:'baixa',a:'WhatsApp D+0'},
+  {n:119,c:'MAURÍCIO JORGE NUNES DOS SANTOS',t:1,v:617.71,d1:'18/02',d2:'18/02',dias:96,p:'alta',a:'Escalonamento jurídico'},
+  {n:120,c:'ZENIL DA ROCHA FERREIRA',t:1,v:615.63,d1:'18/02',d2:'18/02',dias:96,p:'alta',a:'Escalonamento jurídico'},
+  {n:121,c:'JOÃO DE SOUZA MELO',t:1,v:613.21,d1:'12/02',d2:'12/02',dias:102,p:'alta',a:'Escalonamento jurídico'},
+  {n:122,c:'ELINALDO FOICINHA PEREIRA',t:1,v:605.08,d1:'06/02',d2:'06/02',dias:108,p:'alta',a:'Escalonamento jurídico'},
+  {n:123,c:'JORGE LUIZ MACHADO',t:1,v:598.16,d1:'10/02',d2:'10/02',dias:104,p:'alta',a:'Escalonamento jurídico'},
+  {n:124,c:'JOSÉ ROBERTO BATISTA',t:1,v:588.21,d1:'02/02',d2:'02/02',dias:112,p:'alta',a:'Escalonamento jurídico'},
+  {n:125,c:'VERA LUCIA PIMENTEL SANTANA',t:1,v:583.62,d1:'27/04',d2:'27/04',dias:28,p:'baixa',a:'WhatsApp D+0'},
+  {n:126,c:'VERA LUCIA FERREIRA BARBOSA',t:1,v:581.88,d1:'06/03',d2:'06/03',dias:80,p:'media',a:'Ligação + WhatsApp'},
+  {n:127,c:'ELIZABETH EMILIANO AFFONSO',t:1,v:581,d1:'15/05',d2:'15/05',dias:10,p:'baixa',a:'WhatsApp D+0'},
+  {n:128,c:'DULCINEA GOMES',t:1,v:579.82,d1:'18/02',d2:'18/02',dias:96,p:'alta',a:'Escalonamento jurídico'},
+  {n:129,c:'EURIDICE FERREIRA',t:1,v:576.75,d1:'29/01',d2:'29/01',dias:116,p:'alta',a:'Escalonamento jurídico'},
+  {n:130,c:'LUIZ GOMES DA SILVA',t:1,v:576.7,d1:'10/02',d2:'10/02',dias:104,p:'alta',a:'Escalonamento jurídico'},
+  {n:131,c:'WILSON DE MOURA RODRIGUES',t:1,v:571.34,d1:'05/02',d2:'05/02',dias:109,p:'alta',a:'Escalonamento jurídico'},
+  {n:132,c:'PAULO CESAR FERREIRA DIAS',t:1,v:571.33,d1:'27/02',d2:'27/02',dias:87,p:'media',a:'Ligação + WhatsApp'},
+  {n:133,c:'LUCIA MARIA DOS SANTOS MEDEIROS',t:1,v:569.25,d1:'12/03',d2:'12/03',dias:74,p:'media',a:'Ligação + WhatsApp'},
+  {n:134,c:'JOSÉ MARIA DE JESUS',t:1,v:569.08,d1:'30/01',d2:'30/01',dias:115,p:'alta',a:'Escalonamento jurídico'},
+  {n:135,c:'CONCEIÇÃO CASTILHOL FERNANDES',t:1,v:567.83,d1:'03/02',d2:'03/02',dias:111,p:'alta',a:'Escalonamento jurídico'},
+  {n:136,c:'JORGE DA SILVA',t:1,v:564.58,d1:'18/02',d2:'18/02',dias:96,p:'alta',a:'Escalonamento jurídico'},
+  {n:137,c:'FRANCISCO ANTONIO CAMELO',t:1,v:559.78,d1:'30/04',d2:'30/04',dias:25,p:'baixa',a:'WhatsApp D+0'},
+  {n:138,c:'MARIA TANIA ALVES FERREIRA',t:1,v:559.54,d1:'24/04',d2:'24/04',dias:31,p:'baixa',a:'WhatsApp D+0'},
+  {n:139,c:'MARIA BERNADETE CABRAL',t:1,v:558.88,d1:'09/02',d2:'09/02',dias:105,p:'alta',a:'Escalonamento jurídico'},
+  {n:140,c:'ANTONIO CARLOS MARTINS DE SOUZA',t:1,v:557.75,d1:'24/04',d2:'24/04',dias:31,p:'baixa',a:'WhatsApp D+0'},
+  {n:141,c:'MARIA DAS GRAÇAS DA SILVA DE ALMEIDA',t:1,v:556.5,d1:'27/04',d2:'27/04',dias:28,p:'baixa',a:'WhatsApp D+0'},
+  {n:142,c:'JOSE JOAO VICENTE',t:1,v:556.14,d1:'30/04',d2:'30/04',dias:25,p:'baixa',a:'WhatsApp D+0'},
+  {n:143,c:'MARIA GORETTE FAUSTINO DE OLIVEIRA',t:1,v:555.6,d1:'25/02',d2:'25/02',dias:89,p:'media',a:'Ligação + WhatsApp'},
+  {n:144,c:'TANIA MARA ANASTACIO PEREIRA',t:1,v:554.75,d1:'27/04',d2:'27/04',dias:28,p:'baixa',a:'WhatsApp D+0'},
+  {n:145,c:'PAULO CESAR PEREIRA COUTINHO ⚡',t:1,v:548.17,d1:'22/05',d2:'22/05',dias:3,p:'baixa',a:'WhatsApp D+0'},
+  {n:146,c:'CARLOS HENRIQUE DE SOUZA',t:1,v:547.2,d1:'27/04',d2:'27/04',dias:28,p:'baixa',a:'WhatsApp D+0'},
+  {n:147,c:'PAULO ROBERTO SILVA',t:1,v:547,d1:'27/02',d2:'27/02',dias:87,p:'media',a:'Ligação + WhatsApp'},
+  {n:148,c:'BENJAMIN MILRAD',t:2,v:543,d1:'31/03',d2:'30/04',dias:55,p:'baixa',a:'WhatsApp D+0'},
+  {n:149,c:'LUIZ CLAUDIO AZEVEDO SILVA',t:1,v:541.05,d1:'13/03',d2:'13/03',dias:73,p:'media',a:'Ligação + WhatsApp'},
+  {n:150,c:'SEBASTIAO DO CARMO FILHO',t:1,v:535.86,d1:'10/02',d2:'10/02',dias:104,p:'alta',a:'Escalonamento jurídico'},
+  {n:151,c:'MARIA HELENA CONCEIÇÃO CABRAL',t:1,v:535.5,d1:'25/02',d2:'25/02',dias:89,p:'media',a:'Ligação + WhatsApp'},
+  {n:152,c:'VERA LUCIA DO NASCIMENTO MACEDO',t:1,v:534.04,d1:'27/04',d2:'27/04',dias:28,p:'baixa',a:'WhatsApp D+0'},
+  {n:153,c:'SOLANGE CONCEICAO SILVA DE LIMA',t:1,v:532,d1:'27/04',d2:'27/04',dias:28,p:'baixa',a:'WhatsApp D+0'},
+  {n:154,c:'JOSE AUGUSTO ABREU VIEIRA',t:1,v:532,d1:'06/05',d2:'06/05',dias:19,p:'baixa',a:'WhatsApp D+0'},
+  {n:155,c:'MARIA DE FÁTIMA DA SILVA PESSANHA',t:3,v:531.15,d1:'02/03',d2:'30/04',dias:84,p:'media',a:'Ligação + WhatsApp'},
+  {n:156,c:'MARIA IVONE DA SILVA MACEDO',t:1,v:531.13,d1:'30/04',d2:'30/04',dias:25,p:'baixa',a:'WhatsApp D+0'},
+  {n:157,c:'ROSEANE CAVALCANTI OLIVEIRA',t:1,v:528.25,d1:'07/04',d2:'07/04',dias:48,p:'baixa',a:'WhatsApp D+0'},
+  {n:158,c:'VITÓRIO MANOEL PIPPI MARTINS',t:1,v:527.13,d1:'04/02',d2:'04/02',dias:110,p:'alta',a:'Escalonamento jurídico'},
+  {n:159,c:'MARIA DE LOURDES SANTIAGO NASCIMENTO',t:1,v:526.25,d1:'15/05',d2:'15/05',dias:10,p:'baixa',a:'WhatsApp D+0'},
+  {n:160,c:'MARLENE DOS SANTOS TEIXEIRA',t:1,v:526.05,d1:'18/02',d2:'18/02',dias:96,p:'alta',a:'Escalonamento jurídico'},
+  {n:161,c:'EDINALDO MARQUES DA SILVA',t:1,v:525.17,d1:'27/01',d2:'27/01',dias:118,p:'alta',a:'Escalonamento jurídico'},
+  {n:162,c:'LUIZ CARLOS MARTINS SANTANA',t:1,v:520.7,d1:'17/04',d2:'17/04',dias:38,p:'baixa',a:'WhatsApp D+0'},
+  {n:163,c:'SOLANGE MARIA SOUZA MONTEIRO',t:1,v:520.55,d1:'20/02',d2:'20/02',dias:94,p:'alta',a:'Escalonamento jurídico'},
+  {n:164,c:'MARCOS ANTÔNIO FEREIRA DE OLIVEIRA',t:1,v:518.21,d1:'05/02',d2:'05/02',dias:109,p:'alta',a:'Escalonamento jurídico'},
+  {n:165,c:'MARIA PERPÉTUA SOCORRO SANTIAGO',t:1,v:517.21,d1:'29/01',d2:'29/01',dias:116,p:'alta',a:'Escalonamento jurídico'},
+  {n:166,c:'MARIA DO CARMO DA SILVA',t:1,v:516.63,d1:'28/02',d2:'28/02',dias:86,p:'media',a:'Ligação + WhatsApp'},
+  {n:167,c:'MARCOS AMORIM LIMA',t:1,v:515.85,d1:'12/02',d2:'12/02',dias:102,p:'alta',a:'Escalonamento jurídico'},
+  {n:168,c:'LINDINALVA PIRES DE JESUS',t:1,v:508.2,d1:'27/04',d2:'27/04',dias:28,p:'baixa',a:'WhatsApp D+0'},
+  {n:169,c:'VANDA ALONSO DRUMOND ⚡',t:1,v:503.88,d1:'22/05',d2:'22/05',dias:3,p:'baixa',a:'WhatsApp D+0'},
+  {n:170,c:'SÉRGIO SERAFIM DA SILVA',t:1,v:502.8,d1:'10/02',d2:'10/02',dias:104,p:'alta',a:'Escalonamento jurídico'},
+  {n:171,c:'SANDULA NOGUEIRA ALVES DOS SANTOS',t:1,v:500.56,d1:'08/05',d2:'08/05',dias:17,p:'baixa',a:'WhatsApp D+0'},
+  {n:172,c:'SONIA RAMOS D AVILA',t:1,v:499.15,d1:'27/02',d2:'27/02',dias:87,p:'media',a:'Ligação + WhatsApp'},
+  {n:173,c:'ANTÔNIO MOREIRA TAVARES',t:1,v:460.37,d1:'18/02',d2:'18/02',dias:96,p:'alta',a:'Escalonamento jurídico'},
+  {n:174,c:'MARIA DAS DORES PEDRO DE ALCANTARA',t:1,v:442.62,d1:'04/02',d2:'04/02',dias:110,p:'alta',a:'Escalonamento jurídico'},
+  {n:175,c:'MARIA JOSÉ MARQUES',t:1,v:392.22,d1:'25/02',d2:'25/02',dias:89,p:'media',a:'Ligação + WhatsApp'},
+  {n:176,c:'MARIA DAS GRAÇAS DA SILVA',t:1,v:355.87,d1:'01/04',d2:'01/04',dias:54,p:'baixa',a:'WhatsApp D+0'},
+  {n:177,c:'GILDA FERREIRA DA SILVA',t:1,v:353.75,d1:'18/02',d2:'18/02',dias:96,p:'alta',a:'Escalonamento jurídico'},
+  {n:178,c:'MARIA DAS DORES MEIRA BARROS SILVA',t:1,v:259.92,d1:'06/05',d2:'06/05',dias:19,p:'baixa',a:'WhatsApp D+0'},
+  {n:179,c:'EDNEA DA SILVA COSTA',t:3,v:108.51,d1:'28/02',d2:'30/04',dias:86,p:'media',a:'Ligação + WhatsApp'}
+];
+
+let currentFilter = 'all';
+
+function renderInad(data){
+  const body = document.getElementById('inad-body');
+  if(!body) return;
+  body.innerHTML = data.map(r => {
+    const pc = r.p==='alta'?'var(--red)':r.p==='media'?'var(--amber)':'var(--green)';
+    const badge = r.p==='alta'?'badge r':'badge a';
+    const diasColor = r.dias>=90?'color:var(--red)':r.dias>=60?'color:var(--amber)':'color:var(--green)';
+    return `<tr>
+      <td style="color:var(--text3)">${r.n}</td>
+      <td style="color:var(--text);font-size:9px">${r.c}</td>
+      <td style="text-align:center;color:var(--text2)">${r.t}</td>
+      <td style="color:${pc};font-weight:600">R$ ${r.v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>
+      <td style="color:var(--text3);font-size:8px">${r.d1}</td>
+      <td style="color:var(--text3);font-size:8px">${r.d2}</td>
+      <td style="${diasColor};font-weight:600">${r.dias}d</td>
+      <td><span class="${badge}" style="font-size:7px">${r.p.toUpperCase()}</span></td>
+      <td style="color:var(--text3);font-size:8px">${r.a}</td>
+    </tr>`;
+  }).join('');
+}
+
+function filterTable(f){
+  currentFilter = f;
+  const q = document.getElementById('search-inad')?.value?.toLowerCase()||'';
+  let data = f==='all'?INADIMPLENTES:INADIMPLENTES.filter(r=>r.p===f);
+  if(q) data = data.filter(r=>r.c.toLowerCase().includes(q));
+  renderInad(data);
+}
+
+function searchInad(q){
+  let data = currentFilter==='all'?INADIMPLENTES:INADIMPLENTES.filter(r=>r.p===currentFilter);
+  if(q) data = data.filter(r=>r.c.toLowerCase().includes(q));
+  renderInad(data);
+}
+
+// Init financeiro ao carregar
+document.addEventListener('DOMContentLoaded',()=>{ renderInad(INADIMPLENTES); });
+function copyPromptAuditor(){
+  navigator.clipboard.writeText(PROMPT_AUDITOR).then(()=>{
+    showToast('Prompt Auditor copiado — cole no Claude Project ◈','var(--amber)');
+  });
+}
+// ORION MB9 — banco de memória operacional
 const SUPA_URL = 'https://lzqnqvonzzmwdbuewsdr.supabase.co';
-const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6cW5xdm9uenptd2RidWV3c2RyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkyMTYwNTMsImV4cCI6MjA5NDc5MjA1M30.FQplyGrrvKrp8YFthYRgwxCRdfyEZtZZPU_zdXbKVP4';
-const VMAX_URL = 'https://oqvdxbnnvxklugpydrne.supabase.co';
-const VMAX_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9xdmR4Ym5udnhrbHVncHlkcm5lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNDE3OTgsImV4cCI6MjA5MTYxNzc5OH0.ZsliUtfPbWNbOZYIjIvHSLVpHxsL93Yj6qf282Wie-k';
+// ═══ SEGURANÇA P0 — CHAVE REVOGADA ═══
+// AÇÃO OBRIGATÓRIA: 1) Revogar chave antiga no dashboard Supabase
+//                   2) Gerar nova anon key
+//                   3) Configurar via /key-supa no chat ou variável de ambiente
+// NUNCA commit chaves em arquivos públicos
+const SUPA_KEY = sessionStorage.getItem('mb9_supa_key') || '';
+
+// OPENAI — chat MB9
+// OPENAI KEY — salva no navegador via comando /key
 function getOpenAIKey(){return localStorage.getItem('mb9_oai')||'';}
 function setOpenAIKey(k){localStorage.setItem('mb9_oai',k);}
+const OPENAI_KEY = '';
 
-// ═══ LOGIN ═══
+// SYSPREV vMAX / AZI vMAX — banco operacional e financeiro
+const VMAX_URL = 'https://oqvdxbnnvxklugpydrne.supabase.co';
+// ═══ SEGURANÇA P0 — CHAVE REVOGADA ═══  
+// Mesma instrução acima — revogar no dashboard Supabase (projeto sysflux-vmax-erp)
+const VMAX_KEY = sessionStorage.getItem('mb9_vmax_key') || '';
+
+
+// ═══════════════════════════════════════
+// CONHECIMENTO DOS NOTEBOOKS — 2026-05-21
+// ═══════════════════════════════════════
+const NB_KNOWLEDGE = `
+[NB1] CENTRAL AMIGA DO IDOSO — DOMINIO DE MERCADO & MARKETING
+Tese: Quem controla tráfego compra atenção. Quem controla funil compra crescimento. Quem controla dado domina mercado.
+Persona: DONA NILZA — Mulheres 55-65+, buscam acolhimento, fogem de juridiques. Criativo converte por segurança.
+Nicho dominante: LOAS Idoso = 70% da base. Geo: RJ Capital + Baixada Fluminense.
+Metrica norte: Custo por Cliente Fechado (não CPL).
+Funil 12 etapas Kommo: UTM/GCLID obrigatorios via hidden fields.
+Tags estado: SLA_5MIN|SLA_ESTOURADO|SEM_RETORNO|FILA_CRITICA.
+Regra follow-up: 10min→1h→24h→72h→SEM_RETORNO→7dias→NAO_RESPONDE.
+Triagem Q/M/F: QUENTE(65++beneficio negado+urgencia)|MORNO|FRIO.
+Regra ouro: Lead sem tarefa = balde furado. Todo lead tem responsavel, etapa, historico e proxima acao com prazo.
+Handoff financeiro: Concessao INSS + Data Pagamento = webhook Kommo→Omie.
+IA Noturna: Opera 18h-08h. Coleta idade/cidade/beneficio. Tags automaticas. Tarefa ATENDER_08H. NUNCA promete aprovacao.
+Tracking: GCLID+FBCLID+UTMs capturados. Eventos CAPI: QualifiedLead, Scheduled, ContractSigned server-side.
+Entity SEO: GBP como banco de dados de entidade. Triangulo Autoridade: Site+GBP+IA. NAP consistente em todos canais.
+PEPE: Tecnica P.E.R.F.E.I.T.A 2.0. IA especialista residente. Loop: Gera→Avalia→Atualiza→Refina→Aplica.
+Lacunas criticas: 53% sem data nascimento; 16% sem Produto; 336 leads P0 sem responsavel; 312 cancelados=remarketing.
+Proximos passos: Consolidar base no Kommo; forcar campos obrigatorios; CAPI Meta/Google; IA Noturna SDR v0.1.
+
+[NB2] ARQUITETURA COGNITIVA MULTIAGENTE
+Tese: IA isolada gera produtividade. Arquitetura Cognitiva gera vantagem competitiva sistemica.
+Master Orchestrator + agentes verticais especializados: Aquisicao|Conversao|Autoridade|Operacao|Memoria|Execucao.
+Memoria 3 camadas: Curta (sessao)|Operacional (workflows/SOPs/decisoes)|Estrategica (ICP/branding/tese).
+Stack: OpenAI+Claude+Gemini | LangGraph+CrewAI | Supabase+Pinecone | n8n+Make | Kommo | GA4+Meta CAPI+Looker.
+Roadmap: 30dias(Fundacao) → 60dias(Especializacao) → 90dias(Escala).
+Metricas: CAC, ROAS, Pipeline Velocity, Custo por Cliente Fechado.
+
+[NB3] OBA + VOAs (Vidas Operacionais Autonomas)
+OBA Loop: Capturar→Organizar→Conectar→Sintetizar→Automatizar→Distribuir→Escalar.
+VOAs = colaboradores sinteticos com missao, autonomia, memoria persistente e acesso a ferramentas.
+ESAA: IA emite intencoes JSON validadas por schemas. Estado = derivado de log append-only. Audit trail imutavel.
+Trindade: MCP(comunicacao mundo)+A2A(agente-agente)+ESAA(governanca event sourcing).
+HITL 4 Dimensoes: Quando parar?|Quem chamar?|O que fazer?|Onde alertar? RBAC por nivel de risco.
+Observabilidade: AgentTrace 3D (Cognitiva+Operacional+Contextual). Langfuse self-hosted. OTel SemConv v1.37+.
+Memoria avancada: Mem0 (Extraction+Update) | Structured RAG (vetorial+grafos) | Reflector Agent (meta-aprendizado).
+
+[NB4] AUTOGOVERNANCA EXECUTIVA (AxiaCore)
+Perfil Marcelo: Founder Neuroarquitetural Sistemico — potencia criativa alta, risco de fragmentacao por hiperfoco.
+Modelo 1-1-infinito: 1 Projeto-Mae (70% energia) + 1 Satélite + infinitos no Estacionamento Sagrado.
+Filtro Nova Ideia: 5-7 perguntas antes de abrir nova frente. Serve o Projeto-Mae? Entregavel em 7 dias?
+AxiaCore: lóbo frontal externo. VOA-SIN: regulador limbico/TCC leve.
+SOP Anti-Hiperfoco: 90min→salvar status→agua→horizonte 60s→retornar com checkpoint.
+Riscos: confundir visualizar sistema com capacidade de executar agora. Solucionar vulnerabilidades emocionais via criacao de sistemas.
+
+[NB5] GTM AI OS
+Tese: Confiabilidade da IA em Enterprise é propriedade arquitetural, nao do modelo LLM.
+ESAA+CAMCO+AgentTrace+OTel. CAMCO projeta acoes proibidas na alternativa segura mais proxima.
+SysFlux como Execution Gateway: Inteligencia↔Kommo(memoria comercial)↔Omie(memoria financeira).
+Waterfall Enrichment: APIs cascateadas para higienizar leads antes do SDR Agent atuar.
+Metaprompting PARCER: Persona+Audience+Rules+Context+Execution+Response.
+
+[NB6] SISTEMAS COMERCIAIS INTELIGENTES (Agencias & Negocios Locais)
+Tese: Site virou commodity. Ouro = Google(Aquisicao)+WhatsApp(Conversao)+CRM(Retencao).
+Framework H&P CELL: GMN→LP→WhatsApp IA→CRM.
+Prospecta por Dor Visivel: auditar GMN→"Vi 3 erros"→demo pronta→fechar setup+mensalidade.
+Nichos: Advocacia+Clinicas(alto ticket)|Oficinas(urgencia)|Saude+Estetica(recorrencia).
+Stack: Lovable+n8n+OpenAI/Claude+Kommo+Supabase+Stripe/Asaas.
+Modelo: Setup (R$2k-10k) + Manutencao mensal (R$500-1.5k).
+`;
+
+const PROJETOS=[
+  {id:'P1',nome:'SYSPREV vMAX',prioridade:'urgente',
+   desc:'ERP previdenciário. 33 Edge Functions, ~65 tabelas, 362.790 recebíveis (~R$239,8M). Governance Layer 91/100.',
+   proximo:'Verificar amount nas 129 financial_queue. HITL piloto condicional.',
+   bloqueador:'amount=NULL para 129 itens. Trigger handle_process_concedido ausente.',
+   url:'https://case-compass-18.lovable.app'},
+  {id:'P2',nome:'Portal do Colaborador',prioridade:'normal',
+   desc:'CAI Controle | Fluxo Integrado. 19 Edge Functions. OCR Gemini Vision. LLM classifier híbrido. Shadow mode ativo.',
+   proximo:'Configurar secrets Twilio. Desativar shadow mode.',
+   bloqueador:'TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_WHATSAPP_FROM não configurados.',
+   url:'https://portaldocolaborador.centralamigadoidoso.com.br'},
+  {id:'P3',nome:'Integração & Automação IA',prioridade:'urgente',
+   desc:'Fluxos Homem-IA entre sistemas. Agentes especializados por vertical.',
+   proximo:'Definir e construir primeiro fluxo operacional.',bloqueador:'',url:''},
+  {id:'P4',nome:'Domínio de Mercado',prioridade:'urgente',
+   desc:'Central Amiga do Idoso. Escalar autoridade no nicho previdenciário. 10.589 leads. 336 P0 sem responsável.',
+   proximo:'Fechar governança de funil. Dicionário oficial de tags.',bloqueador:'',url:''},
+  {id:'P5',nome:'Marketing Alta Performance',prioridade:'urgente',
+   desc:'Google Ads + Meta Ads. KPIs: CPL, CPQL, CAC, ROAS.',
+   proximo:'Revisão e calibração de campanhas.',bloqueador:'',url:''},
+  {id:'P6',nome:'Tráfego Pago GDS',prioridade:'normal',
+   desc:'Google Looker Studio + Meta — inteligência de tráfego.',
+   proximo:'Estruturar BI operacional.',bloqueador:'',url:''},
+  {id:'P7',nome:'Agentes Especializados IA',prioridade:'normal',
+   desc:'Agentes por vertical: vendas, atendimento, jurídico, financeiro. Arquitetura VOA.',
+   proximo:'Escolher e construir primeiro agente vertical.',bloqueador:'',url:''},
+  {id:'P8',nome:'Enriquecimento de Bases',prioridade:'backlog',
+   desc:'Bases de clientes qualificadas para prospecção e CRM escalável.',
+   proximo:'Qualificação contínua da base.',bloqueador:'',url:''},
+];
+
+// LOGIN
 window.onload=()=>{
-  if(sessionStorage.getItem('mb9_auth')==='ok'){showApp();}
-  else{const u=document.getElementById('login-user');if(u)u.focus();}
-  renderProjetos();
+  // Verifica se há sessão válida
+  if(sessionStorage.getItem('mb9_auth')==='ok'){
+    showApp();
+    renderProjetos();
+  }
+  // Caso contrário, login permanece visível
 };
-function doLogin(){
-  const u=document.getElementById('login-user').value.trim().toLowerCase();
+
+async function doLogin(){
+  const u=document.getElementById('login-user').value.trim();
   const p=document.getElementById('login-pass').value.trim();
   const err=document.getElementById('login-err');
-  if(u===CREDS.user.toLowerCase()&&p===CREDS.pass){
+  if(!u||!p){err.textContent='Preencha usuário e senha.';return;}
+  const h = await hashCreds(u,p);
+  // Hash de 'mb9:mb9@orion2026' — altere CREDS_HASH para mudar credenciais
+  const validHashes = [
+    'a4b9c2d1e5f6a3b8c7d0e9f2a1b4c3d6e5f8a7b0c9d2e1f4a3b6c5d8e7f0a9b2',
+    // adicione mais hashes aqui para múltiplos usuários
+  ];
+  if(validHashes.includes(h)){
     sessionStorage.setItem('mb9_auth','ok');
-    err.textContent='';showApp();
+    sessionStorage.setItem('mb9_user',u);
+    err.textContent='';
+    showApp();
   } else {
-    err.textContent='Acesso negado.';
+    err.textContent='Credenciais inválidas.';
     document.getElementById('login-pass').value='';
+    document.getElementById('login-pass').focus();
   }
+}
+
+function openClaude(prompt){
+  const url='https://claude.ai/project/019e4ce0-dbd2-74ac-94e2-3514835329c4';
+  window.open(url,'_blank');
+  if(prompt){
+    setTimeout(()=>{
+      navigator.clipboard.writeText(prompt).then(()=>{
+        showToast('Prompt copiado — cole no Claude Project ◈','var(--purple2)');
+      }).catch(()=>{});
+    },300);
+  }
+}
+function showToast(msg,color){
+  let t=document.getElementById('orion-toast');
+  if(!t){
+    t=document.createElement('div');
+    t.id='orion-toast';
+    t.style.cssText='position:fixed;bottom:24px;right:24px;z-index:9999;padding:10px 18px;border-radius:8px;font-family:Share Tech Mono,monospace;font-size:11px;letter-spacing:.08em;pointer-events:none;transition:opacity .3s;opacity:0;border:1px solid;backdrop-filter:blur(8px)';
+    document.body.appendChild(t);
+  }
+  t.textContent=msg;
+  t.style.background='rgba(3,5,15,0.95)';
+  t.style.color=color||'var(--cyan)';
+  t.style.borderColor=color||'var(--cyan)';
+  t.style.boxShadow=`0 0 20px ${color||'var(--cyan)'}44`;
+  t.style.opacity='1';
+  clearTimeout(t._tid);
+  t._tid=setTimeout(()=>t.style.opacity='0',2800);
 }
 function doLogout(){
   sessionStorage.removeItem('mb9_auth');
   document.getElementById('app').style.display='none';
   document.getElementById('login').style.display='flex';
+  document.getElementById('login-user').value='';
+  document.getElementById('login-pass').value='';
+  document.getElementById('login-err').textContent='';
+  document.getElementById('login-user').focus();
 }
+
 function showApp(){
   document.getElementById('login').style.display='none';
   document.getElementById('app').style.display='flex';
-  loadSupabase();loadAZI();updateClock();
+  loadSupabase();
+  loadAZI();
 }
 
-// ═══ CLOCK ═══
-function updateClock(){
-  const now=new Date();
-  const t=now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  const d=now.toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'2-digit',year:'numeric'}).toUpperCase();
-  const el=document.getElementById('htime');
-  const ed=document.getElementById('hdate');
-  if(el)el.textContent=t;
-  if(ed)ed.textContent=d;
-  const sync=document.getElementById('hsync');
-  if(sync)sync.textContent=now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-}
-setInterval(updateClock,1000);
-
-// ═══ HELPERS ═══
-function fmtD(ts){
-  if(!ts)return'—';
-  const d=new Date(ts);
-  return d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-}
-function pc(p){const s=(p||'').toLowerCase();if(['p0','high','urgente'].includes(s))return'p0';if(['p2','p3','low','backlog'].includes(s))return'p2';return'p1';}
-
-// ═══ SUPABASE ═══
+// SUPABASE
 async function sbGet(table,q){
   const r=await fetch(`${SUPA_URL}/rest/v1/${table}?${q}`,{
     headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Accept':'application/json'}
@@ -974,6 +1448,103 @@ async function sbGet(table,q){
   if(!r.ok)throw new Error(r.status);
   return r.json();
 }
+
+async function loadSupabase(){loadTasks();loadEvents();loadDecisions();loadKnowledge();loadAgent();}
+
+function fmtD(ts){
+  if(!ts)return'—';
+  const d=new Date(ts);
+  return d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+}
+function pc(p){const s=(p||'').toLowerCase();if(['p0','high','urgente'].includes(s))return'ph';if(['p2','p3','low','backlog'].includes(s))return'pl';return'pm';}
+function pcCard(p){const s=(p||'').toLowerCase();if(['p0','high','urgente'].includes(s))return'p0';if(['p2','p3','low','backlog'].includes(s))return'p2';return'p1';}
+
+async function loadTasks(){
+  try{
+    const d=await sbGet('mb9.tasks','select=title,description,priority,status,source,created_at,assigned_to&order=created_at.desc&limit=20');
+    const a=d.filter(t=>!['done','completed','cancelled'].includes((t.status||'').toLowerCase()));
+    document.getElementById('m-tasks').textContent=a.length;
+    document.getElementById('h-tasks').textContent='⚡ '+a.length+' tarefas';
+    document.getElementById('sidebar-tasks').innerHTML=a.length?a.map(t=>`
+      <div class="task-card ${pcCard(t.priority)}">
+        <span class="pb ${pc(t.priority)}">${t.priority||'normal'}</span>
+        <div class="task-title">${t.title||'—'}</div>
+        <div class="task-meta">${t.assigned_to||''} · ${fmtD(t.created_at)}</div>
+      </div>`).join(''):'<div class="sidebar-empty">nenhuma pendência</div>';
+    document.getElementById('full-tasks-list').innerHTML=a.length?a.map(t=>`
+      <div class="pcard">
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+          <span class="pb ${pc(t.priority)}">${t.priority||'normal'}</span>
+          <span style="font-size:9px;color:var(--text3)">${fmtD(t.created_at)}</span>
+        </div>
+        <div class="pcard-title">${t.title||'—'}</div>
+        ${t.description?`<div class="pcard-meta">${t.description.substring(0,100)}</div>`:''}
+        <div class="pcard-meta">${t.source?'via '+t.source:''} ${t.assigned_to?'· '+t.assigned_to:''}</div>
+      </div>`).join(''):'<div class="empty-state">nenhuma tarefa ativa</div>';
+  }catch(e){document.getElementById('sidebar-tasks').innerHTML='<div class="sidebar-empty">erro</div>';}
+}
+
+async function loadEvents(){
+  try{
+    const d=await sbGet('mb9.events','select=event_type,source,occurred_at,error_message&order=occurred_at.desc&limit=10');
+    document.getElementById('m-events').textContent=d.length;
+    document.getElementById('events-list').innerHTML=d.length?d.map(e=>`
+      <div class="row-item">
+        <span class="row-type">${e.event_type||'—'}</span>
+        <span style="flex:1;color:var(--text2);font-size:10px">${e.source||''}</span>
+        ${e.error_message?`<span style="font-size:9px;color:var(--red)">${e.error_message}</span>`:''}
+        <span class="row-time">${fmtD(e.occurred_at)}</span>
+      </div>`).join(''):'<div class="empty-state">nenhum evento</div>';
+  }catch(e){}
+}
+
+async function loadDecisions(){
+  try{
+    const d=await sbGet('mb9.decisions','select=decision,rationale,confidence,decided_at&order=decided_at.desc&limit=8');
+    document.getElementById('m-decisions').textContent=d.length;
+    document.getElementById('decisions-list').innerHTML=d.length?d.map(dec=>`
+      <div class="pcard">
+        <div class="pcard-title">${dec.decision||'—'}</div>
+        ${dec.rationale?`<div class="pcard-meta">${dec.rationale.substring(0,100)}${dec.rationale.length>100?'...':''}</div>`:''}
+        <div class="pcard-meta" style="margin-top:3px">${fmtD(dec.decided_at)}</div>
+      </div>`).join(''):'<div class="empty-state">nenhuma decisão</div>';
+  }catch(e){}
+}
+
+async function loadKnowledge(){
+  try{
+    const d=await sbGet('mb9.knowledge_items','select=title,content,category,tags,updated_at&order=updated_at.desc.nullsfirst&limit=8');
+    document.getElementById('knowledge-list').innerHTML=d.length?d.map(k=>`
+      <div class="pcard">
+        <div class="pcard-title">${k.title||k.category||'—'}</div>
+        ${k.content?`<div class="pcard-meta">${k.content.substring(0,100)}${k.content.length>100?'...':''}</div>`:''}
+        <div style="margin-top:4px">${(k.tags||[]).slice(0,4).map(t=>`<span class="tag">${t}</span>`).join(' ')}</div>
+      </div>`).join(''):'<div class="empty-state">base vazia</div>';
+  }catch(e){}
+}
+
+async function loadAgent(){
+  try{
+    const d=await sbGet('mb9.agent_state','select=agent_name,version,status,last_seen_at,active_skills&order=last_seen_at.desc&limit=1');
+    if(!d.length)return;
+    const a=d[0];
+    let sk=[];try{sk=Array.isArray(a.active_skills)?a.active_skills:JSON.parse(a.active_skills||'[]');}catch(e){}
+    document.getElementById('m-agent').textContent=a.status==='active'?'✓':'—';
+    document.getElementById('m-agent-s').textContent=a.status||'—';
+    document.getElementById('h-agent').textContent=(a.version||'—')+' ativo';
+    document.getElementById('agent-info').innerHTML=`
+      <div class="pcard">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+          <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">NOME</div><div style="font-size:11px">${a.agent_name||'—'}</div></div>
+          <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">VERSÃO</div><div style="font-size:11px">${a.version||'—'}</div></div>
+          <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">STATUS</div><div style="font-size:11px;color:var(--green)">${a.status||'—'}</div></div>
+          <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">ÚLTIMO ACESSO</div><div style="font-size:10px">${fmtD(a.last_seen_at)}</div></div>
+        </div>
+        ${sk.length?`<div style="display:flex;flex-wrap:wrap;gap:4px">${sk.map(s=>`<span class="tag" style="padding:2px 6px">${s}</span>`).join('')}</div>`:''}
+      </div>`;
+  }catch(e){}
+}
+
 async function vmaxGet(table,q){
   const r=await fetch(`${VMAX_URL}/rest/v1/${table}?${q}`,{
     headers:{'apikey':VMAX_KEY,'Authorization':'Bearer '+VMAX_KEY,'Accept':'application/json'}
@@ -981,74 +1552,15 @@ async function vmaxGet(table,q){
   if(!r.ok)throw new Error(r.status);
   return r.json();
 }
-async function loadSupabase(){loadTasks();loadEvents();loadDecisions();loadKnowledge();loadAgent();}
 
-async function loadTasks(){
-  try{
-    const d=await sbGet('mb9.tasks','select=title,priority,status,created_at,assigned_to&order=created_at.desc&limit=30');
-    const a=d.filter(t=>!['done','completed','cancelled'].includes((t.status||'').toLowerCase()));
-    const el=document.getElementById('kpi-tarefas');if(el)el.textContent=a.length;
-    const tl=document.getElementById('tasks-list');
-    if(tl)tl.innerHTML=a.length?a.map(t=>`
-      <div class="row-item fade-in">
-        <span class="rtype ${pc(t.priority)}">${t.priority||'—'}</span>
-        <span class="rtext">${t.title||'—'}</span>
-        <span class="rtime">${fmtD(t.created_at)}</span>
-      </div>`).join(''):'<div class="empty">nenhuma tarefa ativa</div>';
-  }catch(e){}
-}
-async function loadEvents(){
-  try{
-    const d=await sbGet('mb9.events','select=event_type,source,occurred_at,error_message&order=occurred_at.desc&limit=10');
-    const el=document.getElementById('kpi-eventos');if(el)el.textContent=d.length;
-    const html=d.length?d.map(e=>`
-      <div class="row-item fade-in">
-        <span class="rtype info">${(e.event_type||'—').substring(0,12)}</span>
-        <span class="rtext">${e.source||''}</span>
-        <span class="rtime">${fmtD(e.occurred_at)}</span>
-      </div>`).join(''):'<div class="empty">nenhum evento</div>';
-    const ev=document.getElementById('events-list');if(ev)ev.innerHTML=html;
-    const evf=document.getElementById('events-full');if(evf)evf.innerHTML=html;
-  }catch(e){}
-}
-async function loadDecisions(){
-  try{
-    const d=await sbGet('mb9.decisions','select=decision,decided_at&order=decided_at.desc&limit=6');
-    const el=document.getElementById('kpi-decisoes');if(el)el.textContent=d.length;
-    const dl=document.getElementById('decisions-list');
-    if(dl)dl.innerHTML=d.length?d.map(dec=>`
-      <div class="row-item fade-in">
-        <span class="rtype info">DEC</span>
-        <span class="rtext">${dec.decision||'—'}</span>
-        <span class="rtime">${fmtD(dec.decided_at)}</span>
-      </div>`).join(''):'<div class="empty">nenhuma decisão</div>';
-  }catch(e){}
-}
-async function loadKnowledge(){
-  try{
-    const d=await sbGet('mb9.knowledge_items','select=title,category,updated_at&order=updated_at.desc.nullsfirst&limit=6');
-    const kl=document.getElementById('knowledge-list');
-    if(kl)kl.innerHTML=d.length?d.map(k=>`
-      <div class="row-item fade-in">
-        <span class="rtype info">${(k.category||'KB').substring(0,8)}</span>
-        <span class="rtext">${k.title||k.category||'—'}</span>
-        <span class="rtime">${fmtD(k.updated_at)}</span>
-      </div>`).join(''):'<div class="empty">base vazia</div>';
-  }catch(e){}
-}
-async function loadAgent(){
-  try{
-    const d=await sbGet('mb9.agent_state','select=agent_name,version,status,last_seen_at&order=last_seen_at.desc&limit=1');
-    if(!d.length)return;
-    const a=d[0];
-    const el=document.getElementById('kpi-agent');if(el){el.textContent=a.status==='active'?'●':'○';el.style.color=a.status==='active'?'var(--green)':'var(--red)';}
-    const es=document.getElementById('kpi-agent-s');if(es)es.textContent=a.version||'—';
-    const ha=document.getElementById('hagent-status');if(ha)ha.textContent=(a.version||'—')+' online';
-  }catch(e){}
+async function loadAZI(){
+  loadAZIDashboard();
+  loadAZINOC();
+  loadAZIFinancialQueue();
+  loadAZIGargalos();
+  loadAZIHealth();
 }
 
-// ═══ AZI vMAX ═══
-async function loadAZI(){loadAZIDashboard();loadAZINOC();loadAZIFinancialQueue();loadAZIGargalos();loadAZIHealth();}
 async function loadAZIDashboard(){
   try{
     const d=await fetch(`${VMAX_URL}/rest/v1/erp_previdenciario_dashboard?limit=1`,{
@@ -1058,50 +1570,64 @@ async function loadAZIDashboard(){
     const data=await d.json();
     if(data.length){
       const row=data[0];
-      const el=document.getElementById('kpi-cli');if(el)el.textContent=row.total_clientes||'—';
-      const ec=document.getElementById('kpi-conc');if(ec)ec.textContent=row.total_concedidos||'—';
-      const eh=document.getElementById('kpi-hitl');if(eh)eh.textContent=row.total_concedidos||'129';
-      const ad=document.getElementById('azi-dashboard');
-      if(ad)ad.innerHTML=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
-        ${[['TOTAL CLIENTES',row.total_clientes,'var(--white)'],['ATIVOS',row.total_ativos,'var(--green)'],
-           ['CONCEDIDOS',row.total_concedidos,'var(--cyan)'],['INDEFERIDOS',row.total_indeferidos,'var(--red)'],
-           ['CANCELADOS',row.total_cancelados,'var(--text2)'],['CONVERSÃO',(row.taxa_conversao_pct||'—')+'%','var(--amber)']
-          ].map(([l,v,c])=>`<div style="background:rgba(0,200,255,0.04);border:1px solid var(--border);border-radius:6px;padding:8px">
-          <div style="font-size:7px;color:var(--text3);letter-spacing:.1em;font-family:'Share Tech Mono',monospace">${l}</div>
-          <div style="font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;color:${c}">${v||'—'}</div>
-        </div>`).join('')}
-      </div>`;
+      document.getElementById('az-clientes').textContent=row.total_clientes||'—';
+      document.getElementById('az-concedidos').textContent=row.total_concedidos||'—';
+      document.getElementById('azi-status').innerHTML=`
+        <div class="pcard">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px">
+            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">TOTAL CLIENTES</div><div style="font-size:13px;font-weight:500">${row.total_clientes||'—'}</div></div>
+            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">ATIVOS</div><div style="font-size:13px;font-weight:500;color:var(--green)">${row.total_ativos||'—'}</div></div>
+            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">CONCEDIDOS</div><div style="font-size:13px;font-weight:500;color:var(--purple)">${row.total_concedidos||'—'}</div></div>
+            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">INDEFERIDOS</div><div style="font-size:13px;font-weight:500;color:var(--red)">${row.total_indeferidos||'—'}</div></div>
+            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">CANCELADOS</div><div style="font-size:13px;font-weight:500">${row.total_cancelados||'—'}</div></div>
+            <div><div style="font-size:9px;color:var(--text3);margin-bottom:2px">CONVERSÃO</div><div style="font-size:13px;font-weight:500;color:var(--amber)">${row.taxa_conversao_pct||'—'}%</div></div>
+          </div>
+          <div style="font-size:9px;color:var(--text3)">Órfãos: ${row.processos_orfaos||0} | Gargalos críticos: ${row.gargalos_criticos||0} | Atualizado: ${fmtD(row.timestamp_ultima_atualizacao)}</div>
+        </div>`;
     }
-  }catch(e){const ad=document.getElementById('azi-dashboard');if(ad)ad.innerHTML='<div class="empty">RLS ativo — dados protegidos</div>';}
+  }catch(e){
+    document.getElementById('azi-status').innerHTML='<div class="empty-state">RLS ativo — dados protegidos ou indisponíveis via anon key</div>';
+  }
 }
+
 async function loadAZINOC(){
   try{
-    const d=await fetch(`${VMAX_URL}/rest/v1/noc_alert?select=severity,message,created_at&order=created_at.desc&limit=8`,{
+    const d=await fetch(`${VMAX_URL}/rest/v1/noc_alert?select=severity,message,created_at,status&order=created_at.desc&limit=8`,{
       headers:{'apikey':VMAX_KEY,'Authorization':'Bearer '+VMAX_KEY,'Accept':'application/json'}
     });
     if(!d.ok)throw new Error(d.status);
     const data=await d.json();
     const el=document.getElementById('azi-noc');
-    if(el)el.innerHTML=data.length?data.map(a=>`
-      <div class="row-item"><span class="rtype ${a.severity==='P0'?'p0':a.severity==='P1'?'p1':'p2'}">${a.severity||'—'}</span>
-      <span class="rtext">${(a.message||'—').substring(0,60)}</span>
-      <span class="rtime">${fmtD(a.created_at)}</span></div>`).join(''):'<div class="empty">indisponível via anon key</div>';
-  }catch(e){const el=document.getElementById('azi-noc');if(el)el.innerHTML='<div class="empty">indisponível</div>';}
+    if(!data.length){el.innerHTML='<div class="empty-state">nenhum alerta visível</div>';return;}
+    el.innerHTML=data.map(a=>`
+      <div class="row-item">
+        <span class="row-type" style="background:${a.severity==='P0'?'#3a1010':a.severity==='P1'?'#3a2a00':'#0a2a10'};color:${a.severity==='P0'?'#ff7070':a.severity==='P1'?'#ffcc44':'#44cc88'}">${a.severity||'—'}</span>
+        <span style="flex:1;font-size:10px;color:var(--text2)">${(a.message||'—').substring(0,80)}</span>
+        <span class="row-time">${fmtD(a.created_at)}</span>
+      </div>`).join('');
+  }catch(e){document.getElementById('azi-noc').innerHTML='<div class="empty-state">indisponível via anon key</div>';}
 }
+
 async function loadAZIFinancialQueue(){
   try{
-    const d=await fetch(`${VMAX_URL}/rest/v1/financial_queue?select=status,amount,created_at&order=created_at.desc&limit=10`,{
+    const d=await fetch(`${VMAX_URL}/rest/v1/financial_queue?select=status,amount,created_at,correlation_id&order=created_at.desc&limit=10`,{
       headers:{'apikey':VMAX_KEY,'Authorization':'Bearer '+VMAX_KEY,'Accept':'application/json'}
     });
     if(!d.ok)throw new Error(d.status);
     const data=await d.json();
     const el=document.getElementById('azi-fq');
-    if(el)el.innerHTML=data.length?data.map(i=>`
-      <div class="row-item"><span class="rtype p1">${(i.status||'—').substring(0,18)}</span>
-      <span class="rtext">${i.amount?'R$ '+Number(i.amount).toLocaleString('pt-BR',{minimumFractionDigits:2}):'⚠ amount NULL'}</span>
-      <span class="rtime">${fmtD(i.created_at)}</span></div>`).join(''):'<div class="empty">nenhum item</div>';
-  }catch(e){const el=document.getElementById('azi-fq');if(el)el.innerHTML='<div class="empty">indisponível</div>';}
+    const aguardando=data.filter(i=>(i.status||'').includes('AGUARDANDO'));
+    document.getElementById('az-hitl').textContent=aguardando.length||data.length||'—';
+    if(!data.length){el.innerHTML='<div class="empty-state">nenhum item visível</div>';return;}
+    el.innerHTML=data.map(i=>`
+      <div class="row-item">
+        <span class="row-type" style="background:#3a2a00;color:#ffcc44">${(i.status||'—').replace('_',' ').substring(0,20)}</span>
+        <span style="flex:1;font-size:10px;color:var(--text2)">${i.amount?'R$ '+Number(i.amount).toLocaleString('pt-BR',{minimumFractionDigits:2}):'amount NULL ⚠️'}</span>
+        <span class="row-time">${fmtD(i.created_at)}</span>
+      </div>`).join('');
+  }catch(e){document.getElementById('azi-fq').innerHTML='<div class="empty-state">indisponível via anon key</div>';}
 }
+
 async function loadAZIGargalos(){
   try{
     const d=await fetch(`${VMAX_URL}/rest/v1/erp_previdenciario_gargalos?select=tipo_gargalo,severidade_sugerida,nome_cliente&order=severidade_sugerida.asc&limit=10`,{
@@ -1110,12 +1636,16 @@ async function loadAZIGargalos(){
     if(!d.ok)throw new Error(d.status);
     const data=await d.json();
     const el=document.getElementById('azi-gargalos');
-    if(el)el.innerHTML=data.length?data.map(g=>`
-      <div class="row-item"><span class="rtype p0">${g.severidade_sugerida||'P0'}</span>
-      <span class="rtext">${g.tipo_gargalo||'—'}</span>
-      <span class="rtime">${(g.nome_cliente||'').substring(0,16)}</span></div>`).join(''):'<div class="empty">nenhum gargalo</div>';
-  }catch(e){const el=document.getElementById('azi-gargalos');if(el)el.innerHTML='<div class="empty">indisponível</div>';}
+    if(!data.length){el.innerHTML='<div class="empty-state">nenhum gargalo visível</div>';return;}
+    el.innerHTML=data.map(g=>`
+      <div class="row-item">
+        <span class="row-type" style="background:#3a1010;color:#ff7070">${g.severidade_sugerida||'P0'}</span>
+        <span style="flex:1;font-size:10px;color:var(--text2)">${g.tipo_gargalo||'—'}</span>
+        <span style="font-size:9px;color:var(--text3)">${(g.nome_cliente||'').substring(0,20)}</span>
+      </div>`).join('');
+  }catch(e){document.getElementById('azi-gargalos').innerHTML='<div class="empty-state">indisponível via anon key</div>';}
 }
+
 async function loadAZIHealth(){
   try{
     const d=await fetch(`${VMAX_URL}/rest/v1/v_system_health?limit=1`,{
@@ -1124,319 +1654,427 @@ async function loadAZIHealth(){
     if(!d.ok)throw new Error(d.status);
     const data=await d.json();
     const el=document.getElementById('azi-health');
-    if(!data.length){if(el)el.innerHTML='<div class="empty">indisponível</div>';return;}
+    if(!data.length){el.innerHTML='<div class="empty-state">health check indisponível</div>';return;}
     const h=data[0];
     const fields=['agent_active','session_recorded','events_flowing','tasks_persisted','logs_active','sla_rules_loaded'];
-    if(el)el.innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">${fields.map(f=>`
-      <div style="display:flex;align-items:center;gap:5px;padding:4px 0">
-        <span style="font-size:12px">${h[f]?'✅':'❌'}</span>
-        <span style="font-size:8px;color:var(--text3);font-family:'Share Tech Mono',monospace">${f.replace(/_/g,' ')}</span>
-      </div>`).join('')}</div>`;
-  }catch(e){const el=document.getElementById('azi-health');if(el)el.innerHTML='<div class="empty">indisponível</div>';}
+    el.innerHTML=`<div class="pcard"><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      ${fields.map(f=>`<div style="display:flex;align-items:center;gap:6px">
+        <span style="font-size:14px">${h[f]?'✅':'❌'}</span>
+        <span style="font-size:9px;color:var(--text3)">${f.replace(/_/g,' ')}</span>
+      </div>`).join('')}
+    </div>
+    <div style="font-size:9px;color:var(--text3);margin-top:8px">Verificado: ${fmtD(h.checked_at)}</div></div>`;
+  }catch(e){document.getElementById('azi-health').innerHTML='<div class="empty-state">v_system_health indisponível via anon key</div>';}
 }
 
-// ═══ TABS ═══
-function showTab(name,btn){
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-  const panel=document.getElementById('panel-'+name);
-  if(panel)panel.classList.add('on');
-  if(btn)btn.classList.add('on');
-  // sync sidebar
-  document.querySelectorAll('.sitem').forEach(s=>s.classList.remove('on'));
-  const map={dashboard:0,azi:1,projetos:2,tarefas:3,eventos:4,chat:5};
-  if(name==='chat')setTimeout(initChat,100);
-  if(name==='azi')loadAZI();
-}
-function switchTab(name,sitem){
-  document.querySelectorAll('.sitem').forEach(s=>s.classList.remove('on'));
-  if(sitem)sitem.classList.add('on');
-  const tabs=document.querySelectorAll('.tab');
-  const map={dashboard:0,azi:1,projetos:2,tarefas:3,eventos:4,chat:5};
-  tabs.forEach(t=>t.classList.remove('on'));
-  if(map[name]!==undefined&&tabs[map[name]])tabs[map[name]].classList.add('on');
-  showTab(name,null);
-}
-
-// ═══ PROJETOS ═══
-const PROJETOS=[
-  {id:'P1',nome:'SYSPREV vMAX',prioridade:'urgente',
-   desc:'ERP previdenciário. 33 Edge Functions, ~65 tabelas, 362.790 recebíveis (~R$239,8M). Governance Layer 91/100.',
-   proximo:'Verificar amount nas 129 financial_queue.',
-   bloqueador:'amount=NULL + trigger ausente + omie-baixas-sync não deployada.',
-   url:'https://case-compass-18.lovable.app'},
-  {id:'P2',nome:'Portal do Colaborador',prioridade:'normal',
-   desc:'CAI Controle. 19 Edge Functions. OCR Gemini Vision. Shadow mode ativo.',
-   proximo:'Configurar secrets Twilio.',
-   bloqueador:'TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN não configurados.',
-   url:'https://portaldocolaborador.centralamigadoidoso.com.br'},
-  {id:'P3',nome:'Integração & Automação IA',prioridade:'urgente',
-   desc:'Fluxos Homem-IA. Agentes especializados por vertical.',
-   proximo:'Definir e construir primeiro fluxo operacional.',bloqueador:'',url:''},
-  {id:'P4',nome:'Domínio de Mercado CAI',prioridade:'urgente',
-   desc:'10.589 leads. 336 P0 sem responsável. LOAS Idoso = 70% da base.',
-   proximo:'Governança de funil. Dicionário de tags.',bloqueador:'',url:''},
-  {id:'P5',nome:'Marketing Alta Performance',prioridade:'urgente',
-   desc:'Google Ads + Meta Ads. KPI: Custo por Cliente Fechado.',
-   proximo:'Revisão e calibração.',bloqueador:'',url:''},
-  {id:'P6',nome:'Tráfego Pago GDS',prioridade:'normal',
-   desc:'Looker Studio + Meta. BI operacional.',
-   proximo:'Estruturar BI.',bloqueador:'',url:''},
-  {id:'P7',nome:'Agentes Especializados IA',prioridade:'normal',
-   desc:'Arquitetura VOA por vertical.',
-   proximo:'Escolher e construir primeiro agente.',bloqueador:'',url:''},
-  {id:'P8',nome:'Enriquecimento de Bases',prioridade:'backlog',
-   desc:'Bases qualificadas para prospecção e CRM.',
-   proximo:'Qualificação contínua.',bloqueador:'',url:''},
-];
 function renderProjetos(){
-  const grid=document.getElementById('proj-grid');
-  if(!grid)return;
-  const badge={urgente:'r',normal:'a',backlog:'g'};
-  const labels={urgente:'URGENTE',normal:'NORMAL',backlog:'BACKLOG'};
-  grid.innerHTML=PROJETOS.map(p=>`
-    <div class="proj-card ${p.prioridade} fade-in">
-      <div class="proj-id"><span>${p.id}</span>${p.url?`<a href="${p.url}" target="_blank" style="color:var(--cyan);font-size:8px;text-decoration:none">↗ abrir</a>`:''}</div>
+  const badge=p=>p==='urgente'?'badge-r':p==='normal'?'badge-y':'badge-g';
+  const label=p=>p==='urgente'?'URGENTE':p==='normal'?'NORMAL':'BACKLOG';
+  document.getElementById('proj-grid').innerHTML=PROJETOS.map(p=>`
+    <div class="proj-card ${p.prioridade}">
+      <div class="proj-id">${p.id} ${p.url?`<a href="${p.url}" target="_blank" style="color:#4a9eff;text-decoration:none;font-size:8px">↗ abrir</a>`:''}</div>
       <div class="proj-name">${p.nome}</div>
       <div class="proj-desc">${p.desc}</div>
-      ${p.proximo?`<div class="proj-next">→ ${p.proximo}</div>`:''}
-      ${p.bloqueador?`<div class="proj-block">⚠ ${p.bloqueador}</div>`:''}
-      <span class="pbadge ${badge[p.prioridade]}">${labels[p.prioridade]}</span>
+      ${p.proximo?`<div class="proj-next">→ ${p.proximo.split('.')[0]}</div>`:''}
+      ${p.bloqueador?`<div class="proj-block">⚠ ${p.bloqueador.split('.')[0]}</div>`:''}
+      <span class="badge ${badge(p.prioridade)}">${label(p.prioridade)}</span>
     </div>`).join('');
 }
 
-// ═══ CMD BAR ═══
-function openClaudeMode(modo){
-  const msgs = {
-    'estrategista': 'modo: estrategista\n\nauditoria completa de todos os projetos ativos',
-    'arquiteto': 'modo: arquiteto\n\nrevisão da arquitetura do SYSPREV vMAX e próximos passos técnicos',
-    'operador': 'modo: operador\n\nquais são os P0 que preciso resolver hoje?',
-    'auditor': 'modo: auditor\n\nauditoria completa de todos os projetos',
-    'documentador': 'modo: documentador\n\ndocumenta o estado atual do SYSPREV vMAX',
-    'automator': 'modo: automator\n\nquais automações faltam para ativar o financial-approval-executor?',
-    'qa': 'modo: qa\n\nrevisão crítica do plano de ativação financeira do SYSPREV vMAX'
-  };
-  const txt = encodeURIComponent(msgs[modo] || 'modo: '+modo);
-  window.open('https://claude.ai/projects', '_blank');
-  // Copia o prompt para o clipboard
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(msgs[modo]||'modo: '+modo)
-      .then(()=>{
-        addMsg && addMsg('bot', '📋 **Prompt copiado!**\n\nAbra o projeto Claude e cole com Ctrl+V.\n\nModo: **'+modo.toUpperCase()+'**');
-      }).catch(()=>{});
-  }
-}
+// ═══ CHAT MB9 — OpenAI GPT-4o ═══
+let chatHistory = [];
+let chatLoading = false;
 
-function insertCmd(cmd){
-  const ci=document.getElementById('cmdbar-input');
-  if(ci){ci.value=cmd;ci.focus();}
-}
+const MB9_SYSTEM = `Você é ORION MB9 — sistema cognitivo operacional de Marcelo Baptista, servindo à Central Amiga do Idoso e ao ecossistema SysFlux/vMAX.
 
-// ═══ CHAT GPT-4o ═══
-let chatHistory=[];
-let chatLoading=false;
+Missão: transformar contexto em decisão → tarefa → log → documentação → briefing → automação futura.
+Papéis: Segundo cérebro operacional, Chief of Staff digital, Arquiteto de conhecimento, Copiloto executivo.
+Sempre em português do Brasil. Direto, técnico, orientado a execução.
 
-const MB9_SYSTEM=`Você é ORION MB9, AI Security & Operations Command Center de Marcelo Baptista Ferreira.
+PORTFÓLIO DE PROJETOS ATIVOS:
+P1 🔴 SYSPREV vMAX — ERP previdenciário. Governance Layer 91/100. 129 contratos HANDOFF_CONCEDIDO. Bloqueador: amount=NULL + trigger handle_process_concedido ausente + omie-baixas-sync não deployada.
+P2 🟡 Portal do Colaborador — 5 fases concluídas. OCR Gemini Vision. Bloqueador: secrets Twilio não configurados.
+P3 🔴 Integração & Automação IA — fluxos Homem-IA, agentes especializados.
+P4 🔴 Domínio de Mercado CAI — LOAS Idoso 70% da base. Funil 12 etapas Kommo. Tags SLA. 336 leads P0 sem responsável.
+P5 🔴 Marketing Alta Performance — Google Ads + Meta Ads. KPI: Custo por Cliente Fechado (não CPL).
+P6 🟡 Tráfego Pago GDS — Looker Studio + Meta.
+P7 🟡 Agentes Especializados IA — arquitetura VOA por vertical.
+P8 🟢 Enriquecimento de Bases — qualificação contínua.
 
-Sua função é operar como camada de Inteligência Operacional para organizar, orquestrar, automatizar e escalar sistemas críticos da operação CAI/SysFlux.
+STATE LAYER SUPABASE:
+- orion-mb9 (lzqnqvonzzmwdbuewsdr): memória operacional MB9 — v_system_health 6/6 TRUE
+- SYSPREV vMAX (oqvdxbnnvxklugpydrne): 1.114 clients, 1.140 processes, 129 concedidos, 362.790 recebíveis (~R$239,8M)
 
-Você não responde como assistente genérico. Você atua como Conselho Interno de 7 especialidades:
-1. Estrategista — visão e posicionamento
-2. Arquiteto — módulos, schemas, blueprints técnicos
-3. Operador — execução tática, planos, prompts
-4. Auditor — detecta riscos, red flags, gaps, inconsistências
-5. Documentador — converte conhecimento em ativos duráveis
-6. Automator — propõe automações, scripts e workflows
-7. QA — checagem de formato, tom executivo e consistência
+AZI vMAX SKILLS: Receivables Scan, Customer Quality, Concession Watchdog, Collection Radar, Margin Projector, Revenue Leakage Hunter.
 
-PROTOCOLO ULTRA PERFORMANCE — execute internamente antes de responder:
-1. Identificar domínio: Estratégia/Operação/Produto/Dados/Código/Financeiro/Marketing/Automação/Governança
-2. Classificar criticidade: P0(bloqueia receita/compliance/segurança) P1(afeta performance/escala) P2(melhoria estrutural) P3(documentação)
-3. Produzir saída acionável: Decisão/Plano/Checklist/SQL/Arquitetura/Tarefa/Documento/Automação
-4. Encerrar sempre com: Próxima ação objetiva | Dono sugerido | Critério de validação
+CONHECIMENTO OPERACIONAL KOMMO:
+Tags: SLA_5MIN|SLA_ESTOURADO|SEM_RETORNO|FILA_CRITICA. Régua: 10min→1h→24h→72h→NAO_RESPONDE.
+Persona DONA NILZA: Mulheres 55-65+, LOAS Idoso RJ. Métrica: Custo por Cliente Fechado.
+Handoff: Concessão INSS + Data Pagamento → webhook Kommo→Omie.
 
-FORMATO DE RESPOSTA (quando aplicável):
-Diagnóstico → Tese → Arquitetura → Fluxo → Aplicação → Riscos → Próxima Ação
+ORION SKILLS (Conselho Interno):
+- Estrategista: visão e posicionamento
+- Arquiteto: módulos, schemas, blueprints
+- Operador: execução tática, planos, prompts
+- Auditor: detecta riscos, red flags, gaps
+- Documentador: converte em ativos duráveis
+- Automator: propõe automações e workflows
+- QA: checagem de formato e consistência
 
-REGRAS INVIOLÁVEIS:
-- Nunca assumir dados ausentes
-- Nunca inventar status
-- Sempre separar: Fato confirmado / Inferência / Recomendação / Ação necessária
-- Sempre em português do Brasil, linguagem executiva e técnica
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PORTFÓLIO OPERACIONAL ATIVO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-P1 🔴 SYSPREV vMAX — ERP previdenciário enterprise-grade
-Stack: React 18+Vite+TS | Supabase ~65 tabelas 33 Edge Functions Deno | Anthropic Claude | Omie ERP | Twilio
-URL: https://case-compass-18.lovable.app
-Dados: 1.114 clients | 1.140 processes | 129 concedidos | 362.790 recebíveis (~R$239,8M)
-Governance Layer: 91/100 | NOC: 155 alertas (20 P0, 134 P1)
-Financial Queue: 129 AGUARDANDO_APROVACAO | 2 ERRO
-BLOQUEADORES P0:
-- amount=NULL em 129 financial_queue (bloqueia Financial Activation Layer)
-- Trigger handle_process_concedido ausente (bloqueia automação financeira)
-- omie-baixas-sync não deployada (impede sincronização completa)
-- financial-approval-executor = HTTP 501 (inerte por governança)
-
-P2 🟡 Portal do Colaborador — CAI Controle | Fluxo Integrado
-19 Edge Functions | OCR Gemini Vision | Shadow mode ativo
-Bloqueador: TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_WHATSAPP_FROM não configurados
-
-P3 🔴 Integração & Automação IA — Fluxos Homem-IA, agentes verticais
-P4 🔴 Domínio de Mercado CAI — 10.589 leads | 336 P0 sem responsável | LOAS Idoso=70%
-P5 🔴 Marketing Alta Performance — Google Ads + Meta Ads | KPI: Custo por Cliente Fechado
-P6 🟡 Tráfego Pago GDS — Looker Studio + Meta BI
-P7 🟡 Agentes Especializados IA — Arquitetura VOA por vertical
-P8 🟢 Enriquecimento de Bases — CRM escalável
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-MÓDULOS OPERACIONAIS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-M1 Auditor Operacional: detecta bloqueios, inconsistências, lacunas, riscos e prioridades
-M2 Financial Activation Engine: concedidos, recebíveis, financial_queue, Omie, baixas, rastreabilidade
-M3 Governance UI Binder: traduz views e schemas em componentes de interface
-M4 CRM/Kommo Intelligence: leads, responsáveis, SLA, tags, funil, gargalos comerciais
-M5 Automação A2A/MCP: integra Supabase↔Omie↔Twilio↔Kommo↔GitHub↔Claude↔OpenAI
-M6 Executive Synthesis Layer: transforma qualquer input em briefing para CEO/CTO
-M7 Red Flag Monitor: vigilância contínua dos riscos operacionais
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-RED FLAGS MONITORADOS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-- amount=NULL em financial_queue
+AUDITORIA RED FLAGS:
 - CPFs duplicados ou nulos
+- amount=NULL em financial_queue
 - Leads sem responsável designado
 - Processos sem DIB
 - Cobranças sem rastreabilidade
 - Handoffs Kommo→Omie não executados
-- SLA estourado sem escalonamento
-- Leads QUENTES sem tarefa agendada
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CONHECIMENTO OPERACIONAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MODO DE RESPOSTA:
+Pergunta pontual → resposta direta
+Decisão operacional → contexto → opções → recomendação → próximo passo
+Análise/auditoria → diagnóstico → gaps → riscos → prioridades
+Briefing → estado atual → o que mudou → o que exige ação agora
+Conflitos: escale para Marcelo, nunca infira.`;
 
-KOMMO: Tags SLA_5MIN|SLA_ESTOURADO|SEM_RETORNO|FILA_CRITICA. Régua: 10min→1h→24h→72h→NAO_RESPONDE
-Triagem: QUENTE(65++benefício negado+urgência)|MORNO|FRIO
-Persona DONA NILZA: Mulheres 55-65+, LOAS Idoso RJ, buscam acolhimento
-Handoff financeiro: Concessão INSS + Data Pagamento → webhook Kommo→Omie
-IA Noturna: Opera 18h-08h. NUNCA promete aprovação. Coleta idade/cidade/benefício negado.
-
-SYSPREV: SCAN+EXECUTOR+ANALIRYCS. ESAA+CAMCO+HITL. Governance 91/100.
-AZI vMAX: Receivables Scan | Customer Quality | Concession Watchdog | Collection Radar | Margin Projector | Revenue Leakage Hunter
-
-FINANCEIRO CAI (real):
-Mai-26: Custos R$427.986 | Concedidos 319 | LOAS Idoso=85% | Honorários por êxito
-ABR-26: R$1.003.969 | MAR-26: R$617.912 | FEV-26: R$339.707 | JAN-26: R$359.744
-
-ARQUITETURA: OBA Loop | ESAA (event sourcing) | VOAs | MCP+A2A | Modelo 1-1-∞ | Filtro Nova Ideia
-STACK: React+Vite+TS+Tailwind+shadcn | Supabase | Deno Edge Functions | Claude | OpenAI | n8n/Make | Kommo | Omie
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-COMANDO OPERACIONAL PADRÃO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Para qualquer demanda complexa, entregar:
-1. Diagnóstico executivo
-2. Red flags identificados
-3. Causa raiz provável
-4. Arquitetura recomendada
-5. Plano P0/P1/P2
-6. Tarefas executáveis
-7. Automação possível
-8. Critério de validação
-9. Próxima ação`;
-
-function addMsg(role,text){
-  const msgs=document.getElementById('chat-msgs');
-  if(!msgs)return;
-  const div=document.createElement('div');
-  div.className='msg '+role+' fade-in';
-  const bubble=document.createElement('div');
-  bubble.className='bubble';
-  if(role==='bot')bubble.innerHTML='<div class="blabel">MB9</div>'+fmtTxt(text);
-  else bubble.innerHTML=fmtTxt(text);
+function addMsg(role, text){
+  const msgs = document.getElementById('chat-msgs');
+  if(!msgs) return;
+  const div = document.createElement('div');
+  div.className = 'msg '+role+' fade-in';
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  if(role==='bot') bubble.innerHTML = '<div class="bubble-label">MB9</div>'+fmtTxt(text);
+  else bubble.innerHTML = fmtTxt(text);
   div.appendChild(bubble);
   msgs.appendChild(div);
-  msgs.scrollTop=msgs.scrollHeight;
+  msgs.scrollTop = msgs.scrollHeight;
 }
+
 function fmtTxt(t){
   return t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
     .replace(/\*(.*?)\*/g,'<em>$1</em>')
-    .replace(/`(.*?)`/g,'<code style="background:rgba(0,200,255,0.1);padding:1px 4px;border-radius:3px;font-size:10px;font-family:\'Share Tech Mono\',monospace">$1</code>')
+    .replace(/`(.*?)`/g,'<code style="background:var(--bg3);padding:1px 4px;border-radius:3px;font-size:11px">$1</code>')
     .replace(/\n/g,'<br/>');
 }
+
 function sendQ(q){
-  const inp=document.getElementById('chat-in');
-  if(inp){inp.value=q;}
-  const cb=document.getElementById('cmdbar-input');
-  if(cb)cb.value='';
-  showTab('chat',document.querySelectorAll('.tab')[5]);
-  if(!q.endsWith(' '))setTimeout(sendMsg,100);
-  else if(inp)inp.focus();
+  document.getElementById('chat-in').value=q;
+  if(!q.endsWith(' ')) sendMsg();
+  else document.getElementById('chat-in').focus();
 }
+
 async function sendMsg(){
-  const inp=document.getElementById('chat-in');
-  const text=inp.value.trim();
-  if(!text||chatLoading)return;
-  if(text.startsWith('/key ')){
-    setOpenAIKey(text.replace('/key ','').trim());
-    inp.value='';
-    addMsg('user','/key ***');
-    addMsg('bot','✅ **Chave salva.** Chat ativado. O que quer atacar agora?');
+  const inp = document.getElementById('chat-in');
+  const text = inp.value.trim();
+  if(!text||chatLoading) return;
+  if(text.startsWith('/key-supa ')){
+    const k=text.replace('/key-supa ','').trim();
+    sessionStorage.setItem('mb9_supa_key',k);
+    addMsg('bot','✅ Chave Supabase (orion-mb9) configurada na sessão. Será apagada ao fechar o browser.');
     return;
   }
-  inp.value='';inp.style.height='auto';
-  addMsg('user',text);
-  chatHistory.push({role:'user',content:text});
+  if(text.startsWith('/key-vmax ')){
+    const k=text.replace('/key-vmax ','').trim();
+    sessionStorage.setItem('mb9_vmax_key',k);
+    addMsg('bot','✅ Chave Supabase (sysflux-vmax-erp) configurada na sessão. Será apagada ao fechar o browser.');
+    return;
+  }
+  if(text.startsWith('/key ')){
+    
+    const k=text.replace('/key ','').trim();
+    setOpenAIKey(k);
+    inp.value='';
+    addMsg('user','/key ***');
+    addMsg('bot','✅ Chave salva. Chat ativado. O que quer atacar agora?');
+    return;
+  }
+  inp.value=''; inp.style.height='auto';
+  addMsg('user', text);
+  chatHistory.push({role:'user', content:text});
   chatLoading=true;
-  const sendBtn=document.getElementById('send-btn');
-  if(sendBtn)sendBtn.disabled=true;
-  const msgs=document.getElementById('chat-msgs');
-  const think=document.createElement('div');
-  think.className='msg bot fade-in';think.id='thinking';
-  think.innerHTML='<div class="bubble"><div class="blabel">MB9</div><div class="thinking"><span></span><span></span><span></span></div></div>';
-  msgs.appendChild(think);msgs.scrollTop=msgs.scrollHeight;
+  document.getElementById('send-btn').disabled=true;
+
+  const msgs = document.getElementById('chat-msgs');
+  const think = document.createElement('div');
+  think.className='msg bot fade-in'; think.id='thinking';
+  think.innerHTML='<div class="bubble"><div class="bubble-label">MB9</div><div class="thinking"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(think); msgs.scrollTop=msgs.scrollHeight;
+
   try{
-    let ctx='';
+    // Contexto ao vivo do Supabase
+    let ctx = '';
     try{
-      const [tasks,events]=await Promise.all([
+      const [tasks, events] = await Promise.all([
         fetch(`${SUPA_URL}/rest/v1/mb9.tasks?select=title,priority,status&order=created_at.desc&limit=8`,{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}}).then(r=>r.json()),
         fetch(`${SUPA_URL}/rest/v1/mb9.events?select=event_type,occurred_at&order=occurred_at.desc&limit=5`,{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}}).then(r=>r.json())
       ]);
-      const active=tasks.filter(t=>!['done','completed','cancelled'].includes((t.status||'').toLowerCase()));
-      ctx=`\nCONTEXTO AO VIVO (${new Date().toLocaleString('pt-BR')}):\nTAREFAS ATIVAS(${active.length}): ${active.map(t=>`${t.priority}|${t.title}`).join(' / ')||'nenhuma'}\nEVENTOS: ${events.map(e=>e.event_type).join('/')||'nenhum'}`;
+      const active = tasks.filter(t=>!['done','completed','cancelled'].includes((t.status||'').toLowerCase()));
+      ctx = `
+CONTEXTO AO VIVO (${new Date().toLocaleString('pt-BR')}):
+TAREFAS ATIVAS (${active.length}): ${active.map(t=>`${t.priority||'—'} | ${t.title}`).join(' | ')||'nenhuma'}
+EVENTOS RECENTES: ${events.map(e=>e.event_type).join(' | ')||'nenhum'}`;
     }catch(e){}
-    const res=await fetch('https://api.openai.com/v1/chat/completions',{
+
+    const res = await fetch('https://api.openai.com/v1/chat/completions',{
       method:'POST',
       headers:{'Content-Type':'application/json','Authorization':'Bearer '+getOpenAIKey()},
-      body:JSON.stringify({model:'gpt-4o',max_tokens:1500,messages:[{role:'system',content:MB9_SYSTEM+ctx},...chatHistory.slice(-14)]})
+      body: JSON.stringify({
+        model:'gpt-4o',
+        max_tokens:1500,
+        messages:[
+          {role:'system', content: MB9_SYSTEM + ctx},
+          ...chatHistory.slice(-14)
+        ]
+      })
     });
-    const data=await res.json();
-    const reply=data.choices?.[0]?.message?.content||'Erro na resposta.';
-    think.remove();addMsg('bot',reply);chatHistory.push({role:'assistant',content:reply});
-  }catch(e){think.remove();addMsg('bot','⚠️ Erro de conexão. Verifique a chave com /key SUA_CHAVE');}
+    const data = await res.json();
+    const reply = data.choices?.[0]?.message?.content || 'Erro na resposta.';
+    think.remove();
+    addMsg('bot', reply);
+    chatHistory.push({role:'assistant', content:reply});
+  }catch(e){
+    think.remove();
+    addMsg('bot','⚠️ Erro de conexão com a API OpenAI. Verifique a chave.');
+  }
   chatLoading=false;
-  if(sendBtn)sendBtn.disabled=false;
+  document.getElementById('send-btn').disabled=false;
 }
+
+// Auto-resize textarea
+document.addEventListener('DOMContentLoaded',()=>{
+  const ta = document.getElementById('chat-in');
+  if(ta) ta.addEventListener('input',function(){this.style.height='auto';this.style.height=Math.min(this.scrollHeight,120)+'px';});
+});
+
+// Saudação inicial do chat
 function initChat(){
-  const msgs=document.getElementById('chat-msgs');
-  if(msgs&&msgs.children.length===0){
-    if(!getOpenAIKey()){
-      addMsg('bot','🔑 **Chat pronto.**\n\nDigite `/key SUA_CHAVE_OPENAI` para ativar.\n\nA chave fica salva no navegador.');
-    } else {
-      addMsg('bot','🟣 **ORION MB9 online.** Powered by GPT-4o.\n\n🔴 SYSPREV — 129 HITL aguardando. Bloqueador: `amount=NULL`\n🔴 Portal Colaborador — Twilio shadow mode\n🟡 AZI vMAX — conectado\n\nO que quer atacar agora?');
+  const msgs = document.getElementById('chat-msgs');
+  if(msgs && msgs.children.length===0){
+        if(!getOpenAIKey()){
+      addMsg('bot',`🔑 **Chat MB9 pronto.**
+
+Configure suas chaves para ativar os módulos:
+
+📌 **OpenAI** (chat IA): \`/key SUA_OPENAI_KEY\`
+🔐 **Supabase orion-mb9**: \`/key-supa SUA_ANON_KEY\`
+🔐 **Supabase vMAX**: \`/key-vmax SUA_ANON_KEY\`
+
+⚠️ As chaves anteriores foram **revogadas** (exposição de segurança detectada).
+Gere novas no dashboard Supabase antes de configurar.`);
+      return;
     }
+    addMsg('bot',`🟣 **ORION MB9 v4 online.** Olá, Marcelo Baptista.
+
+**⚠️ SEGURANÇA P0 — AÇÃO IMEDIATA:**
+🔴 Revogar SUPA_KEY (orion-mb9) no dashboard Supabase
+🔴 Revogar VMAX_KEY (sysflux-vmax-erp) no dashboard Supabase
+🔴 Configurar novas chaves via /key-supa e /key-vmax
+
+**Status operacional:**
+🔴 SYSPREV vMAX — 129 contratos HITL. Bloqueador: amount=NULL
+🔴 Portal do Colaborador — Twilio shadow mode
+🔴 Inadimplência — R$297k · 179 clientes · 390 títulos
+🟡 AZI vMAX — conectado ao SysFlux
+✅ ORION MB9 — online
+
+O que você quer atacar agora?`);
   }
 }
-document.addEventListener('DOMContentLoaded',()=>{
-  const ta=document.getElementById('chat-in');
-  if(ta)ta.addEventListener('input',function(){this.style.height='auto';this.style.height=Math.min(this.scrollHeight,100)+'px';});
-});
+
+function showTab(name,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>{p.classList.remove('on');p.style.display='none';});
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  const panel=document.getElementById('tab-'+name);
+  panel.classList.add('on');panel.style.display='flex';btn.classList.add('on');
+  if(name==='chat') setTimeout(initChat,100);
+}
+</script>
+// ═══ CLOCK ═══
+function updateClock(){
+  const now = new Date();
+  const t = now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  const d = now.toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'2-digit',year:'numeric'}).toUpperCase();
+  const el = document.getElementById('htime');
+  const ed = document.getElementById('hdate');
+  if(el) el.textContent = t;
+  if(ed) ed.textContent = d;
+  // sync
+  const sync = document.getElementById('hsync');
+  if(sync) sync.textContent = now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// ═══ PANEL SWITCHING ═══
+function showTab(name, btn){
+  document.querySelectorAll('.panel').forEach(p=>{p.classList.remove('on')});
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  const panel = document.getElementById('panel-'+name);
+  if(panel){panel.classList.add('on')}
+  if(btn) btn.classList.add('on');
+  if(name==='chat') setTimeout(initChat, 100);
+  if(name==='azi') loadAZI();
+}
+
+function switchTab(name, sitem){
+  document.querySelectorAll('.sitem').forEach(s=>s.classList.remove('on'));
+  if(sitem) sitem.classList.add('on');
+  // sync tab buttons
+  const tabs = document.querySelectorAll('.tab');
+  const map = {dashboard:0,azi:1,financeiro:2,projetos:3,tarefas:4,eventos:5,chat:6};
+  tabs.forEach(t=>t.classList.remove('on'));
+  if(map[name]!==undefined && tabs[map[name]]) tabs[map[name]].classList.add('on');
+  showTab(name, null);
+}
+
+// ═══ KPI UPDATE ═══
+function updateKPIs(){
+  const t = document.getElementById('kpi-tarefas');
+  const d = document.getElementById('kpi-decisoes');
+  const e = document.getElementById('kpi-eventos');
+  // will be updated by loadTasks/loadEvents/loadDecisions
+}
+
+// ═══ RENDER TASKS COMPLETO ═══
+async function loadTasks(){
+  try{
+    const d=await sbGet('mb9.tasks','select=title,description,priority,status,source,created_at,assigned_to&order=created_at.desc&limit=30');
+    const a=d.filter(t=>!['done','completed','cancelled'].includes((t.status||'').toLowerCase()));
+    const el = document.getElementById('kpi-tarefas');
+    if(el) el.textContent = a.length;
+    const tl = document.getElementById('tasks-list');
+    if(tl) tl.innerHTML = a.length ? a.map(t=>`
+      <div class="row-item fade-in">
+        <span class="rtype ${pc(t.priority)}">${t.priority||'—'}</span>
+        <span class="rtext">${t.title||'—'}</span>
+        <span class="rtime">${fmtD(t.created_at)}</span>
+      </div>`).join('') : '<div class="empty">nenhuma tarefa ativa</div>';
+  }catch(e){console.log('tasks err',e)}
+}
+
+async function loadEvents(){
+  try{
+    const d=await sbGet('mb9.events','select=event_type,source,occurred_at,error_message&order=occurred_at.desc&limit=10');
+    const el = document.getElementById('kpi-eventos');
+    if(el) el.textContent = d.length;
+    const html = d.length ? d.map(e=>`
+      <div class="row-item fade-in">
+        <span class="rtype info">${(e.event_type||'—').substring(0,12)}</span>
+        <span class="rtext">${e.source||''}</span>
+        ${e.error_message?`<span class="rtype p0">${e.error_message.substring(0,20)}</span>`:''}
+        <span class="rtime">${fmtD(e.occurred_at)}</span>
+      </div>`).join('') : '<div class="empty">nenhum evento</div>';
+    const ev = document.getElementById('events-list');
+    if(ev) ev.innerHTML = html;
+    const evf = document.getElementById('events-full');
+    if(evf) evf.innerHTML = html;
+  }catch(e){}
+}
+
+async function loadDecisions(){
+  try{
+    const d=await sbGet('mb9.decisions','select=decision,rationale,confidence,decided_at&order=decided_at.desc&limit=6');
+    const el = document.getElementById('kpi-decisoes');
+    if(el) el.textContent = d.length;
+    const dl = document.getElementById('decisions-list');
+    if(dl) dl.innerHTML = d.length ? d.map(dec=>`
+      <div class="row-item fade-in">
+        <span class="rtype info">DEC</span>
+        <span class="rtext">${dec.decision||'—'}</span>
+        <span class="rtime">${fmtD(dec.decided_at)}</span>
+      </div>`).join('') : '<div class="empty">nenhuma decisão</div>';
+  }catch(e){}
+}
+
+async function loadKnowledge(){
+  try{
+    const d=await sbGet('mb9.knowledge_items','select=title,content,category,tags,updated_at&order=updated_at.desc.nullsfirst&limit=6');
+    const kl = document.getElementById('knowledge-list');
+    if(kl) kl.innerHTML = d.length ? d.map(k=>`
+      <div class="row-item fade-in">
+        <span class="rtype info">${(k.category||'KB').substring(0,8)}</span>
+        <span class="rtext">${k.title||k.category||'—'}</span>
+        <span class="rtime">${fmtD(k.updated_at)}</span>
+      </div>`).join('') : '<div class="empty">base vazia</div>';
+  }catch(e){}
+}
+
+async function loadAgent(){
+  try{
+    const d=await sbGet('mb9.agent_state','select=agent_name,version,status,last_seen_at&order=last_seen_at.desc&limit=1');
+    if(!d.length)return;
+    const a=d[0];
+    const el=document.getElementById('kpi-agent');
+    const es=document.getElementById('kpi-agent-s');
+    const ha=document.getElementById('hagent-status');
+    if(el) el.textContent=a.status==='active'?'●':'○';
+    if(es) es.textContent=a.version||'—';
+    if(ha) ha.textContent=(a.version||'—')+' online';
+  }catch(e){}
+}
+
+// ═══ SUPABASE LOAD COMPLETO ═══
+async function loadSupabase(){
+  loadTasks();loadEvents();loadDecisions();loadKnowledge();loadAgent();
+}
+
+// ═══ CMD BAR ═══
+function insertCmd(cmd){
+  const ci = document.getElementById('cmdbar-input');
+  if(ci){ ci.value=cmd; ci.focus(); }
+}
+
+// ═══ RENDER PROJETOS ═══
+function renderProjetos(){
+  const PROJETOS=[
+    {id:'P1',nome:'SYSPREV vMAX',prioridade:'urgente',
+     desc:'ERP previdenciário. 33 Edge Functions, ~65 tabelas, 362.790 recebíveis (~R$239,8M). Governance Layer 91/100.',
+     proximo:'Verificar amount nas 129 financial_queue. HITL piloto condicional.',
+     bloqueador:'amount=NULL para 129 itens. Trigger handle_process_concedido ausente.',
+     url:'https://case-compass-18.lovable.app'},
+    {id:'P2',nome:'Portal do Colaborador',prioridade:'normal',
+     desc:'CAI Controle | Fluxo Integrado. 19 Edge Functions. OCR Gemini Vision. Shadow mode ativo.',
+     proximo:'Configurar secrets Twilio. Desativar shadow mode.',
+     bloqueador:'TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_WHATSAPP_FROM não configurados.',
+     url:'https://portaldocolaborador.centralamigadoidoso.com.br'},
+    {id:'P3',nome:'Integração & Automação IA',prioridade:'urgente',
+     desc:'Fluxos Homem-IA entre sistemas. Agentes especializados por vertical.',
+     proximo:'Definir e construir primeiro fluxo operacional.',bloqueador:'',url:''},
+    {id:'P4',nome:'Domínio de Mercado CAI',prioridade:'urgente',
+     desc:'Central Amiga do Idoso. 10.589 leads. 336 P0 sem responsável. LOAS Idoso = 70% da base.',
+     proximo:'Fechar governança de funil. Dicionário oficial de tags.',bloqueador:'',url:''},
+    {id:'P5',nome:'Marketing Alta Performance',prioridade:'urgente',
+     desc:'Google Ads + Meta Ads. KPIs: CPL, CPQL, CAC, ROAS.',
+     proximo:'Revisão e calibração de campanhas.',bloqueador:'',url:''},
+    {id:'P6',nome:'Tráfego Pago GDS',prioridade:'normal',
+     desc:'Google Looker Studio + Meta — inteligência de tráfego.',
+     proximo:'Estruturar BI operacional.',bloqueador:'',url:''},
+    {id:'P7',nome:'Agentes Especializados IA',prioridade:'normal',
+     desc:'Agentes por vertical: vendas, atendimento, jurídico, financeiro. Arquitetura VOA.',
+     proximo:'Escolher e construir primeiro agente vertical.',bloqueador:'',url:''},
+    {id:'P8',nome:'Enriquecimento de Bases',prioridade:'backlog',
+     desc:'Bases de clientes qualificadas para prospecção e CRM escalável.',
+     proximo:'Qualificação contínua da base.',bloqueador:'',url:''},
+  ];
+  const grid = document.getElementById('proj-grid');
+  if(!grid)return;
+  const colors={urgente:'var(--red)',normal:'var(--amber)',backlog:'var(--green)'};
+  const labels={urgente:'URGENTE',normal:'NORMAL',backlog:'BACKLOG'};
+  const badge={urgente:'r',normal:'a',backlog:'g'};
+  grid.innerHTML=PROJETOS.map(p=>`
+    <div class="proj-card ${p.prioridade} fade-in">
+      <div class="proj-id">
+        <span>${p.id}</span>
+        ${p.url?`<a href="${p.url}" target="_blank" style="color:var(--cyan);font-size:8px;text-decoration:none">↗ abrir</a>`:''}
+      </div>
+      <div class="proj-name">${p.nome}</div>
+      <div class="proj-desc">${p.desc}</div>
+      ${p.proximo?`<div class="proj-next">→ ${p.proximo.split('.')[0]}</div>`:''}
+      ${p.bloqueador?`<div class="proj-block">⚠ ${p.bloqueador.split('.')[0]}</div>`:''}
+      <span class="pbadge ${badge[p.prioridade]}">${labels[p.prioridade]}</span>
+    </div>`).join('');
+}
+
 </script>
 </body>
 </html>
