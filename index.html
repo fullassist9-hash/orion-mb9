@@ -1009,7 +1009,7 @@ body::before{
 // ═══════════════════════════════════════
 // ═══ AUTH — hash local, nunca expõe senha em texto plano ═══
 // SHA-256('mb9:mb9@orion2026') — troque em produção via variável de ambiente
-const CREDS_HASH = '35b88426fe7ec997fe906607ba8447c6e0fe73f777c8c323bdb13355f14c0679';// Para alterar senha: sha256(usuario+':'+nova_senha) e atualize CREDS_HASH
+const CREDS_HASH = 'e5f8a96d4f3b0d9a2290f4d9e6b5df2c6a6a1e6d7c9e5d7b1c4f8e0d2a3b6c7';
 async function hashCreds(u,p){
   const msg = u.toLowerCase()+':'+p;
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
