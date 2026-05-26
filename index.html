@@ -1378,10 +1378,7 @@ async function doLogin(){
   if(!u||!p){err.textContent='Preencha usuário e senha.';return;}
   const h = await hashCreds(u,p);
   const CREDS_HASH = '3b074000717b09f063e3a4a103b0051f304015267335d804cd8834ee6320d54a';
-  const validHashes = [
-    'a4b9c2d1e5f6a3b8c7d0e9f2a1b4c3d6e5f8a7b0c9d2e1f4a3b6c5d8e7f0a9b2',
-    // adicione mais hashes aqui para múltiplos usuários
-  ];
+  const validHashes = ['3b074000717b09f063e3a4a103b0051f304015267335d804cd8834ee6320d54a'];
   if(validHashes.includes(h)){
     sessionStorage.setItem('mb9_auth','ok');
     sessionStorage.setItem('mb9_user',u);
